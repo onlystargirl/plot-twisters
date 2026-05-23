@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mia Area | Plot Twisters!</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-brand">Plot Twisters<span class="dot">!</span></div>
+    </div>
+
+    <div class="dash-layout">
+
+        <!-- ─── SIDEBAR ──────────────────────────────────────── -->
+        <aside class="dash-sidebar">
+
+            <!-- Brand -->
+            <div class="dash-brand">
+                <a href="index.html">Plot Twisters<span class="dot">!</span></a>
+            </div>
+
+            <!-- User Info -->
+            <div class="dash-user">
+                <div class="dash-avatar" id="dash-avatar">?</div>
+                <div class="dash-user-info">
+                    <div class="dash-user-name" id="dash-user-name">Caricamento…</div>
+                    <div class="dash-user-role" id="dash-user-role">Membro</div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="dash-nav">
+                <button class="dash-nav-btn active" id="nav-diary" onclick="switchTab('diary')">
+                    <span class="nav-icon">📓</span> Diario di Bordo
+                </button>
+                <button class="dash-nav-btn" id="nav-library" onclick="switchTab('library')">
+                    <span class="nav-icon">📚</span> Libreria PDF
+                </button>
+                <button class="dash-nav-btn hidden" id="nav-admin" onclick="switchTab('admin')">
+                    <span class="nav-icon">⚙️</span> Gestione Admin
+                </button>
+            </nav>
+
+            <!-- Footer actions -->
+            <div class="dash-sidebar-footer">
+                <button class="dash-footer-btn" id="theme-toggle-dash">
+                    <i class="fas fa-moon"></i> <span id="theme-label">Tema scuro</span>
+                </button>
+                <a href="index.html" class="dash-footer-btn">
+                    <i class="fas fa-home"></i> Torna al sito
+                </a>
+                <button class="dash-footer-btn danger" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Esci
+                </button>
+            </div>
+
+        </aside>
+
+        <!-- ─── MAIN CONTENT ──────────────────────────────────── -->
+        <main class="dash-main">
+
+            <!-- Back to Home Global Top Bar -->
+            <div class="dash-top-bar" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem;">
+                <a href="index.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1rem; border-radius: var(--r-sm); border-color: var(--lilac-deep); color: var(--lilac-deep); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border);">
+                    <i class="fas fa-arrow-left"></i> Torna alla Home del Sito
+                </a>
+                <div style="font-size: 0.82rem; color: var(--plum-light); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;">Area Riservata Plot Twisters 𝜗𝜚</div>
+            </div>
+
+            <!-- ══ TAB: DIARIO DI BORDO ══════════════════════ -->
+            <div class="tab-content active" id="tab-diary">
+
+                <div class="dash-page-header">
+                    <span class="overline">area personale</span>
+                    <h2>Il Mio Diario <em>di Bordo</em></h2>
+                    <p>I tuoi pensieri, appunti e riflessioni sui libri</p>
+                </div>
+
+                <!-- New Entry Button -->
+                <div class="diary-top-bar">
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <span id="entries-count" style="font-size:0.82rem; color:var(--plum-light);"></span>
+                    </div>
+                    <button class="btn-primary" id="new-entry-btn" onclick="openEditor()">
+                        <i class="fas fa-plus"></i> Nuovo Appunto
+                    </button>
+                </div>
+
+                <!-- Editor (hidden by default) -->
+                <div class="diary-editor-card hidden" id="diary-editor">
+                    <input
+                        type="text"
+                        class="diary-editor-title"
+                        id="entry-title-input"
+                        placeholder="Titolo del tuo appunto…"
+                        maxlength="120"
+                    >
+                    <textarea
+                        class="diary-editor-content"
+                        id="entry-content-input"
+                        placeholder="Scrivi qui i tuoi pensieri, riflessioni, citazioni preferite…"
+                        rows="8"
+                    ></textarea>
+                    <div class="diary-editor-footer">
+                        <div class="mood-picker" id="mood-picker">
+                            <button class="mood-btn selected" data-mood="✨" onclick="selectMood(this)" title="Entusiasta">✨</button>
+                            <button class="mood-btn" data-mood="📖" onclick="selectMood(this)" title="In lettura">📖</button>
+                            <button class="mood-btn" data-mood="💭" onclick="selectMood(this)" title="Riflessiva">💭</button>
+                            <button class="mood-btn" data-mood="❤️" onclick="selectMood(this)" title="Commossa">❤️</button>
+                            <button class="mood-btn" data-mood="🤔" onclick="selectMood(this)" title="Perplessa">🤔</button>
+                            <button class="mood-btn" data-mood="🌙" onclick="selectMood(this)" title="Notturna">🌙</button>
+                        </div>
+                        <div class="editor-actions">
+                            <button class="btn-ghost" onclick="cancelEditor()">Annulla</button>
+                            <button class="btn-primary" id="save-entry-btn" onclick="saveEntry()">
+                                <i class="fas fa-save"></i> Salva
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entries Grid -->
+                <div class="diary-entries-grid" id="diary-entries-grid">
+                    <!-- Loaded by JS -->
+                </div>
+
+                <!-- Empty state -->
+                <div class="diary-empty hidden" id="diary-empty">
+                    <span class="diary-empty-icon">📓</span>
+                    <h3>Ancora nessun appunto</h3>
+                    <p>Inizia a scrivere il tuo primo pensiero sul libro del mese!</p>
+                </div>
+
+            </div>
+
+            <!-- ══ TAB: LIBRERIA PDF ══════════════════════════ -->
+            <div class="tab-content" id="tab-library">
+
+                <div class="dash-page-header">
+                    <span class="overline">risorse del club</span>
+                    <h2>Libreria <em>PDF</em></h2>
+                    <p>I PDF dei libri e le risorse condivise del gruppo</p>
+                </div>
+
+                <!-- Admin: Add PDF form (hidden for non-admins) -->
+                <div class="hidden" id="pdf-admin-bar">
+                    <div style="margin-bottom:1rem;">
+                        <button class="btn-primary" id="toggle-pdf-form-btn" onclick="togglePdfForm()">
+                            <i class="fas fa-plus"></i> Aggiungi PDF
+                        </button>
+                    </div>
+                    <div class="pdf-add-form hidden" id="pdf-add-form">
+                        <h3>Aggiungi un nuovo PDF</h3>
+                        <div class="pdf-form-grid">
+                            <div class="input-group">
+                                <label for="pdf-title">Titolo del libro</label>
+                                <input type="text" id="pdf-title" placeholder="es. Get to You">
+                            </div>
+                            <div class="input-group">
+                                <label for="pdf-author">Autrice/Autore</label>
+                                <input type="text" id="pdf-author" placeholder="es. Sara Rampado">
+                            </div>
+                        </div>
+                        <div class="pdf-form-grid">
+                            <div class="input-group">
+                                <label for="pdf-url">Link al PDF</label>
+                                <input type="url" id="pdf-url" placeholder="https://drive.google.com/...">
+                            </div>
+                            <div class="input-group">
+                                <label for="pdf-cover">URL Copertina (opzionale)</label>
+                                <input type="url" id="pdf-cover" placeholder="https://...">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="pdf-category">Categoria</label>
+                            <input type="text" id="pdf-category" placeholder="es. Lettura del Mese, Romance, Thriller…">
+                        </div>
+                        <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
+                            <button class="btn-primary" onclick="addPdf()">
+                                <i class="fas fa-upload"></i> Aggiungi
+                            </button>
+                            <button class="btn-ghost" onclick="togglePdfForm()">Annulla</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PDF Grid -->
+                <div class="pdf-grid" id="pdf-grid">
+                    <!-- Loaded by JS -->
+                </div>
+
+                <!-- Empty state -->
+                <div class="diary-empty hidden" id="pdf-empty">
+                    <span class="diary-empty-icon">📚</span>
+                    <h3>Nessun PDF disponibile</h3>
+                    <p>L'admin aggiungerà presto i libri del club!</p>
+                </div>
+
+            </div>
+
+            <!-- ══ TAB: ADMIN ═════════════════════════════════ -->
+            <div class="tab-content" id="tab-admin">
+
+                <div class="dash-page-header">
+                    <span class="overline">pannello amministrazione</span>
+                    <h2>Gestione <em>Club</em></h2>
+                    <p>Gestisci i contenuti del book club</p>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:1.25rem;">
+
+                    <!-- Book in progress -->
+                    <div class="bento-box">
+                        <span class="bento-tag">libro in lettura</span>
+                        <h3 style="margin-bottom:1rem;">Aggiorna il Libro</h3>
+                        <div class="input-group">
+                            <label for="admin-book-title">Titolo</label>
+                            <input type="text" id="admin-book-title" placeholder="es. Get to You">
+                        </div>
+                        <div class="input-group">
+                            <label for="admin-book-author">Autrice</label>
+                            <input type="text" id="admin-book-author" placeholder="es. Sara Rampado">
+                        </div>
+                        <div class="input-group">
+                            <label for="admin-book-cover">URL Copertina</label>
+                            <input type="url" id="admin-book-cover" placeholder="https://...">
+                        </div>
+                        <div class="input-group">
+                            <label for="admin-book-progress">Avanzamento (%)</label>
+                            <input type="number" id="admin-book-progress" min="0" max="100" placeholder="45">
+                        </div>
+                        <button class="btn-primary" style="width:100%; justify-content:center; margin-top:0.5rem;" onclick="updateCurrentBook()">
+                            <i class="fas fa-book"></i> Aggiorna
+                        </button>
+                    </div>
+
+                    <!-- Manage members -->
+                    <div class="bento-box">
+                        <span class="bento-tag">gestione membre</span>
+                        <h3 style="margin-bottom:1rem;">Crea Account Membro</h3>
+                        <p style="font-size:0.85rem; color:var(--plum-light); margin-bottom:1.25rem;">
+                            Crea gli account dalle impostazioni Firebase Console oppure usa il form qui sotto.
+                        </p>
+                        <div class="input-group">
+                            <label for="admin-new-email">Email nuova membro</label>
+                            <input type="email" id="admin-new-email" placeholder="nome@email.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="admin-new-password">Password temporanea</label>
+                            <input type="password" id="admin-new-password" placeholder="min. 6 caratteri">
+                        </div>
+                        <div class="input-group">
+                            <label for="admin-new-name">Nome visualizzato</label>
+                            <input type="text" id="admin-new-name" placeholder="es. Giulia">
+                        </div>
+                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:var(--plum-light); margin-bottom:1rem; cursor:pointer;">
+                            <input type="checkbox" id="admin-new-is-admin"> Rendi admin
+                        </label>
+                        <button class="btn-primary" style="width:100%; justify-content:center;" onclick="createMember()">
+                            <i class="fas fa-user-plus"></i> Crea Membro
+                        </button>
+                        <p id="admin-create-msg" style="font-size:0.82rem; margin-top:0.75rem; text-align:center;"></p>
+                    </div>
+
+                    <!-- Newsletter CSV -->
+                    <div class="bento-box">
+                        <span class="bento-tag">newsletter</span>
+                        <h3 style="margin-bottom:1rem;">Iscritte Newsletter</h3>
+                        <p style="font-size:0.85rem; color:var(--plum-light); margin-bottom:1.5rem;">
+                            Scarica la lista delle email raccolte tramite il modulo di iscrizione del sito.
+                        </p>
+                        <button class="btn-outline" style="width:100%; justify-content:center;" onclick="downloadNewsletter()">
+                            <i class="fas fa-download"></i> Scarica CSV
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Firebase SDKs (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+    <script src="firebase-config.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

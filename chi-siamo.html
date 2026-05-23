@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo | Plot Twisters!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- SIDEBAR DRAWER -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span> <a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span> <a href="chi-siamo.html" class="active">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span> <a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span> <a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span> <a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        
+        <div class="sidebar-divider"></div>
+        
+        <!-- Helpful extra menu items -->
+        <div class="sidebar-extra">
+            <h4>Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" class="sidebar-extra-link">
+                🎵 Playlist da Lettura
+            </a>
+            <a href="#regole" class="sidebar-extra-link" onclick="toggleSidebar(false)">
+                📜 Le Regole d'Oro
+            </a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link">
+                📍 Come Raggiungerci
+            </a>
+        </div>
+        
+        <div class="sidebar-footer">📍 ci vediamo a Capua</div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link">Area Privata <i class="fas fa-lock"></i></a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="overline">chi siamo 𝜗𝜚</span>
+            <h1>La Nostra <em>Storia</em></h1>
+            <p>un cerchio magico di sguardi, tisane e capitoli letti insieme</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section class="about-grid">
+                <div class="about-photo-col">
+                    <img src="pt.jpeg" alt="Il gruppo delle Plot Twisters a Capua" class="about-photo">
+                    <img src="logo.png" alt="Plot Twisters Mini Logo" class="about-photo-badge">
+                </div>
+                <div class="about-text-col">
+                    <span class="overline">come tutto è iniziato</span>
+                    <h2>Benvenuta nel nostro<br><em>Cerchio Magico</em></h2>
+                    <p>Siamo nate da un'idea semplice ma potente: creare uno spazio accogliente e protetto alla <strong>Libreria Cose d'Interni a Capua</strong>, dove poter staccare dalla vita frenetica di tutti i giorni per tuffarci insieme in mondi letterari straordinari.</p>
+                    <p>Per noi, Plot Twisters non è solo un gruppo di lettura. È sorellanza, è il profumo di tisana calda al limone e zenzero, sono gli sguardi complici al capitolo di svolta e le accese discussioni sulle teorie più folli dei nostri romanzi preferiti.</p>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <section>
+                <div class="section-header">
+                    <span class="overline">i nostri pilastri</span>
+                    <h2>La Vita nel Club</h2>
+                    <p>cosa troverai ad ogni nostro incontro mensile</p>
+                </div>
+                <div class="about-cards-row">
+                    <article class="about-card">
+                        <span class="about-icon">🧚‍♀️</span>
+                        <h3>Polvere di Fata</h3>
+                        <p>Ogni libro è un incantesimo. Adoriamo i romance tormentati, i misteri avvolgenti e quelle storie magiche che ti tengono incollata alla pagina fino all'alba.</p>
+                    </article>
+                    <article class="about-card">
+                        <span class="about-icon">☕</span>
+                        <h3>Tisane & Chiacchiere</h3>
+                        <p>Ci riuniamo fisicamente a Capua per commentare, ridere e innamorarci dei protagonisti. Nessun giudizio, solo condivisione pura.</p>
+                    </article>
+                    <article class="about-card">
+                        <span class="about-icon">📚</span>
+                        <h3>Sguardo Critico</h3>
+                        <p>Selezioniamo i libri insieme, analizziamo i colpi di scena e scriviamo recensioni sincere delle nostre letture preferite.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Rules section -->
+            <section class="rules-card" id="regole">
+                <h2>Le Regole d'Oro del <em>Club</em></h2>
+                <div class="rules-list">
+                    <div class="rule-item">
+                        <span class="rule-num">01.</span>
+                        <p><strong>Niente Spoiler prima del tempo!</strong> Rispettiamo i tempi di lettura stabiliti insieme per non rovinare a nessuna la sorpresa del colpo di scena. Chi sgarra... offre la tisana al prossimo incontro! 🐸</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-num">02.</span>
+                        <p><strong>Spazio privo di giudizio.</strong> Le opinioni letterarie sono tutte valide. Ci piace confrontare pareri opposti in modo aperto, solare ed estremamente affettuoso.</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-num">03.</span>
+                        <p><strong>Partecipazione e Magia.</strong> Porta sempre la tua allegria, la tua passione e le tue teorie preferite ai nostri incontri fisici mensili in libreria.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-logo">Plot Twisters!</div>
+        <p class="footer-tagline">"Dove le storie prendono vita e la magia accade tra le pagine."</p>
+    </footer>
+
+    <!-- Firebase SDKs (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recensione | Plot Twisters!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- SIDEBAR DRAWER -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span> <a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span> <a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span> <a href="lettura.html" class="active">Letture</a></li>
+            <li><span class="sidebar-num">04.</span> <a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span> <a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        
+        <div class="sidebar-divider"></div>
+        
+        <!-- Helpful extra menu items -->
+        <div class="sidebar-extra">
+            <h4>Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" class="sidebar-extra-link">
+                🎵 Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link">
+                📜 Le Regole d'Oro
+            </a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link">
+                📍 Come Raggiungerci
+            </a>
+        </div>
+        
+        <div class="sidebar-footer">📍 ci vediamo a Capua</div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link">Area Privata <i class="fas fa-lock"></i></a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)">Menu ☰</button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container" style="padding-top: 120px; padding-bottom: 6rem;">
+            <div style="margin-bottom: 2rem;">
+                <a href="lettura.html" class="back-link"><i class="fas fa-arrow-left"></i> Torna a Letture</a>
+            </div>
+            <article class="review-full" style="background: var(--surface-1); border-radius: var(--r-md); box-shadow: var(--shadow-md); border: 1px solid var(--border); padding: 2rem;">
+                <div class="review-full-header">
+                    <img id="review-cover" src="" alt="Book Cover" class="review-full-cover" style="border-radius: var(--r-sm); box-shadow: var(--shadow-book);">
+                    <div class="review-full-meta">
+                        <span class="overline" id="review-reviewer">Recensito da: ...</span>
+                        <h1 id="review-title" style="font-family: var(--font-display); font-size: 2.2rem; margin: 0.5rem 0; color: var(--plum);">Caricamento...</h1>
+                        <p id="review-author" class="author" style="font-family: var(--font-italic); font-size: 1.25rem; color: var(--plum-light);">...</p>
+                        <div id="review-rating" class="stars" style="font-size:1.15rem; margin:0.5rem 0; color: #f5b041;"></div>
+                    </div>
+                </div>
+                <div class="review-full-text" style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 2rem;">
+                    <h2 style="font-family: var(--font-display); font-size: 1.6rem; color: var(--plum); margin-bottom: 1rem;">La nostra Recensione Completa 𝜗𝜚</h2>
+                    <div id="review-text"><p>Caricamento in corso...</p></div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-logo">Plot Twisters!</div>
+        <p class="footer-tagline">"Dove le storie prendono vita e la magia accade tra le pagine."</p>
+    </footer>
+
+    <!-- Firebase SDKs (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

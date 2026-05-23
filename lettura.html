@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letture | Plot Twisters!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- SIDEBAR DRAWER -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span> <a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span> <a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span> <a href="lettura.html" class="active">Letture</a></li>
+            <li><span class="sidebar-num">04.</span> <a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span> <a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        
+        <div class="sidebar-divider"></div>
+        
+        <!-- Helpful extra menu items -->
+        <div class="sidebar-extra">
+            <h4>Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" class="sidebar-extra-link">
+                🎵 Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link">
+                📜 Le Regole d'Oro
+            </a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link">
+                📍 Come Raggiungerci
+            </a>
+        </div>
+        
+        <div class="sidebar-footer">📍 ci vediamo a Capua</div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link">Area Privata <i class="fas fa-lock"></i></a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="overline">il nostro viaggio letterario 𝜗𝜚</span>
+            <h1>Le Nostre <em>Letture</em></h1>
+            <p>i nostri viaggi tra le pagine e le nostre opinioni sincere</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- Dynamic Current Reading (automatically loads from firebase if active) -->
+            <section style="padding: 2rem 0 4rem;">
+                <div class="section-header">
+                    <span class="overline">in lettura adesso</span>
+                    <h2>Il Libro del Mese</h2>
+                </div>
+                <div class="bento-box bento-current-read" id="lettura-mese" style="display:block;">
+                    <div class="bento-current-content">
+                        <img src="https://www.sperling.it/content/uploads/2025/10/978882008373HIG.JPG" alt="Get to You Cover" class="bento-book-cover">
+                        <div class="bento-book-details">
+                            <h3>Get to You</h3>
+                            <p class="bento-author">di Sara Rampado</p>
+                            <p class="bento-book-desc">Il romance intenso, magnetico e travolgente che ci sta rubando il sonno in queste settimane. Le anime tormentate dei protagonisti si incontrano e si scontrano in una storia di rinascita, segreti e sentimenti indomabili. Un viaggio letterario che ci sta catturando capitolo dopo capitolo!</p>
+                            <div class="progress-wrap">
+                                <div class="progress-meta">
+                                    <span>Avanzamento Gruppo · Cap. 10</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="progress-track" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Our Reviews -->
+            <section style="padding: 4rem 0;">
+                <div class="section-header">
+                    <span class="overline">dal nostro account instagram</span>
+                    <h2>Le Nostre Recensioni</h2>
+                    <p>opinioni e pensieri sinceri sui libri letti</p>
+                </div>
+                <div class="reviews-grid">
+                    <a href="recensione-singola.html?id=shatter-me" class="review-card">
+                        <div class="review-card-header">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1487622956i/13642254.jpg" alt="Shatter Me Cover" class="review-thumb">
+                            <div class="review-meta">
+                                <h3>Shatter Me</h3>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="reviewer-tag">Dal nostro IG 𝜗𝜚</span>
+                            </div>
+                        </div>
+                        <p class="review-snippet">Juliette è un personaggio che spacca letteralmente la pagina! Le atmosfere sono incredibili e lo stile di scrittura... <span class="review-more">Leggi di più ✦</span></p>
+                    </a>
+                    <a href="recensione-singola.html?id=brave-ragazze" class="review-card">
+                        <div class="review-card-header">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582236056i/40916679.jpg" alt="Good Girl Cover" class="review-thumb">
+                            <div class="review-meta">
+                                <h3>Come uccidono le brave ragazze</h3>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <span class="reviewer-tag">Dal nostro IG 𝜗𝜚</span>
+                            </div>
+                        </div>
+                        <p class="review-snippet">Un thriller che ti tiene incollata fino all'ultima pagina! Holly Jackson sa davvero come scrivere un mistero... <span class="review-more">Leggi di più ✦</span></p>
+                    </a>
+                    <a href="recensione-singola.html?id=ci-sono-io" class="review-card">
+                        <div class="review-card-header">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1435272635i/24863343.jpg" alt="E poi ci sono io Cover" class="review-thumb">
+                            <div class="review-meta">
+                                <h3>E poi ci sono io</h3>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                </div>
+                                <span class="reviewer-tag">Dal nostro IG 𝜗𝜚</span>
+                            </div>
+                        </div>
+                        <p class="review-snippet">Una storia cruda, emozionante e potentissima. Il viaggio di Charlie ci ha distrutto il cuore ma entra nell'anima... <span class="review-more">Leggi di più ✦</span></p>
+                    </a>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Bookshelf section -->
+            <section style="padding: 4rem 0 8rem;">
+                <div class="section-header">
+                    <span class="overline">il nostro storico</span>
+                    <h2>La Nostra Libreria</h2>
+                    <p>la raccolta completa dei libri letti insieme finora</p>
+                </div>
+                <div class="shelf-grid">
+                    <article class="shelf-book">
+                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1487622956i/13642254.jpg" alt="Shatter Me">
+                        <h4>Shatter Me</h4>
+                        <p class="shelf-author">Tahereh Mafi</p>
+                        <div class="shelf-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <span class="shelf-badge">Letto Insieme</span>
+                    </article>
+                    <article class="shelf-book">
+                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582236056i/40916679.jpg" alt="Good Girl">
+                        <h4>Come uccidono le brave ragazze</h4>
+                        <p class="shelf-author">Holly Jackson</p>
+                        <div class="shelf-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span class="shelf-badge">Letto Insieme</span>
+                    </article>
+                    <article class="shelf-book">
+                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1435272635i/24863343.jpg" alt="E poi ci sono io">
+                        <h4>E poi ci sono io</h4>
+                        <p class="shelf-author">Kathleen Glasgow</p>
+                        <div class="shelf-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                        <span class="shelf-badge">Letto Insieme</span>
+                    </article>
+                    <article class="shelf-book">
+                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1690022201i/195392687.jpg" alt="But Santa">
+                        <h4>But Santa, I Love Him</h4>
+                        <p class="shelf-author">Lyla Sage</p>
+                        <div class="shelf-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+                        <span class="shelf-badge">Il Primo Libro!</span>
+                    </article>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-logo">Plot Twisters!</div>
+        <p class="footer-tagline">"Dove le storie prendono vita e la magia accade tra le pagine."</p>
+    </footer>
+
+    <!-- Firebase SDKs (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

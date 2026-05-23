@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventi | Plot Twisters!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- SIDEBAR DRAWER -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span> <a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span> <a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span> <a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span> <a href="eventi.html" class="active">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span> <a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        
+        <div class="sidebar-divider"></div>
+        
+        <!-- Helpful extra menu items -->
+        <div class="sidebar-extra">
+            <h4>Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" class="sidebar-extra-link">
+                🎵 Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link">
+                📜 Le Regole d'Oro
+            </a>
+            <a href="#mappa" class="sidebar-extra-link" onclick="toggleSidebar(false)">
+                📍 Come Raggiungerci
+            </a>
+        </div>
+        
+        <div class="sidebar-footer">📍 ci vediamo a Capua</div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link">Area Privata <i class="fas fa-lock"></i></a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="overline">il calendario magico 𝜗𝜚</span>
+            <h1>I Nostri <em>Incontri</em></h1>
+            <p>ci vediamo ogni mese alla Libreria Cose d'Interni a Capua</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section style="padding: 2rem 0 4rem;">
+                <div class="calendar-wrapper">
+                    <div class="calendar-header">
+                        <button id="prev-month" class="cal-nav" aria-label="Mese precedente">&lt;</button>
+                        <h2 id="calendar-month-year">Maggio 2026</h2>
+                        <button id="next-month" class="cal-nav" aria-label="Mese successivo">&gt;</button>
+                    </div>
+                    <div class="calendar-grid-header">
+                        <div>Lun</div><div>Mar</div><div>Mer</div><div>Gio</div><div>Ven</div><div>Sab</div><div>Dom</div>
+                    </div>
+                    <div id="calendar-grid" class="calendar-grid"></div>
+                </div>
+            </section>
+
+            <section class="events-list-section">
+                <div class="section-header">
+                    <span class="overline">ci vediamo presto</span>
+                    <h2>Prossimi Incontri</h2>
+                    <p>segna in agenda queste date speciali del nostro club</p>
+                </div>
+                <div id="events-container" class="events-grid"></div>
+            </section>
+
+            <section class="map-section" id="mappa">
+                <div class="map-section-header">
+                    <h2>Dove ci troviamo 📍</h2>
+                    <p>La nostra base operativa: Libreria Cose d'Interni, Capua.</p>
+                </div>
+                <iframe width="100%" height="360" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://maps.google.com/maps?q=Libreria%20Cose%20d'Interni,%20Capua&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    style="display:block; border-radius:var(--r-md); box-shadow:var(--shadow-md);"></iframe>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-logo">Plot Twisters!</div>
+        <p class="footer-tagline">"Dove le storie prendono vita e la magia accade tra le pagine."</p>
+    </footer>
+
+    <!-- Firebase SDKs (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
