@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recensione: But Santa, I love him | Plot Twisters!</title>
+    <meta name="description"
+        content="La recensione del club Plot Twisters di But Santa, I love him di Hazel Riley e Karim B.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <a href="lettura.html"
+                style="color:var(--plum-light); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem;"><i
+                    class="fas fa-arrow-left"></i> Torna alle Letture</a>
+            <h1 style="font-size:2.5rem;">Recensione: <em>But Santa, I love him</em></h1>
+            <p>di Hazel Riley &amp; Karim B.</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
+
+            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+                    <div style="display:flex; gap:2rem; align-items:center; flex-wrap:wrap;">
+                        <div style="display:flex; justify-content:center; align-items:center; flex-shrink:0;">
+                            <div class="book-3d-wrap" style="transform: scale(0.85); margin: 0; padding: 6px;">
+                                <div class="book-3d">
+                                    <img src="https://www.sperling.it/content/uploads/2025/11/978882008377HIG.JPG"
+                                        alt="But Santa, I love him">
+                                    <div class="book-pages"></div>
+                                    <div class="book-spine"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2rem;">But Santa,
+                                I love him</h2>
+                            <p style="margin:0 0 0.5rem 0; color:var(--plum-light); font-size:1rem;">di Hazel Riley
+                                &amp; Karim B.</p>
+                            <div style="color:#f5a623; margin-top:0.5rem; letter-spacing:3px; font-size:1.2rem;">★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align:right; flex-shrink:0;">
+                        <span
+                            style="font-size:0.75rem; color:var(--plum-light); text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.25rem;">Media
+                            Voti Club</span>
+                        <div
+                            style="font-size:2.5rem; font-weight:700; color:var(--lilac-deep); line-height:1; font-family:var(--font-display);">
+                            5.0<span style="font-size:1rem; color:var(--plum-light);">/5</span></div>
+                    </div>
+                </div>
+
+                <div
+                    style="font-family:var(--font-italic); font-size:1.05rem; line-height:1.85; color:var(--plum-dark);">
+                    <p style="margin-bottom:1.5rem;"><strong>E se il primo libro che scegli non fosse una scelta, ma una
+                            dichiarazione d'intenti?</strong> 📚💫</p>
+
+                    <p style="margin-bottom:1.5rem;">Quando il Plot Twisters Club è nato, non sapevamo ancora che forma
+                        avrebbe preso. Sapevamo solo che volevamo storie capaci di spostarci qualcosa dentro, capaci di
+                        accendere scintille. "Babbo Natale, lo amo" (Santa, I Love Him) è arrivato così: come la nostra
+                        primissima lettura ufficiale, come il nostro primo vero rischio. E col senno di poi, non poteva
+                        esserci un inizio diverso. Si è rivelato un delizioso calendario dell'avvento romance che ci ha
+                        riscaldato il cuore durante le feste natalizie, catapultandoci in un'atmosfera unica.</p>
+
+                    <p style="margin-bottom:1.5rem;">Non si tratta solo di una storia d'amore. È, prima di tutto, una
+                        storia sul permettersi di volere, anche quando tutto il contesto circostante dice “no”. Il libro
+                        gioca magistralmente con l'estetica natalizia, con i segreti sotto il vischio, con l'ironia e
+                        con ciò che a prima vista sembra leggero — per poi scendere molto più a fondo, lì dove l'amore
+                        smette di essere semplicemente carino e diventa una scelta consapevole. Una presa di posizione.
+                        In questo senso è impossibile non sentirlo profondamente <em>Taylor Swift codificato</em>:
+                        possiede quel tipo di sentimento vibrante che non chiede di essere capito o razionalizzato, ma
+                        solo vissuto e sentito sulla pelle. Abbiamo amato i riferimenti pop, ma soprattutto quella
+                        vibrazione indomita da “so cosa penseranno, eppure io resto qui”.</p>
+
+                    <p style="margin-bottom:1.5rem;">Leggerlo insieme e affrontarlo capitolo dopo capitolo ha fatto una
+                        cosa strana: ci ha messi completamente a nudo come lettori. C'è chi si è innamorato fin dalle
+                        prime pagine, chi ha opposto resistenza, chi ha cambiato idea un capitolo alla volta. Ed è stato
+                        proprio in quel preciso momento che il Plot Twisters Club ha compiuto una magia: ha smesso di
+                        essere semplicemente un gruppo di lettura ed è diventato uno <strong>spazio</strong>. Un luogo
+                        sicuro di confronto, di interpretazioni accese, di frasi salvate e custodite come se fossero i
+                        versi di una canzone del cuore. Discuterne insieme, davanti a tazze di tisana calda e dolcetti
+                        natalizi nella splendida cornice della Libreria Cose d'Interni, ha reso questa condivisione
+                        ancora più intima, accogliente e speciale.</p>
+
+                    <p style="margin-bottom:1.5rem;">Questo libro ci ha insegnato che non cerchiamo storie perfette.
+                        Cerchiamo storie che osano. Che dividono. Che restano aggrappate ai pensieri. Questo romanzo non
+                        vuole piacere a tutti a tutti i costi, ed è proprio per questo che ha funzionato come perfetto
+                        punto d'inizio per la nostra magica cerchia letteraria: perché ci ha mostrato che leggere
+                        insieme significa accettare anche il disaccordo, l'ambiguità e quel meraviglioso “non so
+                        spiegare il perché, ma mi ha colpito”. Ci ha fatto sognare, discutere e, soprattutto, unire.</p>
+
+                    <p style="margin-bottom:1.5rem;">⭐ 5 stelline piene — Plot Twisters Book Club 📚🎄💜</p>
+
+                    <p><em>In breve:</em> Un romance natalizio soffice, accattivante ed estremamente avvolgente; con le
+                        sue atmosfere sognanti e la sua anima rock, si è rivelato il manifesto perfetto per iniziare
+                        l'avventura delle Plot Twisters!</p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

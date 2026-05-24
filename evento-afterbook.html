@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After-Book al Museo Campano | Plot Twisters!</title>
+    <meta name="description"
+        content="Dettagli dell'evento After-Book al Museo Campano delle Plot Twisters, 30-31 Maggio 2026.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <a href="eventi.html"
+                style="color:var(--plum-light); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem;"><i
+                    class="fas fa-arrow-left"></i> Torna agli Eventi</a>
+            <h1 style="font-size:2.5rem;">Evento: <em>After-Book al Museo Campano</em> 🎨</h1>
+            <p>30 – 31 Maggio 2026 · ore 16:30</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
+
+            <!-- SCHEDA DETTAGLIO EVENTO -->
+            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+                <!-- Intestazione evento -->
+                <div
+                    style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+                    <span style="font-size:3.5rem; display:block;">🎨</span>
+                    <div>
+                        <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2rem;">After-Book al
+                            Museo Campano</h2>
+                        <p style="margin:0 0 0.4rem 0; color:var(--plum-light); font-size:0.95rem;">
+                            <i class="fas fa-map-marker-alt" style="color:var(--lilac-mid); margin-right:0.25rem;"></i>
+                            Museo Campano / Libreria Cose d'Interni, Capua
+                        </p>
+                        <p style="margin:0; color:var(--plum-light); font-size:0.95rem;">
+                            <i class="fas fa-calendar-alt" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> 30
+                            – 31 Maggio 2026 &nbsp;•&nbsp;
+                            <i class="fas fa-clock" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> 16:30
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Descrizione -->
+                <div style="font-family:var(--font-sans); font-size:1.05rem; line-height:1.85; color:var(--plum-dark);">
+                    <p style="margin-bottom:1.5rem;">Un evento speciale a cavallo di due giorni, il 30 e 31 maggio 2026,
+                        dedicato all'arte in tutte her sue forme: dalla letteratura alla pittura, dalla musica alla
+                        fotografia. Le Plot Twisters incontrano gli artisti locali di Capua per un dialogo creativo e
+                        ispirazionale. Letture ad alta voce, musica dal vivo e un'installazione fotografica apriranno la
+                        serata. L'ingresso è libero e aperto a tutta la comunità.</p>
+
+                    <p style="margin-bottom:1.5rem;">Oggi, domenica 24 maggio, ci troviamo nel pieno dei preparativi
+                        febbrili per questo straordinario appuntamento intitolato "Un weekend tra LIBRI & EMOZIONI".
+                        Proprio perché mancano ancora pochissimi giorni al debutto, i dettagli logistici più minuziosi,
+                        gli orari precisi dei singoli panel e le informazioni tecniche definitive dell'evento
+                        arriveranno e saranno pubblicati solo nei prossimi giorni. Nel frattempo, però, vogliamo
+                        svelarvi in anteprima assoluta il ricchissimo programma delle attività che abbiamo ideato e che
+                        animeranno la splendida cornice del Cortile del Museo Campano di Capua, un luogo intriso di
+                        storia e di bellezza che per due intere giornate diventerà il cuore pulsante delle parole, delle
+                        relazioni e delle passioni condivise.</p>
+
+                    <p style="margin-bottom:1.5rem;">Il nostro obiettivo principale è creare un'oasi culturale a cielo
+                        aperto, un punto di ritrovo dove gli amanti della lettura e dell'arte possano sentirsi a casa.
+                        Tra le attività continuative che abbiamo progettato per tutto il fine settimana, spicca l'area
+                        "Booklovers": uno spazio interamente orizzontale in cui sarà possibile incontrare altri
+                        appassionati di libri, scambiarsi consigli di lettura spassionati, scoprire nuovi autori ed
+                        espandere i propri orizzonti letterari attraverso il dialogo. Per i più audaci e creativi,
+                        abbiamo pensato a qualcosa di unico: i "Tatuaggi a tema libri". Si tratterà di piccoli segni
+                        grafici temporanei ma ricchi di significato, un modo per permettere all'inchiostro di parlare
+                        direttamente della personalità e delle storie impresse sulla pelle di ciascun partecipante.
+                        Accanto a questo angolo, prenderà vita il laboratorio "Crea il tuo segnalibro", dove ognuno
+                        potrà dare libero sfogo alla propria manualità e fantasia per forgiare un piccolo pezzo d'arte
+                        unico da portare sempre con sé tra le pagine dei propri volumi preferiti.</p>
+
+                    <p style="margin-bottom:1.5rem;">Le attività dinamiche all'interno del cortile non si fermano qui.
+                        Abbiamo organizzato una vera e propria "Caccia al tesoro letteraria", un percorso a tappe
+                        strutturato su indizi complessi, enigmi affascinanti e storie misteriose nascoste tra le
+                        architetture del museo, in cui i partecipanti dovranno sfidare il proprio ingegno per riuscire a
+                        scovare il tesoro culturale nascosto. Per chi cerca un momento di puro rilassamento visivo ed
+                        emotivo, ci sarà la postazione "Colora scene di libri", un'attività meditativa e artistica
+                        pensata per dare letteralmente colore alle emozioni suscitate dalle pagine più celebri della
+                        letteratura mondiale. Infine, per immortalare questi momenti indimenticabili, sarà allestito un
+                        "Photo Booth Libroso": un set fotografico tematico ricco di oggetti di scena, cornici e
+                        citazioni letterarie famose, dove scattare foto divertenti o poetiche, mettendo in posa la
+                        propria sconfinata passione per la lettura e raccontando la propria esperienza attraverso
+                        un'immagine ricordo.</p>
+
+                    <p style="margin-bottom:1.5rem;">Il weekend si articolerà attraverso momenti specifici pensati per
+                        ogni fascia d'età e per ogni momento della giornata, trasformando l'atmosfera a seconda della
+                        luce del sole e delle stelle. La mattina di domenica 31 maggio sarà interamente dedicata ai più
+                        piccoli con la "Lettura di favole e storie ai bimbi": un momento magico, intimo e delicato,
+                        pensato per avvicinare l'infanzia alla meraviglia della parola scritta. Un appuntamento simile
+                        dedicato ai bambini si terrà anche nel primo pomeriggio di sabato 30 maggio, offrendo un vero e
+                        proprio tuffo tra le pagine per sognare insieme e stimolare l'immaginazione dei futuri lettori
+                        della nostra comunità. Questo viaggio pomeridiano tra le storie preparerà il terreno per la
+                        transizione verso i momenti più intensi e suggestivi dedicati al pubblico adulto e agli
+                        appassionati di lungo corso.</p>
+
+                    <p style="margin-bottom:1.5rem;">La sera di sabato 30 maggio l'atmosfera del Cortile del Museo
+                        Campano si trasformerà completamente, complici le luci soffuse, la frescura della sera e il
+                        fascino della notte capuana. Sarà il momento di "Coperte, luci soffuse e libri", un salotto
+                        letterario notturno sotto le stelle dove ci ritroveremo per parlare, leggere ad alta voce e
+                        condividere pensieri in un'atmosfera incredibilmente intima, calda e accogliente. Sarà il
+                        culmine dell'incontro tra le Plot Twisters e gli artisti del territorio, un dialogo senza filtri
+                        in cui le barriere tra autore e lettore si annullano completamente per fare spazio all'empatia e
+                        alla pura connessione emotiva attraverso le arti visive, la musica e la scrittura.</p>
+
+                    <p style="margin-bottom:1.5rem;">Il fulcro emotivo della nostra presenza al Museo Campano si
+                        concretizzerà in uno spazio speciale che abbiamo battezzato "After-Book". Per due interi
+                        pomeriggi, il club di lettura darà vita a un piccolo e suggestivo angolo protetto e incantato.
+                        Immaginate teli candidi stesi ordinatamente sull'erba soffice del cortile, cuscini colorati e
+                        comodi su cui abbandonarsi, tazze di tè caldo e biscotti fragranti da gustare in compagnia. In
+                        questo contesto bucolico e rilassante, i visitatori potranno staccare la spina dalla frenesia
+                        quotidiana, accomodarsi liberamente per ascoltare le interviste dal vivo rivolte agli autori
+                        locali, condividere le proprie storie personali e trascorrere momenti di autentica armonia.</p>
+
+                    <p>Per partecipare a questa straordinaria esperienza comunitaria, vi chiediamo soltanto di portare
+                        con voi tre cose fondamentali: una coperta per accomodarvi sul prato, una tazza per gustare il
+                        nostro tè e, soprattutto, tanta, tantissima voglia di leggere e di emozionarvi insieme a noi.
+                        Segnate sul calendario le date del 30 e 31 maggio 2026 e continuate a seguirci con attenzione
+                        nei prossimi giorni. Non appena i dettagli definitivi, gli orari precisi e le ultime indicazioni
+                        organizzative saranno pronti, sarete i primi a saperlo. Noi vi aspettiamo a braccia aperte per
+                        scrivere insieme questo splendido nuovo capitolo culturale della nostra città.</p>
+                </div>
+
+                <!-- Sezione media -->
+                <div
+                    style="width: 100%; max-width: 420px; margin: 2rem auto; padding: 20px; background: #f4edd2; border-radius: 12px; border: 2px dashed #d1c7a3; box-shadow: inset 0 0 20px rgba(0,0,0,0.05), 0 10px 25px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; position: relative;">
+
+                    <div
+                        style="position: absolute; top: -10px; width: 20px; height: 20px; background: #e74c3c; border-radius: 50%; box-shadow: 0 4px 5px rgba(0,0,0,0.3); z-index: 10;">
+                        <div
+                            style="position: absolute; top: 3px; left: 3px; width: 6px; height: 6px; background: rgba(255,255,255,0.6); border-radius: 50%;">
+                        </div>
+                    </div>
+
+                    <div style="width: 100%; max-width: 360px; background: #ffffff; padding: 10px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); transform: rotate(-1deg); transition: transform 0.3s ease;"
+                        onmouseover="this.style.transform='rotate(0deg) scale(1.02)';"
+                        onmouseout="this.style.transform='rotate(-1deg)';">
+
+                        <img src="locandina.jpeg" alt="Locandina Un weekend tra Libri e Emozioni - Plot Twisters"
+                            style="width: 100%; height: auto; display: block; border-radius: 2px;" />
+
+                    </div>
+
+                    <p
+                        style="margin: 12px 0 0 0; font-family: var(--font-sans, sans-serif); font-size: 0.85rem; color: #7f7555; font-style: italic; text-align: center;">
+                        📌 Un Weekend tra libri ed emozioni - Plot Twisters 📖💜
+                    </p>
+                </div>
+            </article>
+
+            <!-- MAPPA -->
+            <div class="bento-box" style="padding:1.5rem; background:var(--white); margin-bottom:2rem;">
+                <h4
+                    style="font-family:var(--font-sans); text-transform:uppercase; font-size:0.75rem; letter-spacing:1px; color:var(--plum-light); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i class="fas fa-map-marked-alt"></i> Mappa della Sede
+                </h4>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.4842106456073!2d14.208151315609462!3d41.10915622097956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133a87bc1e88888b%3A0xc6c4293e62c14522!2sLibreria%20Cose%20d'Interni!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit"
+                    width="100%" height="250" style="border:0; border-radius:var(--r-md); box-shadow:var(--shadow-sm);"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

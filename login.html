@@ -1,79 +1,87 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="light">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Area Privata | Plot Twisters!</title>
-    <meta name="description" content="Accedi o registrati al club Plot Twisters per scrivere sul tuo diario di bordo e scaricare i PDF.">
+    <meta name="description" content="Accedi all'area privata del club Plot Twisters.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom styles for the auth switcher */
-        .auth-mode-selector {
-            display: flex;
-            background: var(--ivory-2);
-            border-radius: var(--r-sm);
-            padding: 0.25rem;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border);
-        }
-        .auth-mode-btn {
-            flex: 1;
-            text-align: center;
-            padding: 0.6rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-radius: calc(var(--r-sm) - 2px);
-            transition: all 0.3s var(--ease);
-            color: var(--plum-light);
-        }
-        .auth-mode-btn.active {
-            background: var(--white);
-            color: var(--lilac-deep);
-            box-shadow: var(--shadow-xs);
-        }
-        .form-field {
-            margin-bottom: 1.25rem;
-        }
-        .hidden-field {
-            display: none;
-        }
+        .form-field { margin-bottom: 1.25rem; }
         .login-back {
-            display: inline-flex;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            color: var(--lilac-deep); font-weight: 500; font-size: 0.9rem;
+            margin-bottom: 2rem; transition: transform 0.3s var(--ease);
+            text-decoration: none;
+        }
+        .login-back:hover { transform: translateX(-4px); }
+
+        /* User selector pills */
+        .user-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .user-pill {
+            display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--lilac-deep);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            border: 2px solid var(--border);
+            background: var(--white);
+            color: var(--plum-dark);
+            font-size: 0.88rem;
             font-weight: 500;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s var(--ease);
+            cursor: pointer;
+            transition: all 0.25s var(--ease);
         }
-        .login-back:hover {
-            transform: translateX(-4px);
+        .user-pill:hover {
+            border-color: var(--lilac-mid);
+            background: var(--ivory-2);
+        }
+        .user-pill.selected {
+            border-color: var(--lilac-deep);
+            background: var(--lilac-deep);
+            color: white;
+        }
+        .user-pill .avatar-sm {
+            width: 1.6rem; height: 1.6rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 700;
+        }
+        .user-pill.selected .avatar-sm {
+            background: rgba(255,255,255,0.3);
+        }
+        .select-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--plum-light);
+            margin-bottom: 0.6rem;
         }
     </style>
 </head>
-
 <body>
-    <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
         <div class="loader-brand">Plot Twisters<span class="dot">!</span></div>
     </div>
 
     <div class="login-page">
-
         <!-- LEFT: Decorative Panel -->
         <div class="login-deco">
             <div class="login-deco-brand">Plot Twisters<span>!</span></div>
             <p class="login-deco-tagline">dove la magia prende vita, pagina dopo pagina</p>
             <div class="login-deco-dots">
-                <span class="active"></span>
-                <span></span>
-                <span></span>
+                <span class="active"></span><span></span><span></span>
             </div>
             <div style="position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden" id="login-particles"></div>
         </div>
@@ -81,87 +89,50 @@
         <!-- RIGHT: Form Side -->
         <div class="login-form-side">
             <div class="login-form-card">
-                
-                <!-- Explicit Back to Home link -->
-                <a href="index.html" class="login-back" title="Torna alla Homepage del sito">
+
+                <a href="index.html" class="login-back" title="Torna alla Homepage">
                     <i class="fas fa-arrow-left"></i> Torna alla Home
                 </a>
 
-                <h1 id="auth-title">Benvenuta <em>di nuovo</em></h1>
-                <p class="login-form-subtitle" id="auth-subtitle">Accedi alla tua area personale ☕</p>
-
-                <!-- Dynamic Auth Switcher -->
-                <div class="auth-mode-selector">
-                    <button type="button" class="auth-mode-btn active" id="mode-login-btn" onclick="setMode('login')">Accedi</button>
-                    <button type="button" class="auth-mode-btn" id="mode-register-btn" onclick="setMode('register')">Crea Account</button>
-                </div>
+                <h1>Benvenuta <em>di nuovo</em></h1>
+                <p class="login-form-subtitle">Scegli il tuo nome e inserisci la password ☕</p>
 
                 <form class="login-form" id="login-form" novalidate>
-                    
-                    <!-- Dynamic Name Field (shown only in register mode) -->
-                    <div class="form-field hidden-field" id="field-name">
-                        <label for="login-name">Il tuo Nome</label>
-                        <input
-                            type="text"
-                            id="login-name"
-                            placeholder="es. Giulia"
-                            autocomplete="name"
-                        >
-                    </div>
 
-                    <div class="form-field">
-                        <label for="login-email">Indirizzo Email</label>
-                        <input
-                            type="email"
-                            id="login-email"
-                            placeholder="la.tua@email.com"
-                            autocomplete="email"
-                            required
-                        >
-                    </div>
+                    <!-- Selezione Utente -->
+                    <div style="margin-bottom:1.5rem;">
+                        <p class="select-label">Chi sei?</p>
+             <div id="user-scroll" class="user-scroll" style="margin-bottom:1.5rem; overflow-x:auto; white-space:nowrap;">
+            <!-- User pills will be populated by login.js -->
+        </div>        </div>
 
+                    <!-- Password -->
                     <div class="form-field">
-                        <label for="login-password">Password</label>
-                        <input
-                            type="password"
-                            id="login-password"
-                            placeholder="••••••••"
-                            autocomplete="current-password"
-                            required
-                        >
+                        <label for="login-password">La tua Password</label>
+                        <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" required>
                     </div>
 
                     <div class="login-error hidden" id="login-error">
                         <i class="fas fa-exclamation-circle"></i>
-                        <span id="login-error-msg">Email o password errata.</span>
+                        <span id="login-error-msg">Password errata. Riprova!</span>
                     </div>
 
-                    <button type="submit" class="btn-primary login-submit" id="login-submit-btn" style="width: 100%; justify-content: center;">
+                    <button type="submit" class="btn-primary login-submit" id="login-submit-btn" style="width:100%;justify-content:center;">
                         Accedi <i class="fas fa-arrow-right"></i>
                     </button>
-
                 </form>
 
-                <p class="login-footer-note" style="margin-top: 1.5rem;">
-                    Sei una nuova membro del club? Clicca su <strong>"Crea Account"</strong> in alto per registrarti all'istante ed entrare nel diario!
+                <p class="login-footer-note" style="margin-top:1.5rem;font-size:0.85rem;color:var(--plum-light);">
+                    Non trovi il tuo nome o hai dimenticato la password? Contatta le admin! 🔑
                 </p>
 
-                <!-- Dark mode toggle -->
-                <div style="margin-top: 2rem; display: flex; justify-content: center;">
+                <div style="margin-top:2rem;display:flex;justify-content:center;">
                     <button class="theme-toggle" id="theme-toggle-login" title="Cambia tema">🌙</button>
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- Firebase SDKs (Compat Version) -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-
-    <script src="firebase-config.js"></script>
     <script src="login.js"></script>
 </body>
-
 </html>

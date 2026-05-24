@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Talent | Plot Twisters!</title>
+    <meta name="description"
+        content="Dettagli dell'evento Legal Talent delle Plot Twisters, 15 Febbraio 2026 presso la Libreria Cose d'Interni di Capua.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <a href="eventi.html"
+                style="color:var(--plum-light); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem;"><i
+                    class="fas fa-arrow-left"></i> Torna agli Eventi</a>
+            <h1 style="font-size:2.5rem;">Evento: <em>Legal Talent</em> ⚖️</h1>
+            <p>Incontro del 15 febbraio 2026 alle ore 8:05</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
+
+            <!-- SCHEDA DETTAGLIO EVENTO -->
+            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+                <!-- Intestazione evento -->
+                <div
+                    style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+                    <span style="font-size:3.5rem; display:block;">⚖️</span>
+                    <div>
+                        <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2rem;"> Falco Legal
+                            Talent</h2>
+                        <p style="margin:0 0 0.4rem 0; color:var(--plum-light); font-size:0.95rem;">
+                            <i class="fas fa-map-marker-alt" style="color:var(--lilac-mid); margin-right:0.25rem;"></i>
+                            Istituto Tecnico Giulio C. F., Capua
+                        </p>
+                        <p style="margin:0; color:var(--plum-light); font-size:0.95rem;">
+                            <i class="fas fa-calendar-alt" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> 15
+                            Febbraio 2026 &nbsp;•&nbsp;
+                            <i class="fas fa-clock" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> 8:05
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Descrizione -->
+                <div style="font-family:var(--font-sans); font-size:1.05rem; line-height:1.85; color:var(--plum-dark);">
+                    <p style="margin-bottom:1.5rem;">Un format innovativo e appassionante dedicato al mondo del diritto
+                        e della letteratura giuridica. Le nostre Plot Twisters si sono confrontate su casi letterari,
+                        testi normativi raccontati con voce narrativa e dibattiti su grandi processi della storia. Un
+                        pomeriggio intenso che ha unito la passione per la lettura con la cultura giuridica, dimostrando
+                        che anche il diritto può essere un'avventura da leggere.</p>
+
+                    <p style="margin-bottom:1.5rem;">La legalità non può e non deve essere ridotta a un mero concetto
+                        astratto, lontano dalla percezione comune, né a un principio freddo confinato rigidamente
+                        all'interno dei ponderosi libri di diritto o nei solenni discorsi istituzionali. Essa si
+                        configura, al contrario, come una pratica quotidiana imprescindibile, interamente costituita da
+                        scelte spesso invisibili agli occhi della massa, da piccoli e grandi gesti che non fanno rumore
+                        ma che hanno il potere straordinario di costruire e consolidare, giorno dopo giorno, il tessuto
+                        connettivo di una società autenticamente giusta. Ed è proprio attingendo a questa visione etica
+                        e civile che il progetto "Falco Legal Talent - La legalità è una scelta" trova la sua profonda
+                        ragion d'essere. L'iniziativa, ideata con lungimiranza da Begar Samia Maria, si sviluppa
+                        organicamente all'interno di un percorso educativo e formativo ben più ampio, il cui scopo
+                        primario è scardinare la passività pedagogica per rendere gli studenti non dei semplici e
+                        sterili destinatari di nozioni teoriche, bensì i veri e proprio protagonisti attivi e
+                        consapevoli nella co-costruzione del significato più intimo del vivere civile e della legalità.
+                    </p>
+
+                    <p style="margin-bottom:1.5rem;">L'orizzonte dell'intero progetto mira a trasformare radicalmente
+                        una normale e canonica giornata scolastica in un'esperienza collettiva vissuta, autentica,
+                        fortemente partecipata e dotata di un profondo significato etico. In questo scenario, la
+                        riflessione storica e teorica sui concetti di giustizia e diritto si intreccia in modo
+                        indissolubile con la freschezza della creatività giovanile, con la potenza dell'espressione
+                        artistica e con il valore inestimabile del confronto paritario tra studenti. L'evento si
+                        configura programmaticamente come un talent show a forte trazione educativa, ma ne supera
+                        deliberatamente le logiche più commerciali e la sterile competitività fine a se stessa. Il
+                        "Falco Legal Talent" vuole essere, prima di ogni altra cosa, uno spazio democratico di parola e
+                        d'azione in cui ogni singola classe dell'Istituto Giulio Cesare Falco acquisisce una propria
+                        centralità, trasformandosi in una voce narrante, in un racconto corale e in una personalissima
+                        interpretazione critica delle dinamiche complesse del mondo reale che ci circonda.</p>
+
+                    <p style="margin-bottom:1.5rem;">La decisione strategica di adottare il format dinamico e
+                        accattivante del talent show non è affatto casuale o legata a una moda passeggera. Questa
+                        struttura performativa permette infatti di coniugare in maniera straordinaria il profondo
+                        coinvolgimento emotivo dei ragazzi, la loro partecipazione attiva alla vita scolastica e una
+                        totale libertà espressiva, rendendo il messaggio valoriale della legalità immensamente più
+                        incisivo, penetrante e vicino alla sensibilità artistica e comunicativa delle nuove generazioni.
+                        In questo modo, l'istituzione scolastica si spoglia delle sue vesti prettamente nozionistiche
+                        per trasformarsi in un laboratorio sociale dinamico e in perenne fermento, all'interno del quale
+                        si sperimentano linguaggi alternativi, si edificano nuovi significati condivisi e si promuove lo
+                        sviluppo di una coscienza critica e civica destinata a radicarsi negli studenti ben oltre la
+                        singola durata della giornata dell'evento. La supervisione scientifica e il coordinamento
+                        didattico dell'intera manifestazione sono affidati alla competenza dei docenti referenti, la
+                        Prof.ssa Parisi Annamaria e il Prof. Izzo Ermanno, i quali vigilano costantemente per garantire
+                        l'assoluta coerenza educativa del percorso, il corretto e pacifico svolgimento di tutte le
+                        attività previste e il pieno rispetto delle alte finalità formative stabilite dall'Istituto.</p>
+
+                    <p style="margin-bottom:1.5rem;">Entrando nel dettaglio operativo del concorso, il bando di
+                        partecipazione dell'edizione 2026 stabilisce regole precise e stringenti per garantire la
+                        serietà e la riuscita dell'evento. La partecipazione è considerata strettamente obbligatoria per
+                        tutte le classi dell'Istituto, e ciascun gruppo classe ha il dovere etico e organizzativo di
+                        produrre un elaborato originale frutto del lavoro collettivo. Il bando, a tal proposito,
+                        introduce una clausola di sbarramento estremamente rigorosa: la mancata partecipazione o
+                        l'assenza ingiustificata di un contributo concreto e verificato comporterà l'immediata e
+                        inevitabile interruzione della partecipazione all'intera Settimana dello Studente per tutta la
+                        classe inadempiente. Il cronoprogramma della giornata di Lunedì 30 Marzo prevede una prima fase
+                        cruciale, dalle ore 9:00 alle ore 11:00, interamente dedicata al lavoro sul campo. Durante
+                        queste due ore frenetiche, le classi rimarranno nelle proprie aule per dedicarsi alla
+                        progettazione esecutiva e alla realizzazione materiale dei loro elaborati. In questa fase così
+                        delicata, i membri della commissione organizzatrice — perfettamente riconoscibili sul territorio
+                        scolastico grazie a un apposito cartellino identificativo con la dicitura STAFF — effettueranno
+                        un monitoraggio attivo e costante all'interno delle classi, mentre i docenti in servizio
+                        assicureranno la necessaria sorveglianza e la sovra guardia delle attività, verificando il
+                        rispetto delle regole e il reale coinvolgimento di ogni singolo studente.</p>
+
+                    <p style="margin-bottom:1.5rem;">Il momento di svolta della mattinata è fissato inderogabilmente
+                        alle ore 11:00, termine ultimo per la consegna ufficiale degli elaborati alla commissione del
+                        personale STAFF. Indipendentemente dalla tipologia espressiva scelta per la successiva
+                        esibizione, ogni classe è obbligata a consegnare un documento scritto contenente il titolo
+                        definitivo del progetto, una breve ma esaustiva spiegazione del contenuto narrativo e
+                        l'esplicita indicazione delle tematiche civili e giuridiche affrontate, unitamente a eventuali
+                        materiali tecnici di supporto come file video, tracce audio o presentazioni multimediali. Questa
+                        documentazione scritta si rivelerà di fondamentale importanza, poiché verrà utilizzata
+                        direttamente dalla giuria per comprendere a fondo la genesi del progetto, supportare
+                        l'attribuzione dei punteggi e garantire una perfetta coerenza tra l'intenzione concettuale degli
+                        studenti e l'effettiva realizzazione pratica sul palco. Subito dopo la consegna dei materiali,
+                        si aprirà ufficialmente la tanto attesa fase delle esibizioni dal vivo. Le classi verranno
+                        inserite in un rigoroso ordine di chiamata stabilito dall'organizzazione e verranno invitate
+                        singolarmente a presentare la propria opera o a esibirsi dinanzi alla giuria e al pubblico. I
+                        gruppi avranno la massima libertà di scelta rispetto al medium espressivo da utilizzare, potendo
+                        spaziare tra esibizioni teatrali live, performance musicali, proiezioni di cortometraggi
+                        cinematografici, contenuti digitali o presentazioni guidate del lavoro testuale svolto in
+                        classe. Per quanto concerne la gestione del tempo, il bando impone un limite massimo
+                        invalicabile: ogni classe avrà a disposizione un minutaggio complessivo compreso tassativamente
+                        tra i 5 e i 7 minuti. Questo spazio temporale dovrà includere l'eventuale introduzione parlata,
+                        l'esibizione stessa e i saluti conclusivi, con la consapevolezza che il superamento anche minimo
+                        di tale limite influirà in modo severo e negativo sulla valutazione finale della giuria.</p>
+
+                    <p style="margin-bottom:1.5rem;">La straordinaria ricchezza del "Falco Legal Talent" risiede proprio
+                        nella pluralità quasi infinita di linguaggi espressivi ammessi al concorso, una scelta
+                        fortemente voluta dall'organizzazione per valorizzare le diverse inclinazioni creative delle
+                        studentesse e degli studenti, favorendo un approccio intimo, libero e consapevole ai temi
+                        complessi della giustizia. Le categorie in gara vedono in prima linea l'espressione teatrale e
+                        performativa attraverso la messa in scena di brevi rappresentazioni, monologhi d'autore,
+                        dialoghi intensi, letture interpretative e forme incisive di teatro civile o di denuncia
+                        sociale. Di grandissimo impatto è anche la sezione dedicata all'espressione musicale, che
+                        accoglie brani originali scritti dai ragazzi, canzoni rap, spoken word, poesia performativa e
+                        reinterpretazioni creative di brani già esistenti, purché radicalmente rielaborate dagli
+                        studenti per evitare il mero plagio. Sul fronte tecnologico spiccano le produzioni audiovisive
+                        come cortometraggi di finzione, video narrativi o documentaristici, interviste simulate o reali,
+                        storytelling digitale e spot d'impatto per la sensibilizzazione sociale. Non mancano
+                        l'espressione artistica e visiva tradizionale — che comprende disegni, dipinti, illustrazioni,
+                        collage, opere grafiche miste o installazioni concettuali e simboliche — i prodotti digitali e
+                        comunicativi come presentazioni multimediali avanzate, e infine le produzioni scritte e
+                        squisitamente narrative quali racconti brevi, testi teatrali inediti, poesie e riflessioni
+                        argomentative approfondite. Tutti gli elaborati, per essere ammessi, devono possedere dei
+                        requisiti fondamentali di base: devono essere rigorosamente originali, coerenti con le tematiche
+                        del bando, portatori di un messaggio sociale chiaro e consapevole, e soprattutto devono essere
+                        il frutto tangibile di un lavoro attivo e partecipato dall'intero gruppo classe.</p>
+
+                    <p style="margin-bottom:1.5rem;">Per preservare l'alto valore formativo dell'iniziativa, il bando
+                        delinea con estrema precisione una serie di criteri di esclusione per gli elaborati non ammessi
+                        alla valutazione. Saranno categoricamente esclusi tutti i lavori contenenti messaggi offensivi,
+                        discriminatori, lesivi della dignità umana, incitanti alla violenza, all'odio o all'illegalità,
+                        o che banalizzino e giustifichino pericolosamente i fenomeni della criminalità organizzata. Un
+                        giro di vite durissimo viene dato alla mancanza di originalità: sono severamente vietati gli
+                        elaborati copiati integralmente o parzialmente da intelligenze artificiali o da motori di
+                        ricerca generici, così come i materiali scaricati passivamente e privi di una reale
+                        trasformazione creativa e intellettuale da parte degli studenti. L'esclusione scatterà inoltre
+                        per palese non pertinenza tematica, per assenza di una partecipazione collettiva ed effettiva
+                        della classe, per problemi tecnici e ritardi nelle consegne, o per gravi violazioni del
+                        regolamento d'istituto, quali comportamenti scorretti, uso improprio degli spazi scolastici e
+                        mancanza di rispetto verso l'organizzazione.</p>
+
+                    <p style="margin-bottom:1.5rem;">In questo contesto così strutturato, la valutazione delle
+                        performance viene affidata a una giuria d'eccezione, composta interamente dalle studentesse e
+                        dagli studenti dell'Istituto appartenenti al prestigioso club di lettura Plot Twisters. Questa
+                        scelta innovativa nasce dalla volontà profonda della scuola di promuovere una forma di
+                        valutazione tra pari che sia consapevole, matura e interamente fondata sul senso di
+                        responsabilità, sul pensiero critico e sulle spiccate capacità di analisi estetica e testuale
+                        sviluppate dai membri del club nel corso delle loro consuete letture pomeridiane. I giurati
+                        delle Plot Twisters, anch'essi identificabili tramite il cartellino STAFF, avranno l'onere e
+                        l'onore di monitorare le classi durante la preparazione, verificare la correttezza formale delle
+                        consegne, osservare le esibizioni sul palco e determinare la classifica finale, attenendosi
+                        scrupolosamente ai principi etici inderogabili di imparzialità oggettiva, responsabilità
+                        educativa e totale trasparenza dei giudizi. Le regole di comportamento per la giuria sono
+                        ferree: per evitare conflitti d'interesse o pressioni emotive, è fatto assoluto divieto di
+                        votare per la propria classe di appartenenza, situazione che impone al giurato l'allontanamento
+                        temporaneo dall'aula durante lo scrutinio. Il verdetto emesso da questa commissione studentesca
+                        sarà da considerarsi definitivo, insindacabile e non soggetto a eventuali reclami o
+                        contestazioni future.</p>
+
+                    <p style="margin-bottom:1.5rem;">Il sistema di valutazione si baserà su una griglia strutturata e
+                        oggettiva, mirata a garantire un perfetto equilibrio tra il valore del contenuto, la forza della
+                        creatività e la perizia tecnica dell'esecuzione espressiva. Ogni elaborato potrà conseguire un
+                        punteggio massimo complessivo di 50 punti, distribuiti equamente su cinque macro-criteri da 0 a
+                        10 punti ciascuno: in primo luogo la Forza del messaggio, per premiare l'efficacia nel
+                        trasmettere il tema della legalità senza scadere in triti stereotipi o banalità; in secondo
+                        luogo l'Originalità e la creatività del concept proposto; in terzo luogo il livello di
+                        Profondità e rielaborazione personale, analizzando la capacità degli studenti di collegare il
+                        diritto alla realtà quotidiana concreta; in quarto luogo la Coerenza e la struttura
+                        logico-narrativa complessiva dell'opera; e infine l'Efficacia comunicativa, legata alla
+                        chiarezza dell'esposizione e alla capacità di rendere il messaggio fruibile e accessibile al
+                        pubblico presente in sala. Il punteggio finale della classe sarà calcolato matematicamente
+                        facendo la media aritmetica dei voti validi espressi dai singoli giurati, escludendo
+                        rigorosamente dal computo i voti espressi dai membri appartenenti alla medesima classe sotto
+                        esame.</p>
+
+                    <p>Al termine delle serrate votazioni, l'organizzazione proclamerà ufficialmente le prime che classi
+                        classificate, alle quali verrà assegnato un premio dal valore straordinariamente esperienziale,
+                        didattico e sociale. I vincitori avranno infatti il privilegio di partecipare a un'uscita
+                        didattica speciale sul territorio di Capua, della durata di un'intera giornata scolastica,
+                        magnificamente intitolata "Percorsi di Legalità - Capua tra memoria, cultura e impegno". Questa
+                        esperienza immersiva comprenderà una visita culturale guidata alla scoperta dei luoghi più densi
+                        di significato storico e civile del territorio capuano, arricchita da un momento di colazione
+                        condivisa offerto come preziosa occasione di socialità e riconoscimento comunitario per
+                        l'eccellente lavoro svolto. Il premio non vuole configurarsi come un mero trofeo da esibire, ma
+                        come un'opportunità eccezionale di apprendimento e di crescita fuori dalle pareti dell'aula
+                        scolastica. Perché, come recitano le potenti parole conclusive del bando di concorso, il "Falco
+                        Legal Talent" costituisce in ultima analisi un accorato e imprescindibile invito rivolto a
+                        ognuno di noi a scegliere. Non una volta sola, in un'occasione speciale o durante una
+                        ricorrenza, ma ogni singolo giorno della nostra vita. Perché la legalità, quella vera, non si
+                        studia semplicemente sui banchi: la legalità si pratica con coraggio e costanza.</p>
+                </div>
+
+                <!-- Sezione media -->
+                <div
+                    style="width: 100%; max-width: 800px; margin: 2rem auto; font-family: var(--font-sans, sans-serif);">
+
+                    <a href="LEGAL TALENT.pdf" target="_blank" style="text-decoration: none; display: block; group;">
+                        <div style="position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; background-color: var(--plum-dark, #4A154B);"
+                            onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.25)';"
+                            onmouseout="this.style.transform='none'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)';">
+
+                            <img src="pt.jpeg" alt="Bando Concorso Falco Legal Talent"
+                                style="width: 100%; height: 450px; object-fit: cover; display: block; opacity: 0.85; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='0.7';" onmouseout="this.style.opacity='0.85';">
+
+                            <div
+                                style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgb(0, 0, 0)); padding: 2.5rem 2rem; color: #ffffff; display: flex; flex-direction: column; align-items: flex-start;">
+                                <span
+                                    style="background-color: rgba(255,255,255,0.2); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; backdrop-filter: blur(5px);">
+                                    📄 Documento Ufficiale Bando 2026
+                                </span>
+                                <h3
+                                    style="margin: 0 0 0.5rem 0; font-size: 1.8rem; font-weight: 700; text-shadow: 1px 1px 3px rgb(221, 49, 22); color: white;">
+                                    Falco Legal Talent — La legalità è una scelta
+                                </h3>
+                                <p
+                                    style="margin: 0 0 1.5rem 0; font-size: 1rem; color: #e0e0e0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); max-width: 600px;">
+                                    Clicca per aprire, leggere o scaricare il regolamento completo del concorso in
+                                    formato PDF ad alta risoluzione.
+                                </p>
+
+                                <div style="background-color: #ffffff; color: var(--plum-dark, #4A154B); padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: bold; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background-color 0.2s;"
+                                    onmouseover="this.style.backgroundColor='#f0f0f0';"
+                                    onmouseout="this.style.backgroundColor='#ffffff';">
+                                    <span>Leggi il Bando Completo</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+
+                </div>
+            </article>
+
+            <!-- MAPPA -->
+            <div class="bento-box" style="padding:1.5rem; background:var(--white); margin-bottom:2rem;">
+                <h4
+                    style="font-family:var(--font-sans); text-transform:uppercase; font-size:0.75rem; letter-spacing:1px; color:var(--plum-light); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i class="fas fa-map-marked-alt"></i> Mappa della Sede
+                </h4>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.4842106456073!2d14.208151315609462!3d41.10915622097956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133a87bc1e88888b%3A0xc6c4293e62c14522!2sLibreria%20Cose%20d'Interni!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit"
+                    width="100%" height="250" style="border:0; border-radius:var(--r-md); box-shadow:var(--shadow-sm);"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

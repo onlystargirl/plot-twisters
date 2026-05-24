@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letture | Plot Twisters!</title>
+    <title>Lettura in Corso | Plot Twisters!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -15,195 +17,253 @@
 <body>
     <div class="particles" id="particles" aria-hidden="true"></div>
 
-    <!-- SIDEBAR DRAWER -->
+    <!-- ─── SIDEBAR DRAWER ─── -->
     <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
         <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
         <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
         <ul class="sidebar-links">
-            <li><span class="sidebar-num">01.</span> <a href="index.html">Home</a></li>
-            <li><span class="sidebar-num">02.</span> <a href="chi-siamo.html">Chi Siamo</a></li>
-            <li><span class="sidebar-num">03.</span> <a href="lettura.html" class="active">Letture</a></li>
-            <li><span class="sidebar-num">04.</span> <a href="eventi.html">Eventi</a></li>
-            <li><span class="sidebar-num">05.</span> <a href="login.html">Area Privata 🔒</a></li>
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html" class="active">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
         </ul>
-        
         <div class="sidebar-divider"></div>
-        
-        <!-- Helpful extra menu items -->
-        <div class="sidebar-extra">
-            <h4>Utility del Club 🜗</h4>
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" class="sidebar-extra-link">
-                🎵 Playlist da Lettura
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
             </a>
-            <a href="chi-siamo.html#regole" class="sidebar-extra-link">
-                📜 Le Regole d'Oro
-            </a>
-            <a href="eventi.html#mappa" class="sidebar-extra-link">
-                📍 Come Raggiungerci
-            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
         </div>
-        
-        <div class="sidebar-footer">📍 ci vediamo a Capua</div>
     </div>
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
 
-    <!-- NAVBAR -->
+    <!-- ─── NAVBAR ─── -->
     <nav class="navbar" id="navbar" aria-label="Menu principale">
         <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
         <div class="nav-actions">
             <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
-            <a href="login.html" class="btn-ghost auth-nav-link">Area Privata <i class="fas fa-lock"></i></a>
-            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)">Menu ☰</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- ─── HERO ─── -->
     <header class="page-hero">
         <div class="container">
-            <span class="overline">il nostro viaggio letterario 𝜗𝜚</span>
+            <span class="overline">il nostro scaffale 𝜗𝜚</span>
             <h1>Le Nostre <em>Letture</em></h1>
-            <p>i nostri viaggi tra le pagine e le nostre opinioni sincere</p>
+            <p>cosa stiamo leggendo e cosa abbiamo amato</p>
         </div>
     </header>
 
     <main>
-        <div class="container">
+        <div class="container" style="padding-bottom: 4rem;">
 
-            <!-- Dynamic Current Reading (automatically loads from firebase if active) -->
-            <section style="padding: 2rem 0 4rem;">
-                <div class="section-header">
-                    <span class="overline">in lettura adesso</span>
-                    <h2>Il Libro del Mese</h2>
+            <!-- Lettura in Corso -->
+            <section style="margin-bottom: 4rem;">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                    <span class="overline">il libro del mese</span>
+                    <h2>Attualmente in <em>Lettura</em></h2>
                 </div>
-                <div class="bento-box bento-current-read" id="lettura-mese" style="display:block;">
-                    <div class="bento-current-content">
-                        <img src="https://www.sperling.it/content/uploads/2025/10/978882008373HIG.JPG" alt="Get to You Cover" class="bento-book-cover">
-                        <div class="bento-book-details">
-                            <h3>Get to You</h3>
-                            <p class="bento-author">di Sara Rampado</p>
-                            <p class="bento-book-desc">Il romance intenso, magnetico e travolgente che ci sta rubando il sonno in queste settimane. Le anime tormentate dei protagonisti si incontrano e si scontrano in una storia di rinascita, segreti e sentimenti indomabili. Un viaggio letterario che ci sta catturando capitolo dopo capitolo!</p>
-                            <div class="progress-wrap">
-                                <div class="progress-meta">
-                                    <span>Avanzamento Gruppo · Cap. 10</span>
-                                    <span>45%</span>
+
+                <div class="bento-box bento-current-read" id="lettura-mese"
+                    style="max-width:800px; margin:0 auto; display:flex; flex-wrap:wrap; gap:2rem; align-items:center;">
+                    <div style="flex:1; min-width:280px;">
+                        <span class="bento-tag">📖 In Lettura Ora</span>
+                        <h3 class="current-book-title"
+                            style="font-size:2.5rem; font-family:var(--font-display); margin:0.5rem 0 0.25rem 0;">Get to
+                            You</h3>
+                        <p class="current-book-author"
+                            style="font-size:1.1rem; color:var(--plum-light); margin-bottom:1rem;">di Sara Rampado</p>
+                        <p class="bento-book-desc" style="font-size:1rem; line-height:1.6; margin-bottom:1.5rem;">
+                            Unisciti al gruppo per la lettura condivisa. Scriviamo appunti nel diario dell'Area Privata
+                            e ne parliamo insieme al prossimo incontro a Capua.</p>
+                        <div class="progress-wrap">
+                            <div class="progress-meta"
+                                style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--plum);">
+                                <span>Avanzamento Gruppo</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="progress-track" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="height:8px; background:var(--lilac-pale); border-radius:4px; overflow:hidden;">
+                                <div class="progress-fill"
+                                    style="height:100%; width: 45%; background:var(--lilac-deep); transition:width 0.5s ease;">
                                 </div>
-                                <div class="progress-track" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-fill" style="width: 45%;"></div>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="flex-shrink:0; text-align:center; display: flex; justify-content: center; align-items: center; width: 100%; max-width: 240px; margin: 0 auto;">
+                        <div class="book-3d-wrap">
+                            <div class="book-3d">
+                                <img src="https://www.sperling.it/content/uploads/2025/10/978882008373HIG.JPG"
+                                    alt="Copertina Libro" class="bento-book-cover">
+                                <div class="book-pages"></div>
+                                <div class="book-spine"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <hr class="divider">
+            <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
 
-            <!-- Our Reviews -->
-            <section style="padding: 4rem 0;">
-                <div class="section-header">
-                    <span class="overline">dal nostro account instagram</span>
-                    <h2>Le Nostre Recensioni</h2>
-                    <p>opinioni e pensieri sinceri sui libri letti</p>
+            <!-- Letture Precedenti -->
+            <section style="margin-bottom: 4rem;">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                    <span class="overline">archivio letture</span>
+                    <h2>Letture <em>Precedenti</em></h2>
+                    <p>I libri che abbiamo già affrontato insieme e di cui puoi leggere le recensioni.</p>
                 </div>
-                <div class="reviews-grid">
-                    <a href="recensione-singola.html?id=shatter-me" class="review-card">
-                        <div class="review-card-header">
-                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1487622956i/13642254.jpg" alt="Shatter Me Cover" class="review-thumb">
-                            <div class="review-meta">
-                                <h3>Shatter Me</h3>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem;">
+                    <!-- Libro 1 (Inaugurale) -->
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); padding:1.5rem; text-align:center; border:1px solid var(--border);">
+                        <div
+                            style="display:flex; justify-content:center; align-items:center; margin-bottom:1rem; width:100%; height:220px;">
+                            <div class="book-3d-wrap" style="transform: scale(0.75); margin: 0;">
+                                <div class="book-3d">
+                                    <img src="https://www.sperling.it/content/uploads/2025/11/978882008377HIG.JPG"
+                                        alt="But Santa, I love him">
+                                    <div class="book-pages"></div>
+                                    <div class="book-spine"></div>
                                 </div>
-                                <span class="reviewer-tag">Dal nostro IG 𝜗𝜚</span>
                             </div>
                         </div>
-                        <p class="review-snippet">Juliette è un personaggio che spacca letteralmente la pagina! Le atmosfere sono incredibili e lo stile di scrittura... <span class="review-more">Leggi di più ✦</span></p>
-                    </a>
-                    <a href="recensione-singola.html?id=brave-ragazze" class="review-card">
-                        <div class="review-card-header">
-                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582236056i/40916679.jpg" alt="Good Girl Cover" class="review-thumb">
-                            <div class="review-meta">
-                                <h3>Come uccidono le brave ragazze</h3>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <h3 style="font-family:var(--font-display); font-size:1.4rem; margin-bottom:0.2rem;">But Santa,
+                            I love him
+                        </h3>
+                        <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1rem;">di Hazel Riley & Karim
+                            B.</p>
+                        <div
+                            style="display:flex; justify-content:center; gap:0.2rem; color:#f5a623; margin-bottom:1rem;">
+                            ★★★★★</div>
+                        <a href="recensione-but-santa.html" class="btn-outline"
+                            style="width:100%; justify-content:center; padding:0.4rem;">Leggi Recensioni</a>
+                    </div>
+                    <!-- Libro 2 -->
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); padding:1.5rem; text-align:center; border:1px solid var(--border);">
+                        <div
+                            style="display:flex; justify-content:center; align-items:center; margin-bottom:1rem; width:100%; height:220px;">
+                            <div class="book-3d-wrap" style="transform: scale(0.75); margin: 0;">
+                                <div class="book-3d">
+                                    <img src="https://m.media-amazon.com/images/I/71oxIHcsUZL.jpg"
+                                        alt="E poi ci sono io">
+                                    <div class="book-pages"></div>
+                                    <div class="book-spine"></div>
                                 </div>
-                                <span class="reviewer-tag">Dal nostro IG 𝜗𝜚</span>
                             </div>
                         </div>
-                        <p class="review-snippet">Un thriller che ti tiene incollata fino all'ultima pagina! Holly Jackson sa davvero come scrivere un mistero... <span class="review-more">Leggi di più ✦</span></p>
-                    </a>
-                    <a href="recensione-singola.html?id=ci-sono-io" class="review-card">
-                        <div class="review-card-header">
-                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1435272635i/24863343.jpg" alt="E poi ci sono io Cover" class="review-thumb">
-                            <div class="review-meta">
-                                <h3>E poi ci sono io</h3>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        <h3 style="font-family:var(--font-display); font-size:1.4rem; margin-bottom:0.2rem;">E poi ci
+                            sono io</h3>
+                        <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1rem;">di Kathleen Glasgow
+                        </p>
+                        <div
+                            style="display:flex; justify-content:center; gap:0.2rem; color:#f5a623; margin-bottom:1rem;">
+                            ★★★★★</div>
+                        <a href="recensione-e-poi-ci-sono-io.html" class="btn-outline"
+                            style="width:100%; justify-content:center; padding:0.4rem;">Leggi Recensioni</a>
+                    </div>
+                    <!-- Libro 3 -->
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); padding:1.5rem; text-align:center; border:1px solid var(--border);">
+                        <div
+                            style="display:flex; justify-content:center; align-items:center; margin-bottom:1rem; width:100%; height:220px;">
+                            <div class="book-3d-wrap" style="transform: scale(0.75); margin: 0;">
+                                <div class="book-3d">
+                                    <img src="https://www.letture.org/wp-content/uploads/2022/09/come-uccidono-le-brave-ragazze-holly-jackson-copertina.jpeg"
+                                        alt="Come uccidono le brave ragazze">
+                                    <div class="book-pages"></div>
+                                    <div class="book-spine"></div>
                                 </div>
-                                <span class="reviewer-tag">Dal nostro IG 𝜗𝜚</span>
                             </div>
                         </div>
-                        <p class="review-snippet">Una storia cruda, emozionante e potentissima. Il viaggio di Charlie ci ha distrutto il cuore ma entra nell'anima... <span class="review-more">Leggi di più ✦</span></p>
-                    </a>
+                        <h3 style="font-family:var(--font-display); font-size:1.4rem; margin-bottom:0.2rem;">Come
+                            uccidono le brave ragazze</h3>
+                        <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1rem;">di Holly Jackson</p>
+                        <div
+                            style="display:flex; justify-content:center; gap:0.2rem; color:#f5a623; margin-bottom:1rem;">
+                            ★★★★☆</div>
+                        <a href="recensione-brave-ragazze.html" class="btn-outline"
+                            style="width:100%; justify-content:center; padding:0.4rem;">Leggi Recensioni</a>
+                    </div>
+                    <!-- Libro 4 -->
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); padding:1.5rem; text-align:center; border:1px solid var(--border);">
+                        <div
+                            style="display:flex; justify-content:center; align-items:center; margin-bottom:1rem; width:100%; height:220px;">
+                            <div class="book-3d-wrap" style="transform: scale(0.75); margin: 0;">
+                                <div class="book-3d">
+                                    <img src="https://m.media-amazon.com/images/I/710p8hFwd9L._AC_UF1000,1000_QL80_.jpg"
+                                        alt="Shatter Me">
+                                    <div class="book-pages"></div>
+                                    <div class="book-spine"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 style="font-family:var(--font-display); font-size:1.4rem; margin-bottom:0.2rem;">Shatter Me
+                        </h3>
+                        <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1rem;">di Tahereh Mafi</p>
+                        <div
+                            style="display:flex; justify-content:center; gap:0.2rem; color:#f5a623; margin-bottom:1rem;">
+                            ★★★★★</div>
+                        <a href="recensione-shatter-me.html" class="btn-outline"
+                            style="width:100%; justify-content:center; padding:0.4rem;">Leggi Recensioni</a>
+                    </div>
                 </div>
             </section>
 
-            <hr class="divider">
+            <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
 
-            <!-- Bookshelf section -->
-            <section style="padding: 4rem 0 8rem;">
-                <div class="section-header">
-                    <span class="overline">il nostro storico</span>
-                    <h2>La Nostra Libreria</h2>
-                    <p>la raccolta completa dei libri letti insieme finora</p>
-                </div>
-                <div class="shelf-grid">
-                    <article class="shelf-book">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1487622956i/13642254.jpg" alt="Shatter Me">
-                        <h4>Shatter Me</h4>
-                        <p class="shelf-author">Tahereh Mafi</p>
-                        <div class="shelf-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                        <span class="shelf-badge">Letto Insieme</span>
-                    </article>
-                    <article class="shelf-book">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582236056i/40916679.jpg" alt="Good Girl">
-                        <h4>Come uccidono le brave ragazze</h4>
-                        <p class="shelf-author">Holly Jackson</p>
-                        <div class="shelf-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <span class="shelf-badge">Letto Insieme</span>
-                    </article>
-                    <article class="shelf-book">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1435272635i/24863343.jpg" alt="E poi ci sono io">
-                        <h4>E poi ci sono io</h4>
-                        <p class="shelf-author">Kathleen Glasgow</p>
-                        <div class="shelf-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                        <span class="shelf-badge">Letto Insieme</span>
-                    </article>
-                    <article class="shelf-book">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1690022201i/195392687.jpg" alt="But Santa">
-                        <h4>But Santa, I Love Him</h4>
-                        <p class="shelf-author">Lyla Sage</p>
-                        <div class="shelf-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
-                        <span class="shelf-badge">Il Primo Libro!</span>
-                    </article>
-                </div>
-            </section>
+
 
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-logo">Plot Twisters!</div>
-        <p class="footer-tagline">"Dove le storie prendono vita e la magia accade tra le pagine."</p>
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="TikTok"><i
+                        class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Firebase SDKs (Compat Version) -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-    
-    <script src="firebase-config.js"></script>
+    <!-- Script LOCALI -->
     <script src="script.js"></script>
 </body>
 

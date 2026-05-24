@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recensione: E poi ci sono io | Plot Twisters!</title>
+    <meta name="description" content="La recensione del club Plot Twisters di E poi ci sono io di Kathleen Glasgow.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <a href="lettura.html"
+                style="color:var(--plum-light); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem;"><i
+                    class="fas fa-arrow-left"></i> Torna alle Letture</a>
+            <h1 style="font-size:2.5rem;">Recensione: <em>E poi ci sono io</em></h1>
+            <p>di Kathleen Glasgow</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
+
+            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+                    <div style="display:flex; gap:2rem; align-items:center; flex-wrap:wrap;">
+                        <div style="display:flex; justify-content:center; align-items:center; flex-shrink:0;">
+                            <div class="book-3d-wrap" style="transform: scale(0.85); margin: 0; padding: 6px;">
+                                <div class="book-3d">
+                                    <img src="https://m.media-amazon.com/images/I/71oxIHcsUZL.jpg"
+                                        alt="E poi ci sono io">
+                                    <div class="book-pages"></div>
+                                    <div class="book-spine"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2rem;">E poi ci
+                                sono io</h2>
+                            <p style="margin:0 0 0.5rem 0; color:var(--plum-light); font-size:1rem;">di Kathleen Glasgow
+                            </p>
+                            <div style="color:#f5a623; margin-top:0.5rem; letter-spacing:3px; font-size:1.2rem;">★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align:right; flex-shrink:0;">
+                        <span
+                            style="font-size:0.75rem; color:var(--plum-light); text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.25rem;">Media
+                            Voti Club</span>
+                        <div
+                            style="font-size:2.5rem; font-weight:700; color:var(--lilac-deep); line-height:1; font-family:var(--font-display);">
+                            5.5<span style="font-size:1rem; color:var(--plum-light);">/5</span></div>
+                    </div>
+                </div>
+
+                <div
+                    style="font-family:var(--font-italic); font-size:1.05rem; line-height:1.85; color:var(--plum-dark);">
+                    <p style="margin-bottom:1.5rem;"><strong>Noi non eravamo pronti per Charlie. E forse Charlie non era
+                            pronta per il mondo.</strong> 🖤🩹</p>
+
+                    <p style="margin-bottom:1.5rem;">Un romanzo profondo, crudo ed estremamente toccante. La storia di
+                        Charlie Davis e del suo tormentato percorso di guarigione e rinascita ci ha commosse ed
+                        emozionate tantissimo. Charlie non è una protagonista “forte” nel senso classico del termine. È
+                        una ragazza di diciassette anni che ha dovuto imparare a sopravvivere da sola quando nessun
+                        altro è rimasto; una ragazza che ha perso la madre, la migliore amica, una casa, ogni singolo
+                        punto fermo. E quando il dolore diventa troppo grande per essere contenuto, apre il suo kit di
+                        emergenza come altri aprirebbero una finestra per respirare. Quel kit non è un semplice
+                        dettaglio narrativo: è un simbolo, l'unico modo disperato che Charlie conosce per tenersi
+                        insieme quando tutto, dentro di lei, si sta disintegrando.</p>
+
+                    <p style="margin-bottom:1.5rem;">Kathleen Glasgow affronta temi difficili e sensibili con una
+                        delicatezza e un'onestà disarmanti. La sua scrittura è brutale nella sua sincerità: non
+                        addolcisce, non consola, non mette glitter sul dolore. Ti costringe a restare lì, dentro la
+                        testa di una ragazza che non vuole morire, ma che semplicemente non sa bene come vivere.
+                        L'abbiamo seguita passo dopo passo nell'istituto psichiatrico, nel silenzio bianco delle stanze
+                        dove il tempo sembra sospeso, contando i giorni come si contano le ferite. L'abbiamo vista
+                        uscire e tornare nel mondo, senza che il mondo fosse diventato più gentile. Charlie ci ha
+                        raccontato cosa significa sentirsi invisibili in mezzo alla gente; cosa si prova a essere
+                        “troppo” — troppo sensibile, troppo complicata, troppo fragile — e contemporaneamente “non
+                        abbastanza”. Non abbastanza forte, non abbastanza sicura, non abbastanza facile da amare. Perché
+                        Charlie non cerca attenzione, non vuole fare scena: vuole solo smettere di sentire quel vuoto
+                        profondo che le divora lo stomaco.</p>
+
+                    <p style="margin-bottom:1.5rem;">Nel suo percorso incontriamo figure che lasciano il segno, come
+                        Riley e Blu. Riley non rappresenta la soluzione, non è la luce che guarisce tutto: è un uomo con
+                        crepe profonde quanto quelle di Charlie. La loro relazione non è romantica nel senso comodo del
+                        termine; sono due solitudini che si riconoscono, è il bisogno disperato di sentirsi visti da
+                        qualcuno quando non ci si sopporta da soli. Ci sono scene con Riley che non fanno battere il
+                        cuore, lo spezzano, facendoci capire che quando hai sofferto così tanto, l'amore non lo vivi
+                        come una favola, ma come un rischio costante. E poi c'è Blu, lo specchio che Charlie non
+                        vorrebbe guardare: l'altra ragazza che combatte con i propri demoni, ma con una rabbia diversa,
+                        più aperta e rumorosa. Blu non salva Charlie, ma le dimostra che il dolore non è una lingua che
+                        parla soltanto lei.</p>
+
+                    <p style="margin-bottom:1.5rem;">È stata una lettura incredibilmente intensa, che ha stimolato
+                        riflessioni intime, importanti e talvolta dolorose tra tutte le partecipanti del club. Questo
+                        libro ci distrugge e ci ricostruisce perché non racconta la guarigione come una linea retta; ne
+                        descrive le ricadute, la tentazione costante di tornare a ciò che fa male ma che è familiare,
+                        quella voce interiore che sussurra che sia l'unico modo per resistere. Abbiamo pianto quando
+                        Charlie si guarda allo specchio senza riconoscersi, e quando capisce che non può continuare così
+                        ma non sa fare diversamente. Abbiamo pianto perché non c'è musica epica sotto le sue scelte,
+                        solo un denso silenzio. Non siamo uscite da queste pagine rassicurate, ne siamo uscite
+                        vulnerabili. Charlie ci ha ricordato tutte le volte in cui anche noi abbiamo fatto finta di
+                        stare bene, tutte le volte in cui abbiamo sorriso con le maniche abbassate, pensando che nessuno
+                        avrebbe mai capito.</p>
+
+                    <p style="margin-bottom:1.5rem;"><em>E poi ci sono io</em> non è una storia sulla distruzione, ma
+                        sulla sopravvivenza imperfetta. Non ci promette che tutto passa magicamente, ci dice solo che, a
+                        volte, restare è già un atto rivoluzionario. Diventa così uno dei libri più significativi,
+                        potenti e amati del nostro scaffale, che ci ha ricordato con forza il valore terapeutico del
+                        supporto reciproco. Quando chiudiamo l'ultima pagina restiamo lì, con gli occhi gonfi e il petto
+                        stretto. Perché alla fine non c'è solo Charlie, una ragazza a pezzi. Ci sono io. Ci sei tu. Ci
+                        siamo noi. E chi avrebbe mai detto che l'avrei resa così blu... 🎨🪡🌦</p>
+
+                    <p style="margin-bottom:1.5rem;">⭐ 5 stelline piene — Plot Twisters Book Club 💜📚</p>
+
+                    <p><em>In breve:</em> Una lettura toccante che lascia una cicatrice profonda nel cuore; un inno
+                        crudo alla sopravvivenza, alla rinascita e alla speranza che resiste anche nei momenti più bui.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

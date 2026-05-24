@@ -7,7 +7,9 @@
     <title>Eventi | Plot Twisters!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -15,108 +17,217 @@
 <body>
     <div class="particles" id="particles" aria-hidden="true"></div>
 
-    <!-- SIDEBAR DRAWER -->
     <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
-        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">×</span>
         <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
         <ul class="sidebar-links">
-            <li><span class="sidebar-num">01.</span> <a href="index.html">Home</a></li>
-            <li><span class="sidebar-num">02.</span> <a href="chi-siamo.html">Chi Siamo</a></li>
-            <li><span class="sidebar-num">03.</span> <a href="lettura.html">Letture</a></li>
-            <li><span class="sidebar-num">04.</span> <a href="eventi.html" class="active">Eventi</a></li>
-            <li><span class="sidebar-num">05.</span> <a href="login.html">Area Privata 🔒</a></li>
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html" class="active">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
         </ul>
-        
         <div class="sidebar-divider"></div>
-        
-        <!-- Helpful extra menu items -->
-        <div class="sidebar-extra">
-            <h4>Utility del Club 🜗</h4>
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" class="sidebar-extra-link">
-                🎵 Playlist da Lettura
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
             </a>
-            <a href="chi-siamo.html#regole" class="sidebar-extra-link">
-                📜 Le Regole d'Oro
-            </a>
-            <a href="#mappa" class="sidebar-extra-link" onclick="toggleSidebar(false)">
-                📍 Come Raggiungerci
-            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
         </div>
-        
-        <div class="sidebar-footer">📍 ci vediamo a Capua</div>
     </div>
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
 
-    <!-- NAVBAR -->
     <nav class="navbar" id="navbar" aria-label="Menu principale">
         <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
         <div class="nav-actions">
             <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
-            <a href="login.html" class="btn-ghost auth-nav-link">Area Privata <i class="fas fa-lock"></i></a>
-            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)">Menu ☰</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
         </div>
     </nav>
 
-    <!-- HERO -->
     <header class="page-hero">
         <div class="container">
-            <span class="overline">il calendario magico 𝜗𝜚</span>
-            <h1>I Nostri <em>Incontri</em></h1>
-            <p>ci vediamo ogni mese alla Libreria Cose d'Interni a Capua</p>
+            <span class="overline">i nostri appuntamenti 𝜗𝜚</span>
+            <h1>Calendario <em>Incontri</em></h1>
+            <p>segna in agenda le date dei nostri magici ritrovi</p>
         </div>
     </header>
 
     <main>
-        <div class="container">
+        <div class="container" style="padding-bottom: 4rem;">
 
-            <section style="padding: 2rem 0 4rem;">
-                <div class="calendar-wrapper">
-                    <div class="calendar-header">
-                        <button id="prev-month" class="cal-nav" aria-label="Mese precedente">&lt;</button>
-                        <h2 id="calendar-month-year">Maggio 2026</h2>
-                        <button id="next-month" class="cal-nav" aria-label="Mese successivo">&gt;</button>
+            <section style="margin-bottom: 4rem;">
+                <div class="bento-box" style="padding:2rem; max-width:700px; margin:0 auto;">
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+                        <h2 style="margin:0;">Il Calendario del Club</h2>
+                        <div class="calendar-controls" style="display:flex; align-items:center; gap:1rem;">
+                            <button id="prev-month"
+                                style="background:var(--ivory-2); border:1px solid var(--border); padding:0.5rem 1rem; border-radius:var(--r-sm); cursor:pointer;"><i
+                                    class="fas fa-chevron-left"></i></button>
+                            <h3 id="calendar-month-label"
+                                style="font-family:var(--font-sans); min-width:100px; text-align:center; margin:0; color:var(--lilac-deep);">
+                                Gennaio 2026</h3>
+                            <button id="next-month"
+                                style="background:var(--ivory-2); border:1px solid var(--border); padding:0.5rem 1rem; border-radius:var(--r-sm); cursor:pointer;"><i
+                                    class="fas fa-chevron-right"></i></button>
+                        </div>
                     </div>
-                    <div class="calendar-grid-header">
-                        <div>Lun</div><div>Mar</div><div>Mer</div><div>Gio</div><div>Ven</div><div>Sab</div><div>Dom</div>
+
+                    <div
+                        style="display:grid; grid-template-columns:repeat(7, 1fr); text-align:center; font-weight:bold; color:var(--plum-light); margin-bottom:0.5rem; font-size:0.85rem;">
+                        <div>Lun</div>
+                        <div>Mar</div>
+                        <div>Mer</div>
+                        <div>Gio</div>
+                        <div>Ven</div>
+                        <div>Sab</div>
+                        <div>Dom</div>
                     </div>
                     <div id="calendar-grid" class="calendar-grid"></div>
                 </div>
             </section>
 
-            <section class="events-list-section">
-                <div class="section-header">
-                    <span class="overline">ci vediamo presto</span>
-                    <h2>Prossimi Incontri</h2>
-                    <p>segna in agenda queste date speciali del nostro club</p>
+            <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
+
+            <section style="margin-bottom: 4rem;">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                    <span class="overline">il nostro storico</span>
+                    <h2>I Nostri Incontri <em>Evidenziati</em></h2>
+                    <p>Scopri i dettagli e la storia dei nostri eventi principali.</p>
                 </div>
-                <div id="events-container" class="events-grid"></div>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem;">
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--border); gap:1.25rem;">
+                        <div>
+                            <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep);">🕯️
+                                27 Gennaio 2026</span>
+                            <h3 style="margin:0.5rem 0; font-family:var(--font-display);">Shoah - Racconti per non
+                                dimenticare</h3>
+                            <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6;">Un incontro dedicato
+                                alla memoria della Shoah, con riflessioni, letture di diari e testimonianze storiche per
+                                non dimenticare.</p>
+                        </div>
+                        <a href="evento-shoah.html" class="btn-outline"
+                            style="justify-content:center; padding:0.5rem; font-size:0.85rem; text-decoration:none; text-align:center;">Visualizza
+                            Dettagli →</a>
+                    </div>
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--border); gap:1.25rem;">
+                        <div>
+                            <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep);">⚖️ 30
+                                Marzo 2026</span>
+                            <h3 style="margin:0.5rem 0; font-family:var(--font-display);">Legal Talent</h3>
+                            <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6;">Il nostro format
+                                innovativo incentrato sul mondo legale e forense, unendo cultura giuridica e dibattiti
+                                accattivanti.</p>
+                        </div>
+                        <a href="evento-legaltalent.html" class="btn-outline"
+                            style="justify-content:center; padding:0.5rem; font-size:0.85rem; text-decoration:none; text-align:center;">Visualizza
+                            Dettagli →</a>
+                    </div>
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--border); gap:1.25rem;">
+                        <div>
+                            <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep);">📜 16
+                                Maggio 2026</span>
+                            <h3 style="margin:0.5rem 0; font-family:var(--font-display);">Placito Capua</h3>
+                            <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6;">Riscopriamo la pietra
+                                miliare della lingua italiana nata proprio nella nostra Capua nel 960 d.C., celebrandola
+                                con letture e spiegazioni.</p>
+                        </div>
+                        <a href="evento-placito.html" class="btn-outline"
+                            style="justify-content:center; padding:0.5rem; font-size:0.85rem; text-decoration:none; text-align:center;">Visualizza
+                            Dettagli →</a>
+                    </div>
+                    <!-- Evento 4: After-Book al Museo Campano (IN ARRIVO - Colori Brillanti) -->
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:2px solid #FF9F1C; gap:1.25rem; box-shadow: 0 4px 20px rgba(255, 159, 28, 0.15);">
+                        <div>
+                            <span class="bento-tag"
+                                style="background:#FF9F1C; color:#ffffff; font-weight: bold; letter-spacing: 0.5px;">⏳
+                                IN ARRIVO • 30-31 Maggio 2026</span>
+                            <h3 style="margin:0.5rem 0; font-family:var(--font-display); color: #e67e00;">After-Book al
+                                Museo Campano</h3>
+                            <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6;">Unisciti al nostro
+                                prossimo appuntamento speciale immersi nella storia e nell'arte del Museo Campano per
+                                discutere le ultime letture del club.</p>
+                        </div>
+                        <a href="evento-afterbook.html" class="btn-outline"
+                            style="justify-content:center; padding:0.5rem; font-size:0.85rem; text-decoration:none; text-align:center; color: #FF9F1C; border-color: #FF9F1C; font-weight: 600;">Visualizza
+                            Dettagli →</a>
+                    </div>
+                </div>
             </section>
 
-            <section class="map-section" id="mappa">
-                <div class="map-section-header">
-                    <h2>Dove ci troviamo 📍</h2>
-                    <p>La nostra base operativa: Libreria Cose d'Interni, Capua.</p>
+            <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
+
+            <section id="mappa" style="margin-bottom:4rem;">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                    <span class="overline">il nostro rifugio</span>
+                    <h2>Dove ci <em>Incontriamo</em></h2>
                 </div>
-                <iframe width="100%" height="360" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                    src="https://maps.google.com/maps?q=Libreria%20Cose%20d'Interni,%20Capua&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    style="display:block; border-radius:var(--r-md); box-shadow:var(--shadow-md);"></iframe>
+
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:2rem; align-items:start;">
+                    <div class="bento-box" style="background:var(--ivory-2); border:1px solid var(--border);">
+                        <span class="about-icon" style="font-size:2rem; display:block; margin-bottom:1rem;">📍</span>
+                        <h3 style="margin-bottom:0.5rem;">Libreria Cose d'Interni</h3>
+                        <p style="font-size:1rem; color:var(--plum-dark); margin-bottom:1rem;">Corso Appio, 51<br>81043
+                            Capua CE</p>
+                        <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1.5rem;">Ci trovi circondate
+                            dai libri, solitamente nel tardo pomeriggio (dalle 18:00 in poi).</p>
+                        <a href="https://maps.google.com/?q=Libreria+Cose+d'Interni+Capua" target="_blank"
+                            rel="noopener" class="btn-primary" style="display:inline-flex;">Apri su Google Maps</a>
+                    </div>
+                    <div>
+                        <iframe
+                            src="https://maps.google.com/maps?q=Libreria%20Cose%20d'Interni,%20Capua&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="300"
+                            style="border:0; border-radius:var(--r-md); box-shadow:var(--shadow-md);" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
             </section>
 
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-logo">Plot Twisters!</div>
-        <p class="footer-tagline">"Dove le storie prendono vita e la magia accade tra le pagine."</p>
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="#" style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="#" style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;"><i
+                        class="fab fa-tiktok"></i></a>
+                <a href="#" style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Firebase SDKs (Compat Version) -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-    
-    <script src="firebase-config.js"></script>
     <script src="script.js"></script>
 </body>
 

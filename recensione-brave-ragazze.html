@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recensione: Come uccidono le brave ragazze | Plot Twisters!</title>
+    <meta name="description"
+        content="La recensione del club Plot Twisters di Come uccidono le brave ragazze di Holly Jackson.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <a href="lettura.html"
+                style="color:var(--plum-light); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem;"><i
+                    class="fas fa-arrow-left"></i> Torna alle Letture</a>
+            <h1 style="font-size:2.5rem;">Recensione: <em>Come uccidono le brave ragazze</em></h1>
+            <p>di Holly Jackson</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
+
+            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+                    <div style="display:flex; gap:2rem; align-items:center; flex-wrap:wrap;">
+                        <div style="display:flex; justify-content:center; align-items:center; flex-shrink:0;">
+                            <div class="book-3d-wrap" style="transform: scale(0.85); margin: 0; padding: 6px;">
+                                <div class="book-3d">
+                                    <img src="https://www.letture.org/wp-content/uploads/2022/09/come-uccidono-le-brave-ragazze-holly-jackson-copertina.jpeg"
+                                        alt="Come uccidono le brave ragazze">
+                                    <div class="book-pages"></div>
+                                    <div class="book-spine"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:1.2rem;">Come
+                                uccidono le brave ragazze</h2>
+                            <p style="margin:0 0 0.5rem 0; color:var(--plum-light); font-size:1rem;">di Kathleen Glasgow
+                            </p>
+                            <div style="color:#f5a623; margin-top:0.5rem; letter-spacing:3px; font-size:1.2rem;">★★★★☆
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align:right; flex-shrink:0;">
+                        <span
+                            style="font-size:0.75rem; color:var(--plum-light); text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.25rem;">Media
+                            Voti Club</span>
+                        <div
+                            style="font-size:2.5rem; font-weight:700; color:var(--lilac-deep); line-height:1; font-family:var(--font-display);">
+                            4.5<span style="font-size:1rem; color:var(--plum-light);">/5</span></div>
+                    </div>
+                </div>
+
+                <div
+                    style="font-family:var(--font-italic); font-size:1.05rem; line-height:1.85; color:var(--plum-dark);">
+                    <p style="margin-bottom:1.5rem;"><strong>Ci sono storie che segui. E poi ci sono storie che,
+                            lentamente, iniziano a seguirti.</strong> 🔍🕵️‍♀️</p>
+
+                    <p style="margin-bottom:1.5rem;">Un thriller ad altissima tensione che ci ha tenute letteralmente
+                        incollate alle pagine! <em>Come uccidere le brave ragazze</em> di Holly Jackson è esattamente
+                        questo: un libro che parte come qualcosa di semplice, quasi scolastico, e finisce per scavarti
+                        sotto la pelle con una calma inquietante. Il caso di Andie Bell e Sal Singh a Little Kilton è
+                        gestito con un ritmo serratissimo e crescente, che non ha fretta ma avanza in modo
+                        impercettibile e costante. All'inizio sembra tutto chiaro: un caso chiuso da cinque anni, una
+                        verità già scritta e una città intera che ha cinicamente deciso a cosa credere. Ma la verità non
+                        è mai una linea retta; è fatta di omissioni, di silenzi e di versioni costruite a tavolino per
+                        essere accettabili.</p>
+
+                    <p style="margin-bottom:1.5rem;">In questo scenario abbiamo adorato Pip, la nostra giovane
+                        investigatrice tenace, intelligente ed estremamente determinata. Pippa Fitz-Amobi non si
+                        accontenta delle apparenze. Quello che nasce come un progetto ordinato, razionale e perfetto per
+                        la sua tesina scolastica si trasforma presto in qualcosa di più fragile, più sporco e
+                        pericolosamente reale. La genialità della struttura narrativa — ricca di interviste,
+                        trascrizioni di podcast, mail e appunti di diario — ti fa sentire parte integrante
+                        dell'indagine. Non sei semplicemente un lettore passivo: diventi complice. Raccogli i pezzi
+                        insieme a Pip, li colleghi, ti convinci di aver capito tutto... e poi qualcosa si incrina.
+                        Sempre. L'atmosfera di Little Kilton è una delle cose più riuscite: una cittadina tranquilla,
+                        quasi anonima, dove tutto sembra sotto controllo, ma che si rivela essere proprio il tipo di
+                        posto in cui le crepe vengono nascoste meglio e dove il silenzio pesa più delle parole.</p>
+
+                    <p style="margin-bottom:1.5rem;">I colpi di scena finali ci hanno lasciate completamente senza fiato
+                        durante il nostro incontro in libreria! È stata una delle discussioni più animate di sempre, in
+                        cui ognuna di noi ha cercato di indovinare il colpevole fino all'ultima riga, analizzando indizi
+                        disseminati in modo magistrale. Più che i singoli plot twist, a colpirci è stato il modo in cui
+                        il libro costruisce il dubbio: ti fa credere a una versione, poi la smonta, e quando pensi di
+                        aver trovato la quadra ti rendi conto che forse cercavi solo una risposta semplice. Ma questo
+                        romanzo non regala risposte semplici. Parla di reputazione e di quanto sia facile distruggere
+                        qualcuno con una storia raccontata abbastanza bene; parla di memoria, di giustizia imperfetta e,
+                        nel sottofondo, di crescita. Perché Pip non rimane la stessa dopo questa indagine. E nemmeno
+                        noi.</p>
+
+                    <p style="margin-bottom:1.5rem;">C'è un momento, verso la fine, in cui capisci che non si tratta più
+                        solo di scoprire chi è stato, ma di capire cosa sei disposto a fare con la verità una volta che
+                        ce l'hai davanti. E non è una domanda comoda. Con una scrittura fluida ma mai banale e
+                        personaggi costruiti su crepe profonde anziché su certezze, questo finale non ti lascia
+                        completamente in pace. È uno di quei misteri adrenalinici che chiudi fisicamente, ma che
+                        continua a restare aperto dentro di te. Come una domanda sospesa, come qualcosa che non torna,
+                        come una verità che, forse, non volevi davvero conoscere.</p>
+
+                    <p style="margin-bottom:1.5rem;">⭐️ 4,5 / 5 — Plot Twisters Book Club 💜📚</p>
+
+                    <p><em>In breve:</em> Un ritmo pazzesco, indizi disseminati in modo geniale ed una protagonista
+                        indimenticabile. Un thriller psicologico e adrenalinico che non riuscirai a smettere di leggere
+                        e che ti costringerà a dubitare di chiunque!</p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

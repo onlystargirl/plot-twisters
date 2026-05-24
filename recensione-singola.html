@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="light">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,88 +10,114 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
     <div class="particles" id="particles" aria-hidden="true"></div>
 
-    <!-- SIDEBAR DRAWER -->
+    <!-- ─── SIDEBAR DRAWER ─── -->
     <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
         <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
         <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
         <ul class="sidebar-links">
-            <li><span class="sidebar-num">01.</span> <a href="index.html">Home</a></li>
-            <li><span class="sidebar-num">02.</span> <a href="chi-siamo.html">Chi Siamo</a></li>
-            <li><span class="sidebar-num">03.</span> <a href="lettura.html" class="active">Letture</a></li>
-            <li><span class="sidebar-num">04.</span> <a href="eventi.html">Eventi</a></li>
-            <li><span class="sidebar-num">05.</span> <a href="login.html">Area Privata 🔒</a></li>
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
         </ul>
-        
         <div class="sidebar-divider"></div>
-        
-        <!-- Helpful extra menu items -->
-        <div class="sidebar-extra">
-            <h4>Utility del Club 🜗</h4>
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" class="sidebar-extra-link">
-                🎵 Playlist da Lettura
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" class="sidebar-extra-link" style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
             </a>
-            <a href="chi-siamo.html#regole" class="sidebar-extra-link">
-                📜 Le Regole d'Oro
-            </a>
-            <a href="eventi.html#mappa" class="sidebar-extra-link">
-                📍 Come Raggiungerci
-            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link" style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link" style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
         </div>
-        
-        <div class="sidebar-footer">📍 ci vediamo a Capua</div>
     </div>
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
 
-    <!-- NAVBAR -->
+    <!-- ─── NAVBAR ─── -->
     <nav class="navbar" id="navbar" aria-label="Menu principale">
         <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
         <div class="nav-actions">
             <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
-            <a href="login.html" class="btn-ghost auth-nav-link">Area Privata <i class="fas fa-lock"></i></a>
-            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)">Menu ☰</button>
+            <a href="login.html" class="btn-ghost auth-nav-link" style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
         </div>
     </nav>
 
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <a href="lettura.html" style="color:var(--plum-light); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem;"><i class="fas fa-arrow-left"></i> Torna alle Letture</a>
+            <h1 style="font-size:2.5rem;" id="review-page-title">Recensione: <em>Shatter Me</em></h1>
+            <p id="review-book-author-hero">di Tahereh Mafi</p>
+        </div>
+    </header>
+
     <main>
-        <div class="container" style="padding-top: 120px; padding-bottom: 6rem;">
-            <div style="margin-bottom: 2rem;">
-                <a href="lettura.html" class="back-link"><i class="fas fa-arrow-left"></i> Torna a Letture</a>
-            </div>
-            <article class="review-full" style="background: var(--surface-1); border-radius: var(--r-md); box-shadow: var(--shadow-md); border: 1px solid var(--border); padding: 2rem;">
-                <div class="review-full-header">
-                    <img id="review-cover" src="" alt="Book Cover" class="review-full-cover" style="border-radius: var(--r-sm); box-shadow: var(--shadow-book);">
-                    <div class="review-full-meta">
-                        <span class="overline" id="review-reviewer">Recensito da: ...</span>
-                        <h1 id="review-title" style="font-family: var(--font-display); font-size: 2.2rem; margin: 0.5rem 0; color: var(--plum);">Caricamento...</h1>
-                        <p id="review-author" class="author" style="font-family: var(--font-italic); font-size: 1.25rem; color: var(--plum-light);">...</p>
-                        <div id="review-rating" class="stars" style="font-size:1.15rem; margin:0.5rem 0; color: #f5b041;"></div>
+        <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
+
+            <!-- CORPO RECENSIONE -->
+            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; margin-bottom:2rem; border-bottom:1px solid var(--border); padding-bottom:2rem;">
+                    <div style="display:flex; gap:2rem; align-items:center; flex-wrap:wrap;">
+                        <!-- Copertina 3D interattiva (più grande) -->
+                        <div style="display:flex; justify-content:center; align-items:center; flex-shrink:0;">
+                            <div class="book-3d-wrap" style="transform: scale(0.85); margin: 0; padding: 6px;">
+                                <div class="book-3d">
+                                    <img src="https://m.media-amazon.com/images/I/71X8k71S-DL._AC_UF1000,1000_QL80_.jpg" alt="Shatter Me" id="review-book-cover">
+                                    <div class="book-pages"></div>
+                                    <div class="book-spine"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2rem;" id="review-book-title">Shatter Me</h2>
+                            <p style="margin:0 0 0.5rem 0; color:var(--plum-light); font-size:1rem;" id="review-book-author">di Tahereh Mafi</p>
+                            <div style="color:#f5a623; margin-top:0.5rem; letter-spacing:3px; font-size:1.2rem;" id="review-book-stars">★★★★☆</div>
+                        </div>
+                    </div>
+                    <div style="text-align:right; flex-shrink:0;">
+                        <span style="font-size:0.75rem; color:var(--plum-light); text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.25rem;">Media Voti Club</span>
+                        <div style="font-size:2.5rem; font-weight:700; color:var(--lilac-deep); line-height:1; font-family:var(--font-display);" id="review-rating-badge">4.2<span style="font-size:1rem; color:var(--plum-light);">/5</span></div>
                     </div>
                 </div>
-                <div class="review-full-text" style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 2rem;">
-                    <h2 style="font-family: var(--font-display); font-size: 1.6rem; color: var(--plum); margin-bottom: 1rem;">La nostra Recensione Completa 𝜗𝜚</h2>
-                    <div id="review-text"><p>Caricamento in corso...</p></div>
+
+                <div style="font-family:var(--font-italic); font-size:1.05rem; line-height:1.85; color:var(--plum-dark);" id="review-book-desc">
+                    <p style="margin-bottom:1.5rem;">"Shatter Me" è stato uno dei libri più divisivi del nostro club. Da una parte lo stile di scrittura di Tahereh Mafi, poetico, frammentato, quasi claustrofobico all'inizio, ci ha catturate e costrette a metterci nei panni di Juliette. I suoi pensieri barrati sono stati un colpo di genio per mostrarci la sua salute mentale fragile.</p>
+
+                    <p style="margin-bottom:1.5rem;">Ma parliamo di quello che ha animato davvero il gruppo: <strong>Aaron Warner e Adam Kent</strong>. Il dibattito in libreria è stato acceso! Molte di noi non sopportano Adam (troppo protettivo, quasi asfissiante in certi momenti), mentre il fascino letale e i traumi complessi di Warner hanno conquistato una buona metà del club (sì, abbiamo un debole per i villain moralmente grigi!).</p>
+
+                    <p style="margin-bottom:1.5rem;">La trama distopica a volte fa da sfondo alle dinamiche romantiche e interiori dei personaggi, e questo può non piacere a tutti, ma per le amanti del character-driven romance, questo libro è una droga.</p>
+
+                    <p><em>In breve:</em> Preparati emotivamente. E se non ti convince al primo libro... aspetta di leggere "Ignite Me". La vera magia inizia lì!</p>
                 </div>
             </article>
+
+
+
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-logo">Plot Twisters!</div>
-        <p class="footer-tagline">"Dove le storie prendono vita e la magia accade tra le pagine."</p>
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer" style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo" style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline" style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener" style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener" style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener" style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="Spotify"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Firebase SDKs (Compat Version) -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-    
-    <script src="firebase-config.js"></script>
+    <!-- Script LOCALI -->
     <script src="script.js"></script>
 </body>
-
 </html>

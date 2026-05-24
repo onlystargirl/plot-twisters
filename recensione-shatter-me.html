@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recensione: Shatter Me | Plot Twisters!</title>
+    <meta name="description" content="La recensione del club Plot Twisters di Shatter Me di Tahereh Mafi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <a href="lettura.html"
+                style="color:var(--plum-light); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem;"><i
+                    class="fas fa-arrow-left"></i> Torna alle Letture</a>
+            <h1 style="font-size:2.5rem;">Recensione: <em>Shatter Me</em></h1>
+            <p>di Tahereh Mafi</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
+
+            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+                <!-- Intestazione libro -->
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+                    <div style="display:flex; gap:2rem; align-items:center; flex-wrap:wrap;">
+                        <div style="display:flex; justify-content:center; align-items:center; flex-shrink:0;">
+                            <div class="book-3d-wrap" style="transform: scale(0.85); margin: 0; padding: 6px;">
+                                <div class="book-3d">
+                                    <img src="https://m.media-amazon.com/images/I/710p8hFwd9L._AC_UF1000,1000_QL80_.jpg"
+                                        alt="Shatter Me">
+                                    <div class="book-pages"></div>
+                                    <div class="book-spine"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2rem;">Shatter Me
+                            </h2>
+                            <p style="margin:0 0 0.5rem 0; color:var(--plum-light); font-size:1rem;">di Tahereh Mafi</p>
+                            <div style="color:#f5a623; margin-top:0.5rem; letter-spacing:3px; font-size:1.2rem;">★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align:right; flex-shrink:0;">
+                        <span
+                            style="font-size:0.75rem; color:var(--plum-light); text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:0.25rem;">Media
+                            Voti Club</span>
+                        <div
+                            style="font-size:2.5rem; font-weight:700; color:var(--lilac-deep); line-height:1; font-family:var(--font-display);">
+                            +infinito<span style="font-size:1rem; color:var(--plum-light);">/5</span></div>
+                    </div>
+                </div>
+
+                <!-- Corpo recensione -->
+                <div
+                    style="font-family:var(--font-italic); font-size:1.05rem; line-height:1.85; color:var(--plum-dark);">
+                    <p style="margin-bottom:1.5rem;">"Shatter Me" è stato uno dei libri più divisivi del nostro club. Da
+                        una parte lo stile di scrittura di Tahereh Mafi, poetico, frammentato, quasi claustrofobico
+                        all'inizio, ci ha catturate e costrette a metterci nei panni di Juliette. I suoi pensieri
+                        barrati sono stati un colpo di genio per mostrarci la sua salute mentale fragile.</p>
+
+                    <p style="margin-bottom:1.5rem;">Ma parliamo di quello che ha animato davvero il gruppo:
+                        <strong>Aaron Warner e Adam Kent</strong>. Il dibattito in libreria è stato acceso! Molte di noi
+                        non sopportano Adam (troppo protettivo, quasi asfissiante in certi momenti), mentre il fascino
+                        letale e i traumi complessi di Warner hanno conquistato una buona metà del club (sì, abbiamo un
+                        debole per i villain moralmente grigi!).
+                    </p>
+
+                    <p style="margin-bottom:1.5rem;">La trama distopica a volte fa da sfondo alle dinamiche romantiche e
+                        interiori dei personaggi, e questo può non piacere a tutti, ma per le amanti del
+                        character-driven romance, questo libro è una droga.</p>
+
+                    <p style="margin-bottom:1.5rem;"><em>In breve:</em> Preparati emotivamente. E se non ti convince al
+                        primo libro... aspetta di leggere "Ignite Me". La vera magia inizia lì!</p>
+
+                    <p style="margin-bottom:1.5rem;">Non è facile spiegare cosa è stato Shatter Me per noi, perché non è
+                        rimasto dentro i confini di una storia. Ha fatto qualcosa di più sottile, più difficile da
+                        descrivere: si è infilato nei punti in cui siamo più fragili e ci è rimasto.</p>
+
+                    <p style="margin-bottom:1.5rem;">Non è stato immediato. Non è stato semplice. Non è stato “bello”
+                        nel modo in cui lo sono certe letture leggere che ti accompagnano e poi ti lasciare andare.
+                        Questo libro non ti lascia andare. Ti tiene. Anche quando chiudi le pagine, anche quando provi a
+                        passare ad altro, anche quando fai finta di averlo già superato.</p>
+
+                    <p style="margin-bottom:1.5rem;">Juliette è stata difficile da leggere perché è stata troppo vera.
+                        Non nel senso perfetto, ma in quello più scomodo. Nei suoi pensieri spezzati, nelle frasi che si
+                        cancellano da sole, in quel continuo sentirsi sbagliata, pericolosa, fuori posto. È il tipo di
+                        personaggio che non osservi da fuori: ci inciampi dentro. E fa male, perché in qualche modo ti
+                        costringe a riconoscere tutte quelle parti di te che cerchi di tenere nascoste, quelle che non
+                        dici a nessuno, quelle che nemmeno sai spiegare bene.</p>
+
+                    <p style="margin-bottom:1.5rem;">Leggere Juliette è stato come stare davanti a uno specchio che non
+                        perdona, che non filtra, che non addolcisce. E forse è per questo che alcune pagine non si
+                        leggevano davvero… si sentivano. Si fermavano in gola, nelle mani, negli occhi che rimanevano
+                        fissi sulle stesse righe più a lungo del necessario.</p>
+
+                    <p style="margin-bottom:1.5rem;">La scrittura di Tahereh Mafi non ti guida: ti trascina. È caotica,
+                        frammentata, a volte quasi soffocante. Ma è proprio lì che funziona. Perché non stai solo
+                        seguendo una storia, stai vivendo un pensiero che non riesce a stare fermo, un cuore che batte
+                        tooppo forte, una mente che si spezza e si ricompone nello stesso momento. E quando finisci, non
+                        sei più nella stessa posizione di prima. Ti ha spostato, anche se di poco. E quel poco pesa.</p>
+
+                    <p style="margin-bottom:1.5rem;">E poi c'è Aaron Warner (quello che Samia ama).</p>
+
+                    <p style="margin-bottom:1.5rem;">Parlarne è complicato, perché è uno di quei personaggi che non si
+                        spiegano, si attraversano. All'inizio è distanza, è tensione, è qualcosa che non sai se vuoi
+                        capire o da cui vuoi solo stare lontana. Ma più vai avanti, più ti accorgi che non puoi
+                        ignorarlo. Che c'è qualcosa sotto la superficie che continua a chiamarti, anche quando non
+                        vorresti rispondere. Warner non è rassicurante. Non è facile. Non è fatto per essere amato nel
+                        modo semplice. Ed è proprio per questo che resta. Perché quando inizi a vedere oltre, quando
+                        inizi a intravedere le crepe, le sfumature, tutto quello che non viene detto ma si percepisce…
+                        cambia qualcosa. E non puoi più tornare indietro a come lo vedevi prima.</p>
+
+                    <p style="margin-bottom:1.5rem;">Leggere Shatter Me come Plot Twisters ha reso tutto ancora più
+                        profondo. Non è stato solo un libro letto, è stato un libro vissuto insieme. Ogni messaggio,
+                        ogni reazione, ogni “aspetta, rileggiamo questa frase”, ogni momento in cui qualcuna si fermava
+                        perché aveva sentito troppo… ha costruito qualcosa che va oltre la lettura. Perché sì, i libri
+                        sono importanti. Ma le persone con cui li vivi lo sono ancora di più. Ci sono state pagine che
+                        abbiamo amato e pagine che ci hanno distrutte. Momenti in cui avremmo voluto smettere e altri in
+                        cui non riuscivamo a staccarci. E in mezzo, tutte quelle emozioni che non si riescono a
+                        riassumere, che non stanno in una recensione, che non entrano in un voto.</p>
+
+                    <p style="margin-bottom:1.5rem;">Shatter Me non ci ha dato solo una storia. Ci ha dato un modo per
+                        riconoscerci. Ci ha ricordato cosa significava sentirmi troppo e allo stesso tempo non
+                        abbastanza. Ci ha fatto vedere quanto può essere difficile accettarsi, quanto può fare paura
+                        essere visti davvero. E forse, nel suo modo spezzato e imperfetto, ci ha anche detto che va bene
+                        così. Che non serve essere interi per essere qualcosa.</p>
+
+                    <p style="margin-bottom:1.5rem;">E la verità è che non lo abbiamo lasciato davvero. È rimasto nelle
+                        frasi che continuiamo a ricordare, nei personaggi che sentiamo ancora vicini, nelle emozioni che
+                        tornano quando meno ce lo aspettiamo. Forse è questo il segno di una storia che conta davvero:
+                        quando non finisce con l'ultima pagina, ma continua a esistere, silenziosamente, dentro di te.
+                    </p>
+
+                    <p>⭐️ 5 stelline piene</p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

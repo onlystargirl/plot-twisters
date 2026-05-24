@@ -1,27 +1,55 @@
 // ═══════════════════════════════════════════════════════════════
-//  PLOT TWISTERS — Login / Register Logic (UMD Compat)
+//  PLOT TWISTERS — Login multi-utente (solo localStorage)
 // ═══════════════════════════════════════════════════════════════
 
-let authMode = 'login'; // 'login' or 'register'
+// ─── LISTA UTENTI DEL CLUB ────────────────────────────────────
+// Aggiungi o rimuovi membri qui. admin:true mostra il pannello admin.
+const CLUB_USERS = [
 
-// ─── THEME ────────────────────────────────────────────────────
-const saved = localStorage.getItem('pt-theme') || 'light';
-document.documentElement.setAttribute('data-theme', saved);
+    { name: 'Samia', password: 'admin!plot', admin: true },
+    { name: 'Giorgia', password: 'amosamia2705' },
+    { name: 'Elisabetta', password: 'mispososamiaenonandrea' },
+    { name: 'Angela', password: 'odiogliobesicomegiacomo' },
+    { name: 'Jacopo', password: 'sonounapecora' },
+    { name: 'Giacomo', password: 'sonoungayritardatostupido' },
+    { name: 'Imma', password: 'lastellinadisami' },
+    { name: 'Claudia', password: 'claudiatiamobysami' },
+    { name: 'Ilaria', password: 'ilariadevieditareivideogay' },
+    { name: 'Salvatore', password: 'sonolamantedisamia' },
+    { name: 'Emiliana', password: 'seisette69' },
+    { name: 'Jordan', password: 'prodottokinderpreferito?' },
+    { name: 'Martina', password: 'chièlamigliore?' },
+    { name: 'Maddalena', password: 'nonsochepasswordmettere' },
+    { name: 'Samuel', password: 'ilmigliorsegretariodelmondo' },
+    { name: 'Angelo', password: 'odiogiacomo6769' },
+];
 
-const themeBtn = document.getElementById('theme-toggle-login');
-if (themeBtn) {
-    themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
-    themeBtn.addEventListener('click', () => {
-        const curr = document.documentElement.getAttribute('data-theme');
-        const next = curr === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('pt-theme', next);
-        themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-    });
+// ─── TEMA ─────────────────────────────────────────────────────
+(function applyTheme() {
+    const saved = localStorage.getItem('pt-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const btn = document.getElementById('theme-toggle-login');
+    if (btn) {
+        btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+        btn.addEventListener('click', () => {
+            const curr = document.documentElement.getAttribute('data-theme');
+            const next = curr === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('pt-theme', next);
+            btn.textContent = next === 'dark' ? '☀️' : '🌙';
+        });
+    }
+})();
+
+// ─── SE GIÀ LOGGATA ───────────────────────────────────────────
+if (localStorage.getItem('pt-auth') === '1') {
+    window.location.replace('dashboard.html');
 }
 
-// ─── DECO PARTICLES ───────────────────────────────────────────
-(function spawnDecoParticles() {
+// ─── UTILI INIZIALIZZAZIONI ───────────────────────────────────
+
+// ─── PARTICELLE DECORATIVE ────────────────────────────────────
+(function spawnParticles() {
     const c = document.getElementById('login-particles');
     if (!c) return;
     const shapes = ['✦', '✧', '·', '⋆', '✶'];
@@ -32,164 +60,100 @@ if (themeBtn) {
         el.style.cssText = `
             position:absolute;
             font-size:${sz}px;
-            left:${Math.random()*100}%;
-            top:${Math.random()*100}%;
-            color:rgba(255,255,255,${Math.random()*0.25+0.05});
+            left:${Math.random() * 100}%;
+            top:${Math.random() * 100}%;
+            color:rgba(255,255,255,${Math.random() * 0.25 + 0.05});
             pointer-events:none;
-            animation:floatParticle ${Math.random()*25+20}s ${Math.random()*-20}s infinite linear;
+            animation:floatParticle ${Math.random() * 25 + 20}s ${Math.random() * -20}s infinite linear;
         `;
         c.appendChild(el);
     }
 })();
 
-// ─── SWITCH MODE ──────────────────────────────────────────────
-window.setMode = function(mode) {
-    authMode = mode;
-    clearError();
+// ─── USER PILLS ───────────────────────────────────────────────
+let selectedUser = null;
 
-    const titleEl    = document.getElementById('auth-title');
-    const subtitleEl = document.getElementById('auth-subtitle');
-    const nameField  = document.getElementById('field-name');
-    const nameInput  = document.getElementById('login-name');
-    const submitBtn  = document.getElementById('login-submit-btn');
-
-    // Toggle active buttons
-    document.getElementById('mode-login-btn').classList.toggle('active', mode === 'login');
-    document.getElementById('mode-register-btn').classList.toggle('active', mode === 'register');
-
-    if (mode === 'register') {
-        titleEl.innerHTML = 'Crea <em>il tuo Account</em>';
-        subtitleEl.textContent = 'Unisciti al club e scrivi sul tuo diario di bordo 📓';
-        nameField.classList.remove('hidden-field');
-        nameInput.setAttribute('required', 'true');
-        submitBtn.innerHTML = 'Registrati <i class="fas fa-user-plus"></i>';
-    } else {
-        titleEl.innerHTML = 'Benvenuta <em>di nuovo</em>';
-        subtitleEl.textContent = 'Accedi alla tua area personale ☕';
-        nameField.classList.add('hidden-field');
-        nameInput.removeAttribute('required');
-        submitBtn.innerHTML = 'Accedi <i class="fas fa-arrow-right"></i>';
-    }
-};
-
-// ─── AUTH STATE CHECK ─────────────────────────────────────────
-const loader = document.getElementById('page-loader');
-
-function checkAuthState() {
-    if (window.auth) {
-        window.auth.onAuthStateChanged((user) => {
-            if (user) {
-                window.location.href = 'dashboard.html';
-            } else {
-                if (loader) loader.classList.add('hidden');
-            }
+// ─── USER SELECTION ───────────────────────────────────────
+function buildUserScroll() {
+    const container = document.getElementById('user-scroll');
+    if (!container) return;
+    // clear any existing pills
+    container.innerHTML = '';
+    CLUB_USERS.forEach(u => {
+        const pill = document.createElement('button');
+        pill.type = 'button';
+        pill.className = 'user-pill';
+        pill.dataset.name = u.name;
+        pill.innerHTML = `<span class="avatar-sm">${u.name.charAt(0)}</span>${u.name}`;
+        pill.addEventListener('click', () => {
+            selectedUser = u.name;
+            // highlight selected pill
+            document.querySelectorAll('.user-pill').forEach(p => p.classList.remove('selected'));
+            pill.classList.add('selected');
+            clearError();
         });
-    } else {
-        if (loader) loader.classList.add('hidden');
-    }
+        container.appendChild(pill);
+    });
 }
 
-// Check on load
-setTimeout(checkAuthState, 600);
+// On DOMContentLoaded, populate the scrollable user pills
+window.addEventListener('DOMContentLoaded', () => {
+    const loader = document.getElementById('page-loader');
+    if (loader) setTimeout(() => loader.classList.add('hidden'), 400);
+    buildUserScroll();
+});
 
-// ─── FORM SUBMISSION ──────────────────────────────────────────
-const form      = document.getElementById('login-form');
-const nameEl    = document.getElementById('login-name');
-const emailEl   = document.getElementById('login-email');
-const passEl    = document.getElementById('login-password');
-const errorBox  = document.getElementById('login-error');
-const errorMsg  = document.getElementById('login-error-msg');
+// ─── FORM ─────────────────────────────────────────────────────
+const form = document.getElementById('login-form');
+const passEl = document.getElementById('login-password');
+const errorBox = document.getElementById('login-error');
+const errorMsg = document.getElementById('login-error-msg');
 const submitBtn = document.getElementById('login-submit-btn');
 
 function showError(msg) {
     errorMsg.textContent = msg;
     errorBox.classList.remove('hidden');
-    emailEl.classList.add('error');
     passEl.classList.add('error');
 }
-
 function clearError() {
     errorBox.classList.add('hidden');
-    emailEl.classList.remove('error');
     passEl.classList.remove('error');
 }
 
-const FIREBASE_ERRORS = {
-    'auth/user-not-found':      'Nessun account trovato con questa email. Clicca su Crea Account!',
-    'auth/wrong-password':      'Password errata. Riprova!',
-    'auth/invalid-email':       'Formato email non valido.',
-    'auth/weak-password':       'La password deve contenere almeno 6 caratteri.',
-    'auth/email-already-in-use': 'Questa email è già associata ad un account esistente.',
-    'auth/too-many-requests':   'Troppi tentativi. Attendi qualche minuto.',
-    'auth/invalid-credential':  'Email o password errata. Riprova!',
-    'auth/network-request-failed': 'Errore di rete. Controlla la connessione internet.',
-};
+if (passEl) passEl.addEventListener('input', clearError);
 
 if (form) {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
         clearError();
 
-        const email = emailEl.value.trim();
-        const pass  = passEl.value;
-        const name  = nameEl.value.trim();
-
-        if (!email || !pass) {
-            showError('Inserisci email e password.');
+        if (!selectedUser) {
+            showError('Seleziona prima il tuo nome! 👆');
+            return;
+        }
+        const entered = passEl.value;
+        if (!entered) {
+            showError('Inserisci la tua password.');
             return;
         }
 
-        if (authMode === 'register' && !name) {
-            showError('Per favore, inserisci il tuo nome.');
-            nameEl.focus();
-            return;
-        }
-
-        if (!window.auth) {
-            showError('Errore: connessione a Firebase fallita. Riprova tra poco.');
-            return;
-        }
-
-        // Loading state
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="spinner"></span> Attendere…';
 
-        try {
-            if (authMode === 'register') {
-                // ─── REGISTER FLOW ───
-                const cred = await window.auth.createUserWithEmailAndPassword(email, pass);
-                const user = cred.user;
-                
-                // Update profile display name
-                await user.updateProfile({ displayName: name });
-
-                // Save user details to Firestore
-                if (window.db) {
-                    await window.db.collection('users').doc(user.uid).set({
-                        email:       email,
-                        displayName: name,
-                        role:        'member', // members by default
-                        createdAt:   firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                }
+        setTimeout(() => {
+            const user = CLUB_USERS.find(u => u.name === selectedUser);
+            if (user && entered === user.password) {
+                localStorage.setItem('pt-auth', '1');
+                localStorage.setItem('pt-user-name', user.name);
+                localStorage.setItem('pt-user-admin', user.admin ? '1' : '0');
+                window.location.href = 'dashboard.html';
             } else {
-                // ─── LOGIN FLOW ───
-                await window.auth.signInWithEmailAndPassword(email, pass);
-            }
-        } catch (err) {
-            console.error(err);
-            const msg = FIREBASE_ERRORS[err.code] || err.message || 'Errore di autenticazione. Riprova!';
-            showError(msg);
-            
-            // Restore button text
-            if (authMode === 'register') {
-                submitBtn.innerHTML = 'Registrati <i class="fas fa-user-plus"></i>';
-            } else {
+                showError('Password errata. Riprova! 🔑');
                 submitBtn.innerHTML = 'Accedi <i class="fas fa-arrow-right"></i>';
+                submitBtn.disabled = false;
+                passEl.value = '';
+                passEl.focus();
             }
-            submitBtn.disabled = false;
-        }
+        }, 600);
     });
-
-    [emailEl, passEl, nameEl].forEach(el => el.addEventListener('input', clearError));
 }

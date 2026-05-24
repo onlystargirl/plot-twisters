@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commemorazione Shoah | Plot Twisters!</title>
+    <meta name="description"
+        content="Dettagli dell'evento Commemorazione Shoah delle Plot Twisters, 27 Gennaio 2024 presso la Libreria Cose d'Interni di Capua.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <a href="eventi.html"
+                style="color:var(--plum-light); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem;"><i
+                    class="fas fa-arrow-left"></i> Torna agli Eventi</a>
+            <h1 style="font-size:2.5rem;">Evento: <em>Commemorazione Shoah</em> 🕯️</h1>
+            <p>Incontro del 27 gennaio 2026 alle ore 10:30</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
+
+            <!-- SCHEDA DETTAGLIO EVENTO -->
+            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+                <!-- Intestazione evento -->
+                <div
+                    style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+                    <span style="font-size:3.5rem; display:block;">🕯️</span>
+                    <div>
+                        <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2rem;">Shoah -
+                            Racconti per non dimenticare</h2>
+                        <p style="margin:0 0 0.4rem 0; color:var(--plum-light); font-size:0.95rem;">
+                            <i class="fas fa-map-marker-alt" style="color:var(--lilac-mid); margin-right:0.25rem;"></i>
+                            Museo Campano, Capua
+                        </p>
+                        <p style="margin:0; color:var(--plum-light); font-size:0.95rem;">
+                            <i class="fas fa-calendar-alt" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> 27
+                            Gennaio 2026 &nbsp;•&nbsp;
+                            <i class="fas fa-clock" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> 10:30
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Descrizione -->
+                <div style="font-family:var(--font-sans); font-size:1.05rem; line-height:1.85; color:var(--plum-dark);">
+                    <p style="margin-bottom:1.5rem;">Il 27 gennaio 2024 abbiamo organizzato un evento dedicato alla
+                        Giornata della Memoria presso il Museo Campano di Capua. Abbiamo letto insieme brani
+                        tratti da diari, lettere e testimonianze di sopravvissuti all'Olocausto, riflettendo
+                        sull'importanza di non dimenticare. Un momento toccante e profondo, che ci ha ricordate perché
+                        la letteratura è anche custode di memoria storica. Non dimenticheremo mai.</p>
+
+                    <p style="margin-bottom:1.5rem;">Ci siamo chiesti a lungo se fosse giusto farlo. Ci siamo
+                        interrogate, durante le settimane di preparazione, sul senso profondo del nostro esporci. Se
+                        fosse giusto, noi che siamo nati dopo, noi che non abbiamo vissuto quell'orrore sulla pelle,
+                        prendere parola, occupare uno spazio pubblico, raccontare e mettere in gioco la nostra emotività
+                        di fronte a un abisso così immenso. Ci sembrava quasi di profanare un dolore indicibile con la
+                        nostra giovinezza, con la nostra distanza temporale da quegli eventi che hanno lacerato il
+                        Novecento. Poi abbiamo capito una cosa semplice e spaventosa allo stesso tempo: il silenzio non
+                        è mai neutro. Il silenzio non è mai uno spazio vuoto e innocente, ma diventa un'omissione, una
+                        forma di complicità passiva con l'oblio che avanza. “Shoah – Racconti di memoria” nasce
+                        esattamente da questa consapevolezza collettiva. Non è nato da un obbligo scolastico, non da una
+                        ricorrenza ministeriale da rispettare per dovere di cronaca, non da una frase retorica da
+                        scrivere sul quaderno o da un post social da pubblicare distrattamente il 27 gennaio per
+                        sentirsi la coscienza pulita.</p>
+
+                    <p style="margin-bottom:1.5rem;">Questo progetto nasce da una domanda radicale che ci siamo fatti
+                        come giovani, come lettori appassionati e, prima di ogni altra cosa, come esseri umani: che cosa
+                        succede alla memoria, quando smette di farci male? Cosa accade quando il ricordo di un evento
+                        così devastante si anestetizza, diventando una semplice riga sui libri di storia, un paragrafo
+                        da memorizzare per un esame o una ricorrenza istituzionale priva di un reale impatto emotivo
+                        sulla nostra quotidianità? Il rischio più grande che corriamo oggi non è la negazione della
+                        storia, ma la sua progressiva indifferenza. Quando il dolore degli altri non ci tocca più,
+                        quando le immagini in bianco e nero dei campi di sterminio smettono di provocare quel brivido di
+                        indignazione e di terrore etico, significa che la memoria ha fallito la sua missione principale.
+                        Ha smesso di essere un faro nel presente ed è diventata un pezzo da museo, un reperto
+                        archeologico privo di vita.</p>
+
+                    <p style="margin-bottom:1.5rem;">Viviamo in un tempo incredibilmente veloce, distratto, perennemente
+                        saturo di immagini effimere e parole consumate in fretta. Un tempo in cui ogni informazione dura
+                        lo spazio di un clic, in cui anche l'orrore più indicibile rischia di essere ridotto a mero
+                        “contenuto”, a una storia da scorrere sullo schermo di uno smartphone, una pagina da girare
+                        rapidamente per passare a qualcosa di più leggero e rassicurante. In questa società della
+                        distrazione di massa, tutto tende a essere archiviato, catalogato come passato, confinato in un
+                        tempo lontano che pensiamo non ci riguardi più. E invece la Shoah non è affatto lontana. Non
+                        appartiene a un universo parallelo o a una parentesi buia ormai definitivamente chiusa e
+                        sigillata. La Shoah è attuale ogni volta che qualcuno viene disumanizzato, privato della propria
+                        dignità, ridotto a un numero o a una categoria biologica, sociale e politica. È drammaticamente
+                        presente ogni volta che una vita umana viene considerata inferiore, ogni volta che si decide che
+                        l'esistenza di un individuo vale meno di un'altra in base alla sua origine, alla sua fede o alla
+                        sua identità. Si riaffaccia ogni volta che, di fronte all'ingiustizia e alla discriminazione
+                        quotidiana, si sceglie deliberatamente di girarsi dall'altra parte, di non vedere, di proteggere
+                        il proprio piccolo spazio di comfort individuale fingendo che il dolore del mondo non ci
+                        appartenga.</p>
+
+                    <p style="margin-bottom:1.5rem;">Con questo evento speciale, organizzato tra le mura accoglienti
+                        del Museo Campano di Capua, abbiamo provato a fare una cosa apparentemente semplice
+                        eppure straordinariamente difficilissima nel contesto attuale: fermarsi. Abbiamo voluto imporre
+                        una sosta al flusso frenetico delle nostre giornate per metterci in una condizione di puro
+                        ascolto. Ci siamo presi il tempo per ascoltare storie meno conosciute, frammenti di esistenze
+                        spezzate, lettere scritte nell'oscurità dei ghetti, diari nascosti sotto le assi dei pavimenti,
+                        nomi che la storia ufficiale spesso non ricorda o relega nelle note a piè di pagina. Erano vite
+                        vere, complete, ricche di sogni, di amori, di paure e di progetti futuri; esistenze fragili che
+                        non sono mai diventate un grande simbolo mediatico, ma che incarnavano l'interezza
+                        dell'esperienza umana prima che la macchina dello sterminio nazifascista decidesse di
+                        cancellarle dalla faccia della terra.</p>
+
+                    <p style="margin-bottom:1.5rem;">Il nostro intento non era quello di spiegare, perché l'orrore
+                        assoluto della Shoah sfugge a qualsiasi spiegazione puramente logica o sociologica. Non volevamo
+                        semplificare una complessità storica così drammatica attraverso slogan preconfezionati o formule
+                        di rito. Volevamo sentire. Volevavo che quelle parole scritte da chi ha vissuto l'inferno sulla
+                        propria pelle risuonassero vive dentro di noi, nella loro cruda e disarmante verità. Volevamo
+                        che il dolore del passato trovasse un'eco nel nostro petto, strappandoci per un attimo da quella
+                        corazza di cinismo e abitudine che spesso ci costruiamo per difenderci dal mondo esterno.
+                        Attraverso la lettura condivisa e ad alta voce, abbiamo cercato di restituire una voce a chi è
+                        stato ridotto al silenzio, trasformando la libreria in una cassa di risonanza per la dignità
+                        umana.</p>
+
+                    <p style="margin-bottom:1.5rem;">Perché ricordare non significa semplicemente possedere una
+                        conoscenza nozionistica di ciò che è accaduto. Non basta sapere le date, i luoghi, le cifre dei
+                        decreti o i nomi dei carnefici. La memoria non è un esercizio intellettuale di accumulo di dati
+                        storici. Ricordare è un atto dinamico e profondamente etico: significa chiedersi cosa facciamo
+                        noi, oggi, nel nostro quotidiano, di tutto quello che sappiamo. Significa domandarsi come quella
+                        conoscenza trasforma il nostro sguardo sul presente, come influenza le nostre scelte politiche,
+                        sociali e umane. Se lo studio del passato non si traduce in un impegno concreto contro
+                        l'ingiustizia del presente, allora la memoria diventa un culto sterile, un monumento di pietra
+                        che non salva nessuno. Le testimonianze dei sopravvissuti non ci chiedono solo di essere lette e
+                        piante; ci interpellano direttamente, ci chiedono di diventare sentinelle attente e rigorose
+                        contro ogni minima manifestazione di intolleranza e razzismo che si consuma sotto i nostri
+                        occhi.</p>
+
+                    <p style="margin-bottom:1.5rem;">Siamo giovani, apparteniamo a una generazione che si affaccia al
+                        futuro in un mondo instabile e carico di tensioni. Ed è proprio per questo motivo, per la nostra
+                        stessa giovinezza, che sentiamo addosso il peso e la straordinaria bellezza della responsabilità
+                        di ricordare. Non perché questa storia ci appartenga per esperienza diretta o per memoria
+                        familiare, ma perché ci appartiene come orizzonte futuro. I testimoni diretti, coloro che hanno
+                        camminato nel fango di Auschwitz e hanno visto l'orrore con i propri occhi, stanno purtroppo
+                        scomparendo per ovvie ragioni anagrafiche. Il testimone del loro racconto sta passando
+                        inevitabilmente nelle nostre mani. Diventare "testimoni dei testimoni" è il compito storico
+                        della nostra generazione, un dovere a cui non possiamo e non vogliamo sottrarci se desideriamo
+                        costruire una società che rimetta al centro il valore inalienabile dell'essere umano.</p>
+
+                    <p style="margin-bottom:1.5rem;">Ricordare, per noi del Plot Twisters Book Club, è una scelta
+                        consapevole. È un vero e proprio atto di resistenza civile e culturale contro il revisionismo,
+                        contro la banalizzazione del male e contro la stanchezza etica che sembra colpire la nostra
+                        epoca. È un modo radicale per decidere di non voltarsi dall'altra parte quando i diritti
+                        fondamentali vengono calpestati, quando i muri dell'esclusione vengono sollevati nuovamente,
+                        quando la retorica dell'odio torna a inquinare il dibattito pubblico. La letteratura ci offre
+                        gli strumenti per sviluppare l'empatia, per metterci nei panni dell'altro, per comprendere che
+                        la sofferenza di un singolo individuo ferisce l'umanità intera. Attraverso le pagine dei libri,
+                        impariamo a riconoscere i primi segnali del sonno della ragione, quei piccoli compromessi
+                        quotidiani che, se accumulati, possono portare di nuovo al collasso della civiltà.</p>
+
+                    <p>La memoria non serve a guardare nostalgicamente o passivamente indietro, a piangere su macerie
+                        lontane nel tempo. La memoria serve a decidere chi vogliamo essere noi, adesso, in questo
+                        preciso istante della storia. Ci costringe a prendere una posizione chiara, a definire i
+                        contorni dei nostri valori e dei nostri principi etici. I racconti che abbiamo letto e condiviso
+                        a Capua non sono solo un omaggio rispettoso a chi non c'è più, ma costituiscono una promessa
+                        solenne per il nostro domani. Sono il manifesto di una comunità di lettori che sceglie la parola
+                        contro il silenzio, l'empatia contro l'indifferenza, la responsabilità contro il disimpegno. La
+                        storia ci ha mostrato fin dove può spingersi la crudeltà umana quando viene lasciata libera di
+                        agire nell'apatia generale; spetta a noi, con le nostre scelte presenti, dimostrare che quella
+                        lezione è stata compresa e custodita nel profondo delle nostre anime.</p>
+                </div>
+
+                <!-- Sezione media: video da caricare + link IG -->
+                <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid var(--border);">
+                    <h4
+                        style="font-family:var(--font-sans); text-transform:uppercase; font-size:0.75rem; letter-spacing:1px; color:var(--plum-light); margin-bottom:1.25rem;">
+                        📸 Foto e Video</h4>
+
+                    <!-- Placeholder video — sostituisci src con il tuo file .mp4 -->
+                    <div
+                        style="width:100%; max-width:640px; margin:0 auto 1.5rem auto; aspect-ratio:16/9; border-radius:var(--r-md); overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center; border:1px solid var(--border);">
+                        <video src="shoah.mp4" controls width="100%" height="100%" poster="pt.jpeg"
+                            style="object-fit:cover;">
+                            Il tuo browser non supporta il tag video.
+                        </video>
+                    </div>
+
+                    <!-- Link al Reel Instagram -->
+                    <div style="text-align:center;">
+                        <a href="https://www.instagram.com/reel/DUWDTdQCMlQ/" target="_blank" rel="noopener"
+                            style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.75rem 1.5rem; border-radius:999px; background:linear-gradient(135deg, #f09433, #dc2743, #bc1888); color:white; font-weight:700; text-decoration:none; font-size:0.9rem; box-shadow:0 4px 14px rgba(188,24,136,0.25); transition: transform 0.2s, box-shadow 0.2s;">
+                            <i class="fab fa-instagram"></i> Guarda il Reel su Instagram
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- MAPPA -->
+            <div class="bento-box" style="padding:1.5rem; background:var(--white); margin-bottom:2rem;">
+                <h4
+                    style="font-family:var(--font-sans); text-transform:uppercase; font-size:0.75rem; letter-spacing:1px; color:var(--plum-light); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i class="fas fa-map-marked-alt"></i> Mappa della Sede
+                </h4>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.4842106456073!2d14.208151315609462!3d41.10915622097956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133a87bc1e88888b%3A0xc6c4293e62c14522!2sLibreria%20Cose%20d'Interni!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit"
+                    width="100%" height="250" style="border:0; border-radius:var(--r-md); box-shadow:var(--shadow-sm);"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

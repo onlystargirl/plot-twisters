@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novità | Plot Twisters!</title>
+    <meta name="description"
+        content="Tutte le novità delle Plot Twisters: video, post Instagram, eventi in arrivo e aggiornamenti dalla nostra bacheca letteraria di Capua.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html" class="active">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/6fl1qtLXPhmt9OuxHhkpZP?si=758aa3ab0212460c" target="_blank"
+                rel="noopener" class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="overline">aggiornamenti del club 𝜗𝜚</span>
+            <h1>Bacheca <em>Novità</em></h1>
+            <p>video, post, eventi in arrivo e tutto ciò che accade nel nostro angolo magico</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-bottom: 4rem;">
+
+            <!-- ─── CANALE YOUTUBE ─── -->
+            <section style="margin-bottom: 4rem;">
+                <div class="section-header" style="text-align:center; margin-bottom:2.5rem;">
+                    <span class="overline">il nostro canale</span>
+                    <h2>YouTube <em>@c.plot.twisters</em> 🎥</h2>
+                    <p>Iscriviti per non perdere i nostri video, recap degli incontri e letture speciali!</p>
+                </div>
+
+                <p
+                    style="margin: 5px auto 15px auto; font-family: var(--font-sans, sans-serif); font-size: 0.85rem; color: #7f7555; font-style: italic; text-align: center; width: 100%; max-width: 380px; line-height: 1.4;">
+                    🎬 Guarda l'After-Book in Cucina #1 dei Plot Twisters!
+                </p>
+
+                <div
+                    style="width: 100%; max-width: 440px; margin: 2rem auto; padding: 25px 20px; background: #f4edd2; border-radius: 12px; border: 2px dashed #d1c7a3; box-shadow: inset 0 0 20px rgba(0,0,0,0.05), 0 10px 25px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; box-sizing: border-box;">
+
+                    <div
+                        style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: #e74c3c; border-radius: 50%; box-shadow: 0 4px 5px rgba(0,0,0,0.3); z-index: 10;">
+                        <div
+                            style="position: absolute; top: 3px; left: 3px; width: 6px; height: 6px; background: rgba(255,255,255,0.6); border-radius: 50%;">
+                        </div>
+                    </div>
+
+                    <div style="width: 100%; max-width: 360px; background: #ffffff; padding: 10px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); transform: rotate(-1deg); transition: transform 0.3s ease; margin: 0 auto 15px auto; box-sizing: border-box;"
+                        onmouseover="this.style.transform='rotate(0deg) scale(1.02)';"
+                        onmouseout="this.style.transform='rotate(-1deg)';">
+
+                        <div
+                            style="width: 100%; aspect-ratio: 16/9; border-radius: 2px; overflow: hidden; background: #1a1a1a; display: flex; align-items: center; justify-content: center; position: relative;">
+                            <img src="pt.jpeg" alt="Copertina After-Book"
+                                style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                            <div
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.15);">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p
+                        style="margin: 0 auto 18px auto; font-family: var(--font-sans, sans-serif); font-size: 0.85rem; color: #7f7555; font-style: italic; text-align: center; width: 100%; max-width: 360px; line-height: 1.4; display: block; box-sizing: border-box;">
+                        🎬 Guarda l'After-Book in Cucina #1 dei Plot Twisters!
+                    </p>
+
+                    <a href="https://www.youtube.com/watch?v=DqMhcxTwcLA" target="_blank"
+                        style="text-decoration: none; display: inline-block; margin: 0 auto;">
+                        <div style="background-color: var(--plum-dark, #4A154B); color: #ffffff; padding: 0.75rem 1.6rem; border-radius: 8px; font-family: var(--font-sans, sans-serif); font-weight: bold; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: background-color 0.2s, transform 0.2s;"
+                            onmouseover="this.style.backgroundColor='var(--plum-light, #6B206B)'; this.style.transform='scale(1.03)';"
+                            onmouseout="this.style.backgroundColor='var(--plum-dark, #4A154B)'; this.style.transform='scale(1)';">
+                            <span>Guarda su YouTube</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+        </div>
+        <div style="width: 100%; display: flex; justify-content: center; margin: 1.5rem auto;">
+            <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener" class="btn-primary"
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 0 rem; font-size: 1rem; text-decoration: none;">
+                <i class="fab fa-youtube"></i> Visita il Canale e Iscriviti
+            </a>
+
+        </div>
+        </div>
+        </section>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
+
+        <!-- ─── INSTAGRAM REEL ─── -->
+        <section style="margin-bottom: 4rem;">
+            <div class="section-header" style="text-align:center; margin-bottom:2.5rem;">
+                <span class="overline">i nostri reel</span>
+                <h2>Seguici su <em>Instagram</em> 📸</h2>
+                <p>Guarda i nostri ultimi contenuti e segui il profilo <strong>@c.plot.twisters</strong></p>
+            </div>
+
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; align-items:flex-start;">
+                <!-- Video Reel — carica il tuo .mp4 oppure clicca il pulsante per vederlo su IG -->
+                <div style="flex:1; min-width:280px; max-width:380px;">
+                    <div
+                        style="width:100%; border-radius:var(--r-md); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-sm); background:var(--ivory-2);">
+                        <div
+                            style="padding:1rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:0.75rem;">
+                            <div
+                                style="width:36px; height:36px; background:linear-gradient(135deg, var(--lilac-deep), #E1306C); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                                <i class="fab fa-instagram" style="color:white; font-size:1rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:700; font-size:0.85rem; color:var(--plum);">c.plot.twisters
+                                </div>
+                                <div style="font-size:0.75rem; color:var(--plum-light);">Reel</div>
+                            </div>
+                        </div>
+                        <!-- Video locale — sostituisci src="reel-1.mp4" con il tuo file -->
+                        <div
+                            style="aspect-ratio:9/16; max-height:500px; overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center;">
+                            <video src="reel.mp4" controls width="100%" height="100%" poster="pt.jpeg"
+                                style="object-fit:cover;">
+                                Il tuo browser non supporta il tag video.
+                            </video>
+                        </div>
+                        <div style="padding:1rem; text-align:center;">
+                            <a href="https://www.instagram.com/reel/DYoqs3MiRTX/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                                target="_blank" rel="noopener"
+                                style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1.25rem; border-radius:999px; background:linear-gradient(135deg, #f09433, #dc2743, #bc1888); color:white; font-weight:700; text-decoration:none; font-size:0.8rem;">
+                                <i class="fab fa-instagram"></i> Guarda su Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box "Segui su IG" -->
+                <div style="flex:1; min-width:280px; max-width:380px; display:flex; flex-direction:column; gap:1.5rem;">
+                    <div class="bento-box"
+                        style="background:linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color:white; border:none; padding:2rem; text-align:center;">
+                        <i class="fab fa-instagram" style="font-size:3rem; margin-bottom:1rem; display:block;"></i>
+                        <h3 style="font-family:var(--font-display); color:white; margin-bottom:0.5rem;">
+                            @c.plot.twisters</h3>
+                        <p style="font-size:0.9rem; opacity:0.9; margin-bottom:1.5rem;">Storie, reel, quiz letterari
+                            e anteprime dei nostri incontri mensili!</p>
+                        <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                            style="display:inline-block; background:white; color:#E1306C; padding:0.6rem 1.5rem; border-radius:999px; font-weight:700; font-size:0.9rem; text-decoration:none;">
+                            Seguici ora ✦
+                        </a>
+                    </div>
+
+                    <div class="bento-box"
+                        style="background:linear-gradient(135deg, #010101, #333); color:white; border:none; padding:2rem; text-align:center;">
+                        <i class="fab fa-tiktok" style="font-size:3rem; margin-bottom:1rem; display:block;"></i>
+                        <h3 style="font-family:var(--font-display); color:white; margin-bottom:0.5rem;">
+                            @c.plot.twisters</h3>
+                        <p style="font-size:0.9rem; opacity:0.9; margin-bottom:1.5rem;">Short video, tendenze
+                            bookish e divertimento puro!</p>
+                        <a href="https://www.tiktok.com/@c.plot.twisters?is_from_webapp=1&sender_device=pc"
+                            target="_blank" rel="noopener"
+                            style="display:inline-block; background:white; color:#010101; padding:0.6rem 1.5rem; border-radius:999px; font-weight:700; font-size:0.9rem; text-decoration:none;">
+                            Seguici su TikTok ✦
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
+
+        <!-- ─── BACHECA EVENTI FUTURI ─── -->
+        <section style="margin-bottom: 4rem;">
+            <div class="section-header" style="text-align:center; margin-bottom:2.5rem;">
+                <span class="overline">in arrivo</span>
+                <h2>Prossimi <em>Appuntamenti</em> 📅</h2>
+                <p>Segna in agenda — non perderti neanche un incontro!</p>
+            </div>
+
+            <!-- Prossimo evento in evidenza -->
+            <div
+                style="background:linear-gradient(135deg, var(--lilac-deep), var(--plum-mid)); border-radius:var(--r-md); padding:3rem 2rem; color:white; text-align:center; margin-bottom:2rem; position:relative; overflow:hidden; box-shadow:var(--shadow-lg);">
+                <div
+                    style="position:absolute; top:-30px; right:-30px; font-size:8rem; opacity:0.07; pointer-events:none;">
+                    🎨</div>
+                <span
+                    style="background:rgba(255,255,255,0.2); color:white; font-size:0.7rem; padding:0.25rem 0.75rem; border-radius:999px; font-weight:700; text-transform:uppercase; letter-spacing:1px; display:inline-block; margin-bottom:1rem;">Prossimo
+                    Evento ✦</span>
+                <h2 style="font-family:var(--font-display); color:white; font-size:2.2rem; margin-bottom:0.5rem;">
+                    After-Book al Museo Campano 🎨</h2>
+                <p style="opacity:0.85; font-size:1.05rem; margin-bottom:1.5rem;">30 – 31 Maggio 2026 · ore 16:30 ·
+                    Museo Campano </p>
+                <p style="opacity:0.8; font-size:0.95rem; max-width:600px; margin:0 auto 2rem auto; line-height:1.7;">
+                    Unisciti al nostro prossimo appuntamento speciale immersi nella storia e nell'arte del Museo
+                    Campano per discutere le ultime letture del club.</p>
+                <a href="evento-afterbook.html"
+                    style="display:inline-flex; align-items:center; gap:0.5rem; background:white; color:var(--lilac-deep); padding:0.75rem 2rem; border-radius:999px; font-weight:700; text-decoration:none; font-size:0.95rem;">
+                    Scopri i Dettagli <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Lista eventi futuri -->
+            <div
+                style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 320px)); gap: 1.5rem; justify-content: center; width: 100%; max-width: 1100px; margin: 0 auto;"
+                    id="novita-upcoming-events">
+
+                    <div class="bento-box"
+                        style="background: var(--ivory-2); padding: 1.5rem; border: 1px solid var(--border); display: flex; gap: 1.25rem; align-items: center; width: 100%; box-sizing: border-box;">
+                        <div
+                            style="background: var(--lilac-deep); color: white; border-radius: var(--r-sm); padding: 0.75rem; text-align: center; min-width: 60px; flex-shrink: 0;">
+                            <div style="font-size: 1.6rem; font-weight: 800; line-height: 1;">27</div>
+                            <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">Gen</div>
+                        </div>
+                        <div>
+                            <div
+                                style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--plum-light); margin-bottom: 0.2rem;">
+                                Completato 🕯️</div>
+                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem;">Commemorazione
+                                Shoah</h4>
+                            <p style="font-size: 0.82rem; color: var(--plum-light); margin: 0;">ore 10:30 · Museo
+                                Campano</p>
+                        </div>
+                    </div>
+
+                    <div class="bento-box"
+                        style="background: var(--ivory-2); padding: 1.1rem 1.3rem; border: 1px solid var(--border); display: flex; gap: 1rem; align-items: center; width: 100%; box-sizing: border-box;">
+                        <div
+                            style="background: var(--lilac-mid); color: white; border-radius: var(--r-sm); padding: 0.65rem; text-align: center; min-width: 55px; flex-shrink: 0;">
+                            <div style="font-size: 1.45rem; font-weight: 800; line-height: 1;">30</div>
+                            <div style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px;">Mar</div>
+                        </div>
+                        <div>
+                            <div
+                                style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--plum-light); margin-bottom: 0.15rem;">
+                                Completato ⚖️</div>
+                            <h4 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem;">Legal Talent</h4>
+                            <p style="font-size: 0.78rem; color: var(--plum-light); margin: 0; line-height: 1.2;">ore
+                                8:05 · Istituto G. C. Falco</p>
+                        </div>
+                    </div>
+
+                    <div class="bento-box"
+                        style="background: var(--ivory-2); padding: 1.5rem; border: 1px solid var(--border); display: flex; gap: 1.25rem; align-items: center; width: 100%; box-sizing: border-box;">
+                        <div
+                            style="background: var(--plum-mid); color: white; border-radius: var(--r-sm); padding: 0.75rem; text-align: center; min-width: 60px; flex-shrink: 0;">
+                            <div style="font-size: 1.6rem; font-weight: 800; line-height: 1;">16</div>
+                            <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">Mag</div>
+                        </div>
+                        <div>
+                            <div
+                                style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--plum-light); margin-bottom: 0.2rem;">
+                                Completato 📜</div>
+                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem;">Placito Capua</h4>
+                            <p style="font-size: 0.82rem; color: var(--plum-light); margin: 0;">ore 10:00 · Capua</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--border); margin: 4rem 0;">
+            <div style="text-align:center; margin-top:2rem;">
+                <a href="eventi.html" class="btn-outline">Vedi tutti gli eventi →</a>
+            </div>
+        </section>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
+
+        <!-- ─── BACHECA AVVISI ─── -->
+        <section style="margin-bottom: 4rem;">
+            <div class="section-header" style="text-align:center; margin-bottom:2.5rem;">
+                <span class="overline">la nostra bacheca</span>
+                <h2>Avvisi <em>&amp; Comunicazioni</em> 📌</h2>
+                <p>Tutto quello che devi sapere prima del prossimo incontro</p>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:1.25rem; max-width:750px; margin:0 auto;">
+                <!-- Avviso 1 -->
+                <div
+                    style="display:flex; gap:1.25rem; background:var(--ivory-2); border-radius:var(--r-md); padding:1.5rem; border-left:4px solid var(--lilac-deep); border-top:1px solid var(--border); border-right:1px solid var(--border); border-bottom:1px solid var(--border);">
+                    <div style="font-size:1.75rem; flex-shrink:0;">📖</div>
+                    <div>
+                        <div
+                            style="font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color:var(--lilac-deep); font-weight:700; margin-bottom:0.3rem;">
+                            Lettura del Mese</div>
+                        <h4 style="font-size:1rem; margin-bottom:0.4rem;">Stiamo leggendo <em>"Get to You"</em> di
+                            Sara Rampado</h4>
+                        <p style="font-size:0.88rem; color:var(--plum-dark); margin:0; line-height:1.6;">Prepara il
+                            tuo diario di lettura! Parleremo del libro al prossimo incontro. Tieniti pronta con i
+                            tuoi pensieri e le tue teorie preferite 💜</p>
+                    </div>
+                </div>
+                <!-- Avviso 2 -->
+                <div
+                    style="display:flex; gap:1.25rem; background:var(--ivory-2); border-radius:var(--r-md); padding:1.5rem; border-left:4px solid #f5a623; border-top:1px solid var(--border); border-right:1px solid var(--border); border-bottom:1px solid var(--border);">
+                    <div style="font-size:1.75rem; flex-shrink:0;">🎨</div>
+                    <div>
+                        <div
+                            style="font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color:#c47a00; font-weight:700; margin-bottom:0.3rem;">
+                            Evento Speciale · 30-31 Maggio</div>
+                        <h4 style="font-size:1rem; margin-bottom:0.4rem;">After Book al Museo Campano — Ingresso Libero!
+                        </h4>
+                        <p style="font-size:0.88rem; color:var(--plum-dark); margin:0; line-height:1.6;">Porta con
+                            te un amico, un pennello o semplicemente la tua curiosità. La libreria apre le porte
+                            all'arte in tutte le sue forme per due serate indimenticabili.</p>
+                    </div>
+                </div>
+                <!-- Avviso 3 -->
+                <div
+                    style="display:flex; gap:1.25rem; background:var(--ivory-2); border-radius:var(--r-md); padding:1.5rem; border-left:4px solid #1DB954; border-top:1px solid var(--border); border-right:1px solid var(--border); border-bottom:1px solid var(--border);">
+                    <div style="font-size:1.75rem; flex-shrink:0;">🎵</div>
+                    <div>
+                        <div
+                            style="font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color:#1DB954; font-weight:700; margin-bottom:0.3rem;">
+                            Playlist Aggiornata</div>
+                        <h4 style="font-size:1rem; margin-bottom:0.4rem;">La playlist da lettura è stata aggiornata!
+                        </h4>
+                        <p style="font-size:0.88rem; color:var(--plum-dark); margin:0; line-height:1.6;">Nuovi brani
+                            aggiunti per le sessioni di lettura di questo mese. Perfetta per leggere "Get to You" in
+                            atmosfera! <a
+                                href="https://open.spotify.com/playlist/6fl1qtLXPhmt9OuxHhkpZP?si=1fb8b8e379eb4c6a"
+                                target="_blank" rel="noopener" style="color:var(--lilac-deep); font-weight:600;">Ascolta
+                                su Spotify →</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── SOCIAL LINKS ─── -->
+        <section>
+            <div class="bento-box"
+                style="background:linear-gradient(135deg, var(--lilac-pale), var(--ivory-2)); padding:3rem 2rem; text-align:center; border:1px solid var(--border-dark);">
+                <h3 style="font-family:var(--font-display); font-size:1.8rem; margin-bottom:0.75rem;">Seguici
+                    <em>Ovunque</em> 💜
+                </h3>
+                <p style="color:var(--plum-light); font-size:0.95rem; margin-bottom:2rem;">Non perdere neanche un
+                    aggiornamento del club!</p>
+                <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;">
+                    <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                        style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:999px; background:linear-gradient(135deg, #f09433, #dc2743, #bc1888); color:white; font-weight:700; text-decoration:none; font-size:0.9rem;">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@c.plot.twisters?is_from_webapp=1&sender_device=pc" target="_blank"
+                        rel="noopener"
+                        style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:999px; background:#010101; color:white; font-weight:700; text-decoration:none; font-size:0.9rem;">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+                    <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                        style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:999px; background:#FF0000; color:white; font-weight:700; text-decoration:none; font-size:0.9rem;">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                    <a href="https://open.spotify.com/playlist/6fl1qtLXPhmt9OuxHhkpZP?si=1fb8b8e379eb4c6a"
+                        target="_blank" rel="noopener"
+                        style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:999px; background:#1DB954; color:white; font-weight:700; text-decoration:none; font-size:0.9rem;">
+                        <i class="fab fa-spotify"></i> Spotify
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="TikTok"><i
+                        class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script LOCALI -->
+    <script src="script.js"></script>
+</body>
+
+</html>

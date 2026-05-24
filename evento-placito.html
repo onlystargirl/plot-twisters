@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placito Capua | Plot Twisters!</title>
+    <meta name="description"
+        content="Dettagli dell'evento Placito Capua delle Plot Twisters, 10 Marzo 2026 presso la Libreria Cose d'Interni di Capua.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <a href="eventi.html"
+                style="color:var(--plum-light); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem;"><i
+                    class="fas fa-arrow-left"></i> Torna agli Eventi</a>
+            <h1 style="font-size:2.5rem;">Evento: <em>Placito Capuano</em> 📜</h1>
+            <p>Incontro del 16 maggio 2026 alle ore 10:00</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
+
+            <!-- SCHEDA DETTAGLIO EVENTO -->
+            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+                <!-- Intestazione evento -->
+                <div
+                    style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+                    <span style="font-size:3.5rem; display:block;">📜</span>
+                    <div>
+                        <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2rem;">Placito
+                            Capuano</h2>
+                        <p style="margin:0 0 0.4rem 0; color:var(--plum-light); font-size:0.95rem;">
+                            <i class="fas fa-map-marker-alt" style="color:var(--lilac-mid); margin-right:0.25rem;"></i>
+                            Capua
+                        </p>
+                        <p style="margin:0; color:var(--plum-light); font-size:0.95rem;">
+                            <i class="fas fa-calendar-alt" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> 16
+                            Maggio 2026 &nbsp;•&nbsp;
+                            <i class="fas fa-clock" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> 10:00
+                        </p>
+                    </div>
+                </div>
+
+                <div style="font-family:var(--font-sans); font-size:1.05rem; line-height:1.85; color:var(--plum-dark);">
+                    <p style="margin-bottom:1.5rem;">Un tuffo alle origini della lingua italiana! Il Placito Capuano del
+                        960 d.C. è uno dei primi documenti scritti in volgare italiano, e nasce proprio nella nostra
+                        Capua. Abbiamo celebrato questa pietra miliare con letture, spiegazioni storiche e un piccolo
+                        laboratorio sulla bellezza dell'evoluzione linguistica. Essere capuane e orgogliosamente parte
+                        di questa storia ci riempie il cuore!</p>
+
+                    <p style="margin-bottom:1.5rem;">Il 16 maggio rimarrà impresso nella memoria del nostro club come
+                        una giornata di pura emozione, riconoscimento e immenso orgoglio collettivo. In questa data
+                        speciale, siamo state ufficialmente premiate per aver conquistato il prestigioso primo posto
+                        assoluto all'interno del concorso indetto sul Placito Capuano. La nostra vittoria è il frutto di
+                        un lavoro intenso, appassionato e corale, che ha visto la nascita e la realizzazione di un
+                        cortometraggio interamente dedicato a questo pilastro fondante dell'identità linguistica
+                        italiana. Ricevere questo premio ha rappresentato il coronamento di un percorso di ricerca
+                        storica, cinematografica e letteraria che ci ha permesso di connetterci in modo viscerale con le
+                        radici più profonde del nostro territorio, dimostrando come una storia antica di oltre mille
+                        anni possa vibrare ancora oggi di un'attualità sconvolgente se raccontata attraverso gli occhi,
+                        l'entusiasmo e la sensibilità delle nuove generazioni.</p>
+
+                    <p style="margin-bottom:1.5rem;">Quando abbiamo deciso di iscriverci al concorso, sapevamo di
+                        trovarci di fronte a una sfida intellettuale e creativa di altissimo livello. Il Placito Capuano
+                        non è semplicemente un testo da memorizzare passivamente per un'interrogazione scolastica, ma
+                        rappresenta l'atto di nascita ufficiale della nostra lingua parlata, il momento esatto in cui il
+                        volgare ha rivendicato la propria dignità scritta e giuridica uscendo dall'ombra del latino.
+                        L'idea di tradurre questa fondamentale pietra miliare in un cortometraggio è nata dal desiderio
+                        profondo di non limitarci a una descrizione accademica o a una fredda rassegna di dati storici.
+                        Volevamo creare qualcosa che potesse emozionare, che restituisse la viva voce dei protagonisti
+                        di quel lontano 960 dopo Cristo, che facesse percepire la grandezza di quel "Sao ko kelli terre"
+                        pronunciato con fermezza davanti a un giudice. Abbiamo speso intere settimane a documentarci, a
+                        scrivere la sceneggiatura, a curare i dialoghi e a immaginare le inquadrature, cercando di
+                        bilanciare il rigore della ricostruzione storica con una forte componente poetica e visiva.</p>
+
+                    <p style="margin-bottom:1.5rem;">Il processo di realizzazione del cortometraggio è stato
+                        un'avventura straordinaria che ha cementato ancora di più il legame tra le componenti del nostro
+                        club. Ognuna di noi ha messo a disposizione le proprie competenze, le proprie passioni e,
+                        soprattutto, il proprio tempo, lavorando instancabilmente dietro e davanti alla macchina da
+                        presa. Capua stessa si è trasformata nel nostro set a cielo aperto: i suoi vicoli intrisi di
+                        storia, le sue pietre millenarie e le sue atmosfere senza tempo hanno fornito la scenografia
+                        perfetta e naturale per le nostre riprese. Rivedere i luoghi della nostra quotidianità
+                        trasfigurati dalla lente del cinema, popolati dai fantasmi benefici di un passato così glorioso,
+                        ci ha fatto comprendere l'immensa fortuna di vivere in una città che ha letteralmente tenuto a
+                        battesimo la lingua in cui oggi esprimiamo i nostri pensieri, le nostre speranze e le nostre
+                        recensioni letterarie. Ogni inquadratura, ogni transizione, ogni scelta di montaggio e ogni
+                        singola nota della colonna sonora sono state ponderate con cura per fare in modo che il
+                        cortometraggio non fosse solo un prodotto da presentare a un concorso, ma un vero e proprio atto
+                        d'amore verso la nostra città e la nostra cultura.</p>
+
+                    <p style="margin-bottom:1.5rem;">La cerimonia di premiazione del 16 maggio è stata la conclusione
+                        perfetta di questo incredibile viaggio. Salire sul podio e sentire proclamare il nome del nostro
+                        progetto come vincitore del primo posto ha scatenato in tutte noi una gioia incontenibile, mista
+                        a una profonda commozione. Sentire che la giuria del concorso ha colto la passione, lo studio e
+                        l'originalità che abbiamo impresso in ogni fotogramma del cortometraggio è stata la
+                        gratificazione più grande che potessimo desiderare. Questo primo posto non è soltanto un trofeo
+                        da esporre o un riconoscimento simbolico da aggiungere al palmarès del nostro club, ma
+                        rappresenta la conferma che la cooperazione, l'impegno e la condivisione culturale possono
+                        produrre risultati straordinari. Ci ha dimostrato che quando i giovani si appropriano del
+                        proprio patrimonio storico con rispetto e creatività, sono in grado di generare una
+                        comunicazione potente, capace di colpire al cuore anche gli esperti e i promotori culturali più
+                        esigenti.</p>
+
+                    <p style="margin-bottom:1.5rem;">Questo trionfo ridefinisce anche il ruolo del nostro club
+                        all'interno della comunità cittadina. Essere premiate per un cortometraggio sul Placito Capuano
+                        significa aver adempiuto a una missione che va ben oltre la semplice lettura domenicale:
+                        significa essersi fatte custodi attive della memoria storica del territorio. La cultura non è un
+                        elemento statico da venerare all'interno di un museo, ma una materia viva che deve essere
+                        costantemente reinterpretata, plasmata e diffusa. Con il nostro video abbiamo voluto lanciare un
+                        messaggio chiaro: le origini della lingua italiana appartengono a Capua, e noi giovani capuane
+                        abbiamo il dovere e l'orgoglio di gridarlo al mondo con tutta la forza espressiva di cui siamo
+                        capaci. Il premio del 16 maggio ci dà nuova linfa, nuova energia e una motivazione ancora più
+                        solida per continuare a progettare, a scrivere e a inventare nuovi modi per valorizzare la
+                        bellezza che ci circonda.</p>
+
+                    <p>Guardando indietro a quella giornata del 16 maggio, stringiamo tra le mani questo primo posto con
+                        immensa gratitudine verso chi ha creduto nel nostro progetto e verso tutte le Plot Twisters che
+                        hanno versato energia e passione in questo cortometraggio. Questa vittoria ci ricorda che le
+                        storie più belle sono quelle che non solo si leggono o si guardano, ma quelle che si
+                        costruiscono insieme, passo dopo passo, con il cuore pieno di orgoglio per le nostre radici. Il
+                        Placito Capuano ci ha insegnato che la lingua è libertà, affermazione e diritto; il nostro
+                        cortometraggio ha cercato di onorare questo insegnamento, e questo primo posto ci dimostra che
+                        la nostra voce è stata ascoltata, compresa e celebrata nel modo più splendido possibile.</p>
+                </div>
+
+                <!-- Sezione media -->
+                <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid var(--border);">
+                    <h4
+                        style="font-family:var(--font-sans); text-transform:uppercase; font-size:0.75rem; letter-spacing:1px; color:var(--plum-light); margin-bottom:1.25rem;">
+                        📸 Foto e Video</h4>
+
+                    <!-- Placeholder video — sostituisci src con il tuo file .mp4 -->
+                    <div
+                        style="width:100%; max-width:640px; margin:0 auto 1.5rem auto; aspect-ratio:16/9; border-radius:var(--r-md); overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center; border:1px solid var(--border);">
+                        <video src="capua.mp4" controls width="100%" height="100%" poster="pt.jpeg"
+                            style="object-fit:cover;">
+                            Il tuo browser non supporta il tag video.
+                        </video>
+                    </div>
+                </div>
+            </article>
+
+            <!-- MAPPA -->
+            <div class="bento-box" style="padding:1.5rem; background:var(--white); margin-bottom:2rem;">
+                <h4
+                    style="font-family:var(--font-sans); text-transform:uppercase; font-size:0.75rem; letter-spacing:1px; color:var(--plum-light); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i class="fas fa-map-marked-alt"></i> Mappa della Sede
+                </h4>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.4842106456073!2d14.208151315609462!3d41.10915622097956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133a87bc1e88888b%3A0xc6c4293e62c14522!2sLibreria%20Cose%20d'Interni!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit"
+                    width="100%" height="250" style="border:0; border-radius:var(--r-md); box-shadow:var(--shadow-sm);"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
