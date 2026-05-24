@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="light">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,26 +10,130 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Wishlist ── */
+        .wish-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .wish-item {
+            display: flex; align-items: center; gap: 1rem;
+            background: var(--ivory-2); border-radius: var(--r-sm);
+            padding: 0.85rem 1rem; border: 1px solid var(--border);
+            transition: box-shadow 0.2s var(--ease);
+        }
+        .wish-item:hover { box-shadow: var(--shadow-xs); }
+        .wish-item .wish-cover {
+            width: 2.8rem; height: 4rem; border-radius: 4px; object-fit: cover;
+            background: var(--lilac-pale); display: flex; align-items: center;
+            justify-content: center; font-size: 1.4rem; flex-shrink: 0;
+        }
+        .wish-item .wish-cover img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+        .wish-info { flex: 1; }
+        .wish-title { font-weight: 600; font-size: 0.95rem; color: var(--plum-dark); margin-bottom: 0.2rem; }
+        .wish-author { font-size: 0.82rem; color: var(--plum-light); }
+        .wish-delete {
+            background: none; border: none; cursor: pointer;
+            color: #e05b5b; font-size: 1rem; padding: 0.4rem;
+            transition: transform 0.2s; border-radius: 50%;
+        }
+        .wish-delete:hover { transform: scale(1.2); }
+
+        /* ── Recensioni ── */
+        .review-card-personal {
+            background: var(--ivory-2); border-radius: var(--r-md);
+            border: 1px solid var(--border); padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .review-card-personal .review-stars { color: #f5a623; font-size: 1rem; margin-bottom: 0.5rem; }
+        .review-book-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .review-book-author { font-size: 0.82rem; color: var(--plum-light); margin-bottom: 0.75rem; }
+        .review-text-personal { font-size: 0.9rem; color: var(--plum-dark); line-height: 1.7; }
+
+        /* ── Calendario Incontri ── */
+        .meeting-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .meeting-item {
+            display: grid; grid-template-columns: 4.5rem 1fr;
+            gap: 1rem; align-items: center;
+            background: var(--ivory-2); border-radius: var(--r-sm);
+            padding: 1rem; border: 1px solid var(--border);
+        }
+        .meeting-date-box {
+            text-align: center; background: var(--lilac-deep);
+            color: white; border-radius: var(--r-sm); padding: 0.5rem;
+        }
+        .meeting-date-box .meet-day { font-size: 1.5rem; font-weight: 700; line-height: 1; }
+        .meeting-date-box .meet-mon { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; }
+        .meeting-info h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .meeting-info p { font-size: 0.82rem; color: var(--plum-light); }
+
+        /* ── Classifica ── */
+        .leaderboard { display: flex; flex-direction: column; gap: 0.6rem; }
+        .lb-row {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 0.75rem 1rem; border-radius: var(--r-sm);
+            background: var(--ivory-2); border: 1px solid var(--border);
+        }
+        .lb-rank { font-size: 1.2rem; width: 2rem; text-align: center; flex-shrink: 0; }
+        .lb-avatar {
+            width: 2.2rem; height: 2.2rem; border-radius: 50%;
+            background: var(--lilac-pale); display: flex; align-items: center;
+            justify-content: center; font-weight: 700; font-size: 0.9rem;
+            color: var(--lilac-deep); flex-shrink: 0;
+        }
+        .lb-name { flex: 1; font-weight: 600; font-size: 0.9rem; }
+        .lb-count { font-size: 0.85rem; color: var(--plum-light); }
+        .lb-badge { font-size: 1rem; }
+        .lb-row.mine { background: var(--lilac-pale); border-color: var(--lilac-mid); }
+
+        /* ── Category filters ── */
+        .category-filters {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;
+        }
+        .cat-btn {
+            padding: 0.35rem 0.9rem; border-radius: 2rem;
+            border: 1.5px solid var(--border); background: var(--white);
+            font-size: 0.82rem; font-weight: 500; cursor: pointer;
+            color: var(--plum-dark); transition: all 0.2s var(--ease);
+        }
+        .cat-btn:hover { border-color: var(--lilac-mid); }
+        .cat-btn.active { background: var(--lilac-deep); color: white; border-color: var(--lilac-deep); }
+
+        /* ── Add meeting form (admin) ── */
+        .admin-form-card {
+            background: var(--ivory-2); border: 1px solid var(--border);
+            border-radius: var(--r-md); padding: 1.25rem; margin-bottom: 1.5rem;
+        }
+        .admin-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        @media (max-width: 640px) { .admin-form-grid { grid-template-columns: 1fr; } }
+
+        /* ── Star rating input ── */
+        .star-rating { display: flex; gap: 0.3rem; margin-bottom: 1rem; }
+        .star-btn {
+            font-size: 1.4rem; cursor: pointer; background: none; border: none;
+            color: #ddd; transition: color 0.15s, transform 0.15s;
+            padding: 0.1rem;
+        }
+        .star-btn.lit, .star-btn:hover { color: #f5a623; transform: scale(1.15); }
+    </style>
 </head>
-
 <body>
+    <!-- Auth guard -->
+    <script>
+        if (localStorage.getItem('pt-auth') !== '1') {
+            window.location.replace('login.html');
+        }
+    </script>
 
-    <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
         <div class="loader-brand">Plot Twisters<span class="dot">!</span></div>
     </div>
 
     <div class="dash-layout">
 
-        <!-- ─── SIDEBAR ──────────────────────────────────────── -->
+        <!-- ─── SIDEBAR ─────────────────────────────────────── -->
         <aside class="dash-sidebar">
-
-            <!-- Brand -->
             <div class="dash-brand">
                 <a href="index.html">Plot Twisters<span class="dot">!</span></a>
             </div>
 
-            <!-- User Info -->
             <div class="dash-user">
                 <div class="dash-avatar" id="dash-avatar">?</div>
                 <div class="dash-user-info">
@@ -39,10 +142,24 @@
                 </div>
             </div>
 
-            <!-- Navigation -->
             <nav class="dash-nav">
                 <button class="dash-nav-btn active" id="nav-diary" onclick="switchTab('diary')">
                     <span class="nav-icon">📓</span> Diario di Bordo
+                </button>
+                <button class="dash-nav-btn" id="nav-reviews" onclick="switchTab('reviews')">
+                    <span class="nav-icon">⭐</span> Le Mie Recensioni
+                </button>
+                <button class="dash-nav-btn" id="nav-wishlist" onclick="switchTab('wishlist')">
+                    <span class="nav-icon">📝</span> Lista Desideri
+                </button>
+                <button class="dash-nav-btn" id="nav-calendar" onclick="switchTab('calendar')">
+                    <span class="nav-icon">📅</span> Incontri del Club
+                </button>
+                <button class="dash-nav-btn" id="nav-leaderboard" onclick="switchTab('leaderboard')">
+                    <span class="nav-icon">🏆</span> Classifica
+                </button>
+                <button class="dash-nav-btn" id="nav-bookcrush" onclick="switchTab('bookcrush')">
+                    <span class="nav-icon">💖</span> BookCrush
                 </button>
                 <button class="dash-nav-btn" id="nav-library" onclick="switchTab('library')">
                     <span class="nav-icon">📚</span> Libreria PDF
@@ -52,7 +169,6 @@
                 </button>
             </nav>
 
-            <!-- Footer actions -->
             <div class="dash-sidebar-footer">
                 <button class="dash-footer-btn" id="theme-toggle-dash">
                     <i class="fas fa-moon"></i> <span id="theme-label">Tema scuro</span>
@@ -64,54 +180,56 @@
                     <i class="fas fa-sign-out-alt"></i> Esci
                 </button>
             </div>
-
         </aside>
 
-        <!-- ─── MAIN CONTENT ──────────────────────────────────── -->
+        <!-- ─── MAIN ─────────────────────────────────────────── -->
         <main class="dash-main">
 
-            <!-- Back to Home Global Top Bar -->
-            <div class="dash-top-bar" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem;">
-                <a href="index.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1rem; border-radius: var(--r-sm); border-color: var(--lilac-deep); color: var(--lilac-deep); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border);">
-                    <i class="fas fa-arrow-left"></i> Torna alla Home del Sito
+            <div class="dash-top-bar" style="display:flex;justify-content:space-between;align-items:center;padding-bottom:1.25rem;border-bottom:1px solid var(--border);margin-bottom:2rem;">
+                <a href="index.html" class="btn-outline" style="font-size:0.85rem;padding:0.5rem 1rem;border-radius:var(--r-sm);color:var(--lilac-deep);font-weight:600;display:inline-flex;align-items:center;gap:0.5rem;border:1px solid var(--border);">
+                    <i class="fas fa-arrow-left"></i> Torna alla Home
                 </a>
-                <div style="font-size: 0.82rem; color: var(--plum-light); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;">Area Riservata Plot Twisters 𝜗𝜚</div>
+                <div style="font-size:0.82rem;color:var(--plum-light);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;">Area Riservata Plot Twisters 𝜗𝜚</div>
             </div>
 
             <!-- ══ TAB: DIARIO DI BORDO ══════════════════════ -->
             <div class="tab-content active" id="tab-diary">
-
                 <div class="dash-page-header">
                     <span class="overline">area personale</span>
                     <h2>Il Mio Diario <em>di Bordo</em></h2>
                     <p>I tuoi pensieri, appunti e riflessioni sui libri</p>
                 </div>
 
-                <!-- New Entry Button -->
+                <!-- Filtri cartella -->
+                <div class="category-filters" id="diary-category-filters">
+                    <button class="cat-btn active" data-cat="all" onclick="filterDiary('all', this)">📂 Tutti</button>
+                </div>
+
                 <div class="diary-top-bar">
-                    <div style="display:flex; align-items:center; gap:0.75rem;">
-                        <span id="entries-count" style="font-size:0.82rem; color:var(--plum-light);"></span>
-                    </div>
+                    <span id="entries-count" style="font-size:0.82rem;color:var(--plum-light);"></span>
                     <button class="btn-primary" id="new-entry-btn" onclick="openEditor()">
                         <i class="fas fa-plus"></i> Nuovo Appunto
                     </button>
                 </div>
 
-                <!-- Editor (hidden by default) -->
+                <!-- Editor -->
                 <div class="diary-editor-card hidden" id="diary-editor">
-                    <input
-                        type="text"
-                        class="diary-editor-title"
-                        id="entry-title-input"
-                        placeholder="Titolo del tuo appunto…"
-                        maxlength="120"
-                    >
-                    <textarea
-                        class="diary-editor-content"
-                        id="entry-content-input"
-                        placeholder="Scrivi qui i tuoi pensieri, riflessioni, citazioni preferite…"
-                        rows="8"
-                    ></textarea>
+                    <input type="text" class="diary-editor-title" id="entry-title-input" placeholder="Titolo del tuo appunto…" maxlength="120">
+
+                    <!-- Categoria -->
+                    <div style="margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+                        <label style="font-size:0.82rem;font-weight:600;color:var(--plum-light);white-space:nowrap;">📁 Cartella:</label>
+                        <select id="entry-category-input" style="padding:0.4rem 0.75rem;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--white);color:var(--plum-dark);font-size:0.88rem;cursor:pointer;">
+                            <option value="Note Generali">Note Generali</option>
+                            <option value="Get to You">Get to You</option>
+                            <option value="Shatter Me">Shatter Me</option>
+                            <option value="Come uccidono le brave ragazze">Come uccidono le brave ragazze</option>
+                            <option value="E poi ci sono io">E poi ci sono io</option>
+                        </select>
+                        <input type="text" id="entry-category-custom" placeholder="Oppure scrivi una nuova cartella…" style="flex:1;min-width:180px;padding:0.4rem 0.75rem;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--white);color:var(--plum-dark);font-size:0.88rem;">
+                    </div>
+
+                    <textarea class="diary-editor-content" id="entry-content-input" placeholder="Scrivi qui i tuoi pensieri, riflessioni, citazioni preferite…" rows="8"></textarea>
                     <div class="diary-editor-footer">
                         <div class="mood-picker" id="mood-picker">
                             <button class="mood-btn selected" data-mood="✨" onclick="selectMood(this)" title="Entusiasta">✨</button>
@@ -130,176 +248,268 @@
                     </div>
                 </div>
 
-                <!-- Entries Grid -->
-                <div class="diary-entries-grid" id="diary-entries-grid">
-                    <!-- Loaded by JS -->
-                </div>
-
-                <!-- Empty state -->
+                <div class="diary-entries-grid" id="diary-entries-grid"></div>
                 <div class="diary-empty hidden" id="diary-empty">
                     <span class="diary-empty-icon">📓</span>
                     <h3>Ancora nessun appunto</h3>
                     <p>Inizia a scrivere il tuo primo pensiero sul libro del mese!</p>
                 </div>
+            </div>
 
+            <!-- ══ TAB: RECENSIONI ═══════════════════════════ -->
+            <div class="tab-content" id="tab-reviews">
+                <div class="dash-page-header">
+                    <span class="overline">le mie opinioni</span>
+                    <h2>Le Mie <em>Recensioni</em></h2>
+                    <p>Valuta i libri che hai letto con il club</p>
+                </div>
+
+                <!-- Form nuova recensione -->
+                <div class="admin-form-card" id="review-form-card">
+                    <h3 style="margin-bottom:1rem;">✍️ Scrivi una recensione</h3>
+                    <div class="admin-form-grid">
+                        <div class="input-group">
+                            <label for="rev-book-title">Titolo del libro</label>
+                            <input type="text" id="rev-book-title" placeholder="es. Get to You">
+                        </div>
+                        <div class="input-group">
+                            <label for="rev-book-author">Autrice/Autore</label>
+                            <input type="text" id="rev-book-author" placeholder="es. Sara Rampado">
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top:0.75rem;">
+                        <label>Voto</label>
+                        <div class="star-rating" id="star-rating">
+                            <button type="button" class="star-btn" data-val="1" onclick="setRating(1)">★</button>
+                            <button type="button" class="star-btn" data-val="2" onclick="setRating(2)">★</button>
+                            <button type="button" class="star-btn" data-val="3" onclick="setRating(3)">★</button>
+                            <button type="button" class="star-btn" data-val="4" onclick="setRating(4)">★</button>
+                            <button type="button" class="star-btn" data-val="5" onclick="setRating(5)">★</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="rev-text">La tua recensione</label>
+                        <textarea id="rev-text" rows="4" placeholder="Cosa hai amato? Cosa ti ha sorpreso? Consiglieresti questo libro?"></textarea>
+                    </div>
+                    <button class="btn-primary" style="margin-top:0.75rem;" onclick="saveReview()">
+                        <i class="fas fa-save"></i> Salva Recensione
+                    </button>
+                </div>
+
+                <div id="reviews-list"></div>
+                <div class="diary-empty hidden" id="reviews-empty">
+                    <span class="diary-empty-icon">⭐</span>
+                    <h3>Ancora nessuna recensione</h3>
+                    <p>Valuta il primo libro che hai letto con il club!</p>
+                </div>
+            </div>
+
+            <!-- ══ TAB: LISTA DESIDERI ════════════════════════ -->
+            <div class="tab-content" id="tab-wishlist">
+                <div class="dash-page-header">
+                    <span class="overline">da leggere</span>
+                    <h2>La Mia <em>Lista Desideri</em></h2>
+                    <p>I libri che vuoi leggere prossimamente</p>
+                </div>
+
+                <div class="admin-form-card">
+                    <h3 style="margin-bottom:1rem;">➕ Aggiungi un libro</h3>
+                    <div class="admin-form-grid">
+                        <div class="input-group">
+                            <label for="wish-title">Titolo</label>
+                            <input type="text" id="wish-title" placeholder="es. The Midnight Library">
+                        </div>
+                        <div class="input-group">
+                            <label for="wish-author">Autrice/Autore</label>
+                            <input type="text" id="wish-author" placeholder="es. Matt Haig">
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top:0.75rem;">
+                        <label for="wish-notes">Note (opzionale)</label>
+                        <input type="text" id="wish-notes" placeholder="es. Consigliato da Giulia">
+                    </div>
+                    <button class="btn-primary" style="margin-top:0.75rem;" onclick="addWish()">
+                        <i class="fas fa-plus"></i> Aggiungi
+                    </button>
+                </div>
+
+                <div class="wish-list" id="wish-list"></div>
+                <div class="diary-empty hidden" id="wish-empty">
+                    <span class="diary-empty-icon">📝</span>
+                    <h3>Lista desideri vuota</h3>
+                    <p>Aggiungi i libri che vorresti leggere con il club!</p>
+                </div>
+            </div>
+
+            <!-- ══ TAB: CALENDARIO INCONTRI ══════════════════ -->
+            <div class="tab-content" id="tab-calendar">
+                <div class="dash-page-header">
+                    <span class="overline">appuntamenti</span>
+                    <h2>Incontri <em>del Club</em></h2>
+                    <p>I prossimi appuntamenti alla Libreria Cose d'Interni</p>
+                </div>
+
+                <!-- Admin: aggiungi incontro -->
+                <div class="admin-form-card hidden" id="meeting-admin-bar">
+                    <h3 style="margin-bottom:1rem;">📅 Aggiungi incontro</h3>
+                    <div class="admin-form-grid">
+                        <div class="input-group">
+                            <label for="meet-date">Data</label>
+                            <input type="date" id="meet-date">
+                        </div>
+                        <div class="input-group">
+                            <label for="meet-time">Ora</label>
+                            <input type="time" id="meet-time" value="18:00">
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top:0.75rem;">
+                        <label for="meet-title">Titolo incontro</label>
+                        <input type="text" id="meet-title" placeholder="es. Incontro mensile — Get to You">
+                    </div>
+                    <div class="input-group">
+                        <label for="meet-location">Luogo</label>
+                        <input type="text" id="meet-location" value="Libreria Cose d'Interni, Capua">
+                    </div>
+                    <div style="display:flex;gap:0.75rem;margin-top:0.75rem;">
+                        <button class="btn-primary" onclick="addMeeting()"><i class="fas fa-plus"></i> Aggiungi</button>
+                    </div>
+                </div>
+
+                <div class="meeting-list" id="meeting-list"></div>
+                <div class="diary-empty hidden" id="meeting-empty">
+                    <span class="diary-empty-icon">📅</span>
+                    <h3>Nessun incontro in programma</h3>
+                    <p>L'admin aggiungerà presto i prossimi appuntamenti!</p>
+                </div>
+            </div>
+
+            <!-- ══ TAB: CLASSIFICA ═══════════════════════════ -->
+            <div class="tab-content" id="tab-leaderboard">
+                <div class="dash-page-header">
+                    <span class="overline">tra noi</span>
+                    <h2>Classifica <em>Letture</em></h2>
+                    <p>Chi ha letto di più nel club quest'anno?</p>
+                </div>
+                <div class="leaderboard" id="leaderboard-list"></div>
+                <p style="font-size:0.82rem;color:var(--plum-light);text-align:center;margin-top:1.5rem;">
+                    La classifica si aggiorna in base alle recensioni scritte da ciascuna membro ✦
+                </p>
             </div>
 
             <!-- ══ TAB: LIBRERIA PDF ══════════════════════════ -->
             <div class="tab-content" id="tab-library">
-
                 <div class="dash-page-header">
                     <span class="overline">risorse del club</span>
                     <h2>Libreria <em>PDF</em></h2>
                     <p>I PDF dei libri e le risorse condivise del gruppo</p>
                 </div>
 
-                <!-- Admin: Add PDF form (hidden for non-admins) -->
                 <div class="hidden" id="pdf-admin-bar">
                     <div style="margin-bottom:1rem;">
-                        <button class="btn-primary" id="toggle-pdf-form-btn" onclick="togglePdfForm()">
+                        <button class="btn-primary" onclick="togglePdfForm()">
                             <i class="fas fa-plus"></i> Aggiungi PDF
                         </button>
                     </div>
-                    <div class="pdf-add-form hidden" id="pdf-add-form">
-                        <h3>Aggiungi un nuovo PDF</h3>
-                        <div class="pdf-form-grid">
-                            <div class="input-group">
-                                <label for="pdf-title">Titolo del libro</label>
-                                <input type="text" id="pdf-title" placeholder="es. Get to You">
-                            </div>
-                            <div class="input-group">
-                                <label for="pdf-author">Autrice/Autore</label>
-                                <input type="text" id="pdf-author" placeholder="es. Sara Rampado">
-                            </div>
+                    <div class="pdf-add-form hidden admin-form-card" id="pdf-add-form">
+                        <h3 style="margin-bottom:1rem;">Aggiungi un nuovo PDF</h3>
+                        <div class="admin-form-grid">
+                            <div class="input-group"><label for="pdf-title">Titolo</label><input type="text" id="pdf-title" placeholder="es. Get to You"></div>
+                            <div class="input-group"><label for="pdf-author">Autrice</label><input type="text" id="pdf-author" placeholder="es. Sara Rampado"></div>
                         </div>
-                        <div class="pdf-form-grid">
-                            <div class="input-group">
-                                <label for="pdf-url">Link al PDF</label>
-                                <input type="url" id="pdf-url" placeholder="https://drive.google.com/...">
-                            </div>
-                            <div class="input-group">
-                                <label for="pdf-cover">URL Copertina (opzionale)</label>
-                                <input type="url" id="pdf-cover" placeholder="https://...">
-                            </div>
+                        <div class="admin-form-grid" style="margin-top:0.75rem;">
+                            <div class="input-group"><label for="pdf-url">Link al PDF</label><input type="url" id="pdf-url" placeholder="https://drive.google.com/..."></div>
+                            <div class="input-group"><label for="pdf-cover">URL Copertina (opzionale)</label><input type="url" id="pdf-cover" placeholder="https://..."></div>
                         </div>
-                        <div class="input-group">
-                            <label for="pdf-category">Categoria</label>
-                            <input type="text" id="pdf-category" placeholder="es. Lettura del Mese, Romance, Thriller…">
-                        </div>
-                        <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
-                            <button class="btn-primary" onclick="addPdf()">
-                                <i class="fas fa-upload"></i> Aggiungi
-                            </button>
+                        <div class="input-group" style="margin-top:0.75rem;"><label for="pdf-category">Categoria</label><input type="text" id="pdf-category" placeholder="es. Lettura del Mese, Romance…"></div>
+                        <div style="display:flex;gap:0.75rem;margin-top:0.75rem;">
+                            <button class="btn-primary" onclick="addPdf()"><i class="fas fa-upload"></i> Aggiungi</button>
                             <button class="btn-ghost" onclick="togglePdfForm()">Annulla</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PDF Grid -->
-                <div class="pdf-grid" id="pdf-grid">
-                    <!-- Loaded by JS -->
-                </div>
-
-                <!-- Empty state -->
+                <div class="pdf-grid" id="pdf-grid"></div>
                 <div class="diary-empty hidden" id="pdf-empty">
                     <span class="diary-empty-icon">📚</span>
                     <h3>Nessun PDF disponibile</h3>
                     <p>L'admin aggiungerà presto i libri del club!</p>
                 </div>
-
             </div>
 
-            <!-- ══ TAB: ADMIN ═════════════════════════════════ -->
-            <div class="tab-content" id="tab-admin">
+            <!-- ══ TAB: BOOKCRUSH ════════════════════════════ -->
+            <div class="tab-content" id="tab-bookcrush">
+                <div class="dash-page-header">
+                    <span class="overline">il nostro cuore</span>
+                    <h2>Le Nostre <em>BookCrush</em> 💖</h2>
+                    <p>I personaggi immaginari che ci hanno rubato il cuore</p>
+                </div>
+                
+                <div class="admin-form-card">
+                    <h3 style="margin-bottom:1rem;">💘 Aggiungi la tua BookCrush</h3>
+                    <div class="admin-form-grid">
+                        <div class="input-group">
+                            <label for="crush-name">Nome del Personaggio</label>
+                            <input type="text" id="crush-name" placeholder="es. Aaron Warner">
+                        </div>
+                        <div class="input-group">
+                            <label for="crush-book">Da quale libro?</label>
+                            <input type="text" id="crush-book" placeholder="es. Shatter Me">
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top:0.75rem;">
+                        <label for="crush-reason">Perché lo ami?</label>
+                        <input type="text" id="crush-reason" placeholder="Perché i villain biondi con i traumi sono il mio debole...">
+                    </div>
+                    <button class="btn-primary" style="margin-top:0.75rem;" onclick="addBookCrush()">
+                        <i class="fas fa-heart"></i> Aggiungi
+                    </button>
+                </div>
+                
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;" id="bookcrush-list"></div>
+                <div class="diary-empty hidden" id="bookcrush-empty">
+                    <span class="diary-empty-icon">💖</span>
+                    <h3>Nessuna BookCrush per ora</h3>
+                    <p>Aggiungi il tuo personaggio preferito!</p>
+                </div>
+            </div>
 
+            <!-- ══ TAB: ADMIN ════════════════════════════════ -->
+            <div class="tab-content" id="tab-admin">
                 <div class="dash-page-header">
                     <span class="overline">pannello amministrazione</span>
                     <h2>Gestione <em>Club</em></h2>
-                    <p>Gestisci i contenuti del book club</p>
+                    <p>Gestisci i contenuti visibili a tutte le membre</p>
                 </div>
 
-                <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:1.25rem;">
-
-                    <!-- Book in progress -->
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
                     <div class="bento-box">
                         <span class="bento-tag">libro in lettura</span>
-                        <h3 style="margin-bottom:1rem;">Aggiorna il Libro</h3>
-                        <div class="input-group">
-                            <label for="admin-book-title">Titolo</label>
-                            <input type="text" id="admin-book-title" placeholder="es. Get to You">
-                        </div>
-                        <div class="input-group">
-                            <label for="admin-book-author">Autrice</label>
-                            <input type="text" id="admin-book-author" placeholder="es. Sara Rampado">
-                        </div>
-                        <div class="input-group">
-                            <label for="admin-book-cover">URL Copertina</label>
-                            <input type="url" id="admin-book-cover" placeholder="https://...">
-                        </div>
-                        <div class="input-group">
-                            <label for="admin-book-progress">Avanzamento (%)</label>
-                            <input type="number" id="admin-book-progress" min="0" max="100" placeholder="45">
-                        </div>
-                        <button class="btn-primary" style="width:100%; justify-content:center; margin-top:0.5rem;" onclick="updateCurrentBook()">
+                        <h3 style="margin-bottom:1rem;">Aggiorna il Libro del Mese</h3>
+                        <div class="input-group"><label for="admin-book-title">Titolo</label><input type="text" id="admin-book-title" placeholder="es. Get to You"></div>
+                        <div class="input-group"><label for="admin-book-author">Autrice</label><input type="text" id="admin-book-author" placeholder="es. Sara Rampado"></div>
+                        <div class="input-group"><label for="admin-book-cover">URL Copertina</label><input type="url" id="admin-book-cover" placeholder="https://..."></div>
+                        <div class="input-group"><label for="admin-book-progress">Avanzamento (%)</label><input type="number" id="admin-book-progress" min="0" max="100" placeholder="45"></div>
+                        <button class="btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;" onclick="updateCurrentBook()">
                             <i class="fas fa-book"></i> Aggiorna
                         </button>
                     </div>
 
-                    <!-- Manage members -->
-                    <div class="bento-box">
-                        <span class="bento-tag">gestione membre</span>
-                        <h3 style="margin-bottom:1rem;">Crea Account Membro</h3>
-                        <p style="font-size:0.85rem; color:var(--plum-light); margin-bottom:1.25rem;">
-                            Crea gli account dalle impostazioni Firebase Console oppure usa il form qui sotto.
-                        </p>
-                        <div class="input-group">
-                            <label for="admin-new-email">Email nuova membro</label>
-                            <input type="email" id="admin-new-email" placeholder="nome@email.com">
-                        </div>
-                        <div class="input-group">
-                            <label for="admin-new-password">Password temporanea</label>
-                            <input type="password" id="admin-new-password" placeholder="min. 6 caratteri">
-                        </div>
-                        <div class="input-group">
-                            <label for="admin-new-name">Nome visualizzato</label>
-                            <input type="text" id="admin-new-name" placeholder="es. Giulia">
-                        </div>
-                        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:var(--plum-light); margin-bottom:1rem; cursor:pointer;">
-                            <input type="checkbox" id="admin-new-is-admin"> Rendi admin
-                        </label>
-                        <button class="btn-primary" style="width:100%; justify-content:center;" onclick="createMember()">
-                            <i class="fas fa-user-plus"></i> Crea Membro
-                        </button>
-                        <p id="admin-create-msg" style="font-size:0.82rem; margin-top:0.75rem; text-align:center;"></p>
-                    </div>
-
-                    <!-- Newsletter CSV -->
                     <div class="bento-box">
                         <span class="bento-tag">newsletter</span>
                         <h3 style="margin-bottom:1rem;">Iscritte Newsletter</h3>
-                        <p style="font-size:0.85rem; color:var(--plum-light); margin-bottom:1.5rem;">
-                            Scarica la lista delle email raccolte tramite il modulo di iscrizione del sito.
+                        <p style="font-size:0.85rem;color:var(--plum-light);margin-bottom:1.5rem;">
+                            Scarica la lista delle email raccolte tramite il modulo del sito.
                         </p>
-                        <button class="btn-outline" style="width:100%; justify-content:center;" onclick="downloadNewsletter()">
+                        <button class="btn-outline" style="width:100%;justify-content:center;" onclick="downloadNewsletter()">
                             <i class="fas fa-download"></i> Scarica CSV
                         </button>
                     </div>
-
                 </div>
-
             </div>
 
         </main>
-
     </div>
 
-    <!-- Firebase SDKs (Compat Version) -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-
-    <script src="firebase-config.js"></script>
     <script src="dashboard.js"></script>
 </body>
-
 </html>
