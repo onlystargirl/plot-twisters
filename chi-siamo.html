@@ -7,7 +7,9 @@
     <title>Chi Siamo | Plot Twisters!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -15,49 +17,50 @@
 <body>
     <div class="particles" id="particles" aria-hidden="true"></div>
 
-    <!-- SIDEBAR DRAWER -->
+    <!-- ─── SIDEBAR DRAWER ─── -->
     <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
         <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
         <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
         <ul class="sidebar-links">
-            <li><span class="sidebar-num">01.</span> <a href="index.html">Home</a></li>
-            <li><span class="sidebar-num">02.</span> <a href="chi-siamo.html" class="active">Chi Siamo</a></li>
-            <li><span class="sidebar-num">03.</span> <a href="lettura.html">Letture</a></li>
-            <li><span class="sidebar-num">04.</span> <a href="eventi.html">Eventi</a></li>
-            <li><span class="sidebar-num">05.</span> <a href="login.html">Area Privata 🔒</a></li>
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html" class="active">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
         </ul>
-        
         <div class="sidebar-divider"></div>
-        
-        <!-- Helpful extra menu items -->
-        <div class="sidebar-extra">
-            <h4>Utility del Club 🜗</h4>
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener" class="sidebar-extra-link">
-                🎵 Playlist da Lettura
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
             </a>
-            <a href="#regole" class="sidebar-extra-link" onclick="toggleSidebar(false)">
-                📜 Le Regole d'Oro
-            </a>
-            <a href="eventi.html#mappa" class="sidebar-extra-link">
-                📍 Come Raggiungerci
-            </a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole
+                d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
         </div>
-        
-        <div class="sidebar-footer">📍 ci vediamo a Capua</div>
     </div>
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
 
-    <!-- NAVBAR -->
+    <!-- ─── NAVBAR ─── -->
     <nav class="navbar" id="navbar" aria-label="Menu principale">
         <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
         <div class="nav-actions">
             <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
-            <a href="login.html" class="btn-ghost auth-nav-link">Area Privata <i class="fas fa-lock"></i></a>
-            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)">Menu ☰</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- ─── HERO ─── -->
     <header class="page-hero">
         <div class="container">
             <span class="overline">chi siamo 𝜗𝜚</span>
@@ -67,63 +70,304 @@
     </header>
 
     <main>
-        <div class="container">
+        <div class="container" style="padding-bottom: 4rem;">
 
-            <section class="about-grid">
+            <section class="about-grid" style="margin-bottom:4rem;">
                 <div class="about-photo-col">
-                    <img src="pt.jpeg" alt="Il gruppo delle Plot Twisters a Capua" class="about-photo">
+                    <!-- Quote flottante che appare sulla foto -->
+
+                    <div class="photo-dynamic">
+                        <img src="pt.jpeg" alt="Il gruppo delle Plot Twisters a Capua" class="about-photo">
+                        <div class="photo-overlay">
+                            <p>Benvenuti nel nostro club! Scopri di più sul nostro viaggio.</p>
+                        </div>
+                    </div>
                     <img src="logo.png" alt="Plot Twisters Mini Logo" class="about-photo-badge">
+                    <!-- Badge incontri -->
+                    <div
+                        style="position:absolute; bottom:3rem; left:-1rem; background:var(--lilac-deep); color:white; border-radius:var(--r-sm); padding:0.65rem 1rem; font-size:0.8rem; font-weight:700; box-shadow:var(--shadow-sm); z-index:2; animation:floatBadge 4s 0.5s ease-in-out infinite;">
+                        “So don't you worry your pretty little mind because <br> people throw rocks at things that
+                        shine. <br>
+                        [Ours]”
+                        ― Taylor Swift
+                    </div>
                 </div>
                 <div class="about-text-col">
                     <span class="overline">come tutto è iniziato</span>
-                    <h2>Benvenuta nel nostro<br><em>Cerchio Magico</em></h2>
-                    <p>Siamo nate da un'idea semplice ma potente: creare uno spazio accogliente e protetto alla <strong>Libreria Cose d'Interni a Capua</strong>, dove poter staccare dalla vita frenetica di tutti i giorni per tuffarci insieme in mondi letterari straordinari.</p>
-                    <p>Per noi, Plot Twisters non è solo un gruppo di lettura. È sorellanza, è il profumo di tisana calda al limone e zenzero, sono gli sguardi complici al capitolo di svolta e le accese discussioni sulle teorie più folli dei nostri romanzi preferiti.</p>
+                    <h2 style="font-size:2.2rem; margin:0.5rem 0 1rem 0;">Benvenuta nel nostro<br><em>Cerchio
+                            Magico</em></h2>
+                    <p style="font-size:1rem; line-height:1.7; color:var(--plum-dark); margin-bottom:1rem;">Siamo nate
+                        da un'idea semplice ma potente: creare uno spazio accogliente e protetto alla <strong>Libreria
+                            Cose d'Interni a Capua</strong>, dove poter staccare dalla vita frenetica di tutti i giorni
+                        per tuffarci insieme in mondi letterari straordinari.</p>
+                    <p style="font-size:1rem; line-height:1.7; color:var(--plum-dark); margin-bottom:1.5rem;">Per noi,
+                        Plot Twisters non è solo un gruppo di lettura. È sorellanza, è il profumo di tisana calda al
+                        limone e zenzero, sono gli sguardi complici al capitolo di svolta e le accese discussioni sulle
+                        teorie più folli dei nostri romanzi preferiti.</p>
+                    <!-- Mini stats inline -->
+                    <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+                        <div style="text-align:center;">
+                            <div style="font-size:1.8rem; font-weight:800; color:var(--lilac-deep); font-family:var(--font-display);"
+                                class="count-up" data-target="30">15</div>
+                            <div
+                                style="font-size:0.75rem; color:var(--plum-light); text-transform:uppercase; letter-spacing:0.08em; font-weight:600;">
+                                Sognatrici</div>
+                        </div>
+                        <div style="text-align:center;">
+                            <div style="font-size:1.8rem; font-weight:800; color:var(--lilac-deep); font-family:var(--font-display);"
+                                class="count-up" data-target="5">3</div>
+                            <div
+                                style="font-size:0.75rem; color:var(--plum-light); text-transform:uppercase; letter-spacing:0.08em; font-weight:600;">
+                                Incontri Mensili</div>
+                        </div>
+                        <div style="text-align:center;">
+                            <div style="font-size:1.8rem; font-weight:800; color:var(--lilac-deep); font-family:var(--font-display);"
+                                class="count-up" data-target="5">5</div>
+                            <div
+                                style="font-size:0.75rem; color:var(--plum-light); text-transform:uppercase; letter-spacing:0.08em; font-weight:600;">
+                                Libri</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <hr class="divider">
+            <section style="margin-bottom:4rem;">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                    <span class="overline">il nostro canale</span>
+                    <h2>Guardaci in <em>Azione</em> 🎥</h2>
+                    <p>Un assaggio dei nostri magici incontri. Iscriviti al canale <strong>@c.plot.twisters</strong> su
+                        YouTube!</p>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:1.5rem; width:100%;">
+                    <div
+                        style="width:100%; max-width:720px; aspect-ratio:16/9; border-radius:var(--r-md); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-md); background:#000; display:flex; justify-content:center; align-items:center;">
+                        <video src="26 Aprile 2026.mp4" controls width="100%" height="100%" poster="pt.jpeg"
+                            style="object-fit: cover;">
+                            Il tuo browser non supporta il tag video.
+                        </video>
+                    </div>
+                    <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                        class="btn-primary" style="display:inline-flex; align-items:center; gap:0.5rem;">
+                        <i class="fab fa-youtube"></i> Visita il Canale YouTube
+                    </a>
+                </div>
+            </section>
 
-            <section>
-                <div class="section-header">
+            <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
+
+            <section style="margin-bottom:4rem;">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
                     <span class="overline">i nostri pilastri</span>
                     <h2>La Vita nel Club</h2>
                     <p>cosa troverai ad ogni nostro incontro mensile</p>
                 </div>
-                <div class="about-cards-row">
-                    <article class="about-card">
-                        <span class="about-icon">🧚‍♀️</span>
-                        <h3>Polvere di Fata</h3>
-                        <p>Ogni libro è un incantesimo. Adoriamo i romance tormentati, i misteri avvolgenti e quelle storie magiche che ti tengono incollata alla pagina fino all'alba.</p>
+                <div class="about-cards-row"
+                    style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1.5rem;">
+                    <article class="about-card"
+                        style="background:var(--ivory-2); padding:2rem; border-radius:var(--r-md); text-align:center; border:1px solid var(--border);">
+                        <span class="about-icon"
+                            style="font-size:2.5rem; margin-bottom:1rem; display:block;">🧚‍♀️</span>
+                        <h3 style="margin-bottom:0.5rem;">Polvere di Fata</h3>
+                        <p style="font-size:0.9rem; color:var(--plum-dark);">Ogni libro è un incantesimo. Adoriamo i
+                            romance tormentati, i misteri avvolgenti e quelle storie magiche che ti tengono incollata
+                            alla pagina fino all'alba.</p>
                     </article>
-                    <article class="about-card">
-                        <span class="about-icon">☕</span>
-                        <h3>Tisane & Chiacchiere</h3>
-                        <p>Ci riuniamo fisicamente a Capua per commentare, ridere e innamorarci dei protagonisti. Nessun giudizio, solo condivisione pura.</p>
+                    <article class="about-card"
+                        style="background:var(--ivory-2); padding:2rem; border-radius:var(--r-md); text-align:center; border:1px solid var(--border);">
+                        <span class="about-icon" style="font-size:2.5rem; margin-bottom:1rem; display:block;">☕</span>
+                        <h3 style="margin-bottom:0.5rem;">Tisane & Chiacchiere</h3>
+                        <p style="font-size:0.9rem; color:var(--plum-dark);">Ci riuniamo fisicamente a Capua per
+                            commentare, ridere e innamorarci dei protagonisti. Nessun giudizio, solo condivisione pura.
+                        </p>
                     </article>
-                    <article class="about-card">
-                        <span class="about-icon">📚</span>
-                        <h3>Sguardo Critico</h3>
-                        <p>Selezioniamo i libri insieme, analizziamo i colpi di scena e scriviamo recensioni sincere delle nostre letture preferite.</p>
+                    <article class="about-card"
+                        style="background:var(--ivory-2); padding:2rem; border-radius:var(--r-md); text-align:center; border:1px solid var(--border);">
+                        <span class="about-icon" style="font-size:2.5rem; margin-bottom:1rem; display:block;">📚</span>
+                        <h3 style="margin-bottom:0.5rem;">Sguardo Critico</h3>
+                        <p style="font-size:0.9rem; color:var(--plum-dark);">Selezioniamo i libri insieme, analizziamo i
+                            colpi di scena e scriviamo recensioni sincere delle nostre letture preferite.</p>
                     </article>
                 </div>
             </section>
 
+            <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
+
+            <!-- I NUMERI DELLA MAGIA (DYNAMIC STATS) -->
+            <section style="margin-bottom: 4rem;">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                    <span class="overline">il nostro club in cifre</span>
+                    <h2>I Numeri della <em>Magia</em></h2>
+                    <p>Cosa succede quando ci riuniamo (stime approssimative, ma molto accurate!)</p>
+                </div>
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:2rem; text-align:center;">
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); border:1px solid var(--border); padding:2rem; radius:var(--r-md); transition:transform 0.3s var(--ease);"
+                        onmouseenter="this.style.transform='translateY(-8px)'"
+                        onmouseleave="this.style.transform='none'">
+                        <span style="font-size:3rem; display:block; margin-bottom:0.5rem;">👑</span>
+                        <div
+                            style="font-size:2.5rem; font-weight:800; color:var(--lilac-deep); font-family:var(--font-display); line-height:1.2;">
+                            15+</div>
+                        <p style="font-size:0.9rem; color:var(--plum-light); margin-top:0.5rem; font-weight:600;">
+                            Sognatrici Attive</p>
+                    </div>
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); border:1px solid var(--border); padding:2rem; radius:var(--r-md); transition:transform 0.3s var(--ease);"
+                        onmouseenter="this.style.transform='translateY(-8px)'"
+                        onmouseleave="this.style.transform='none'">
+                        <span style="font-size:3rem; display:block; margin-bottom:0.5rem;">☕</span>
+                        <div
+                            style="font-size:2.5rem; font-weight:800; color:var(--lilac-deep); font-family:var(--font-display); line-height:1.2;">
+                            450+</div>
+                        <p style="font-size:0.9rem; color:var(--plum-light); margin-top:0.5rem; font-weight:600;">Tisane
+                            Sorseggiate</p>
+                    </div>
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); border:1px solid var(--border); padding:2rem; radius:var(--r-md); transition:transform 0.3s var(--ease);"
+                        onmouseenter="this.style.transform='translateY(-8px)'"
+                        onmouseleave="this.style.transform='none'">
+                        <span style="font-size:3rem; display:block; margin-bottom:0.5rem;">📖</span>
+                        <div
+                            style="font-size:2.5rem; font-weight:800; color:var(--lilac-deep); font-family:var(--font-display); line-height:1.2;">
+                            4+</div>
+                        <p style="font-size:0.9rem; color:var(--plum-light); margin-top:0.5rem; font-weight:600;">Libri
+                            Divorati</p>
+                    </div>
+                    <div class="bento-box"
+                        style="background:var(--ivory-2); border:1px solid var(--border); padding:2rem; radius:var(--r-md); transition:transform 0.3s var(--ease);"
+                        onmouseenter="this.style.transform='translateY(-8px)'"
+                        onmouseleave="this.style.transform='none'">
+                        <span style="font-size:3rem; display:block; margin-bottom:0.5rem;">✨</span>
+                        <div
+                            style="font-size:2.5rem; font-weight:800; color:var(--lilac-deep); font-family:var(--font-display); line-height:1.2;">
+                            999+</div>
+                        <p style="font-size:0.9rem; color:var(--plum-light); margin-top:0.5rem; font-weight:600;">Teorie
+                            Assurde</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
+
+            <!-- INTERACTIVE PLOT TWIST GENERATOR -->
+            <section style="margin-bottom: 4rem;">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                    <span class="overline">gioca con noi</span>
+                    <h2>Il Generatore di <em>Plot Twist</em> 🜗</h2>
+                    <p>Le nostre letture hanno troppi colpi di scena? Crea la tua trama romance/fantasy personalizzata
+                        in un clic!</p>
+                </div>
+
+                <div class="bento-box"
+                    style="background:var(--white); border:1px solid var(--border); padding:3rem 2rem; max-width:700px; margin:0 auto; text-align:center; position:relative; overflow:hidden; border-radius:var(--r-md);">
+                    <div style="font-size:2.5rem; margin-bottom:1rem;">🪄</div>
+                    <h3 style="font-family:var(--font-display); font-size:1.6rem; margin-bottom:1.5rem;">Crea il tuo
+                        romanzo ideale</h3>
+
+                    <div id="plot-twist-result"
+                        style="background:var(--ivory-2); border:1px solid var(--border); padding:2rem 1.5rem; border-radius:var(--r-sm); min-height:140px; display:flex; align-items:center; justify-content:center; flex-direction:column; margin-bottom:2rem; transition:all 0.3s var(--ease);">
+                        <p style="font-family:var(--font-italic); font-size:1.15rem; color:var(--plum-dark); line-height:1.6; margin:0;"
+                            id="plot-twist-text">"Clicca sul pulsante magico qui sotto per tessere la tua storia delle
+                            Plot Twisters..."</p>
+                        <p style="font-size:0.8rem; color:var(--lilac-deep); font-weight:700; margin-top:1rem; display:none;"
+                            id="plot-twist-genre">GENERE CONIGLIATO: Romance Fantasy ✨</p>
+                    </div>
+
+                    <button class="btn-primary" onclick="generatePlotTwist()"
+                        style="margin:0 auto; justify-content:center; padding:0.8rem 2rem; font-size:0.95rem; letter-spacing:1px; text-transform:uppercase;">
+                        Genera Trama! <i class="fas fa-magic" style="margin-left:0.5rem;"></i>
+                    </button>
+                </div>
+            </section>
+
+            <script>
+                function generatePlotTwist() {
+                    const protagonists = [
+                        "Una bibliotecaria timida che può leggere nella mente delle persone",
+                        "Una principessa ribelle costretta a sposare il re dei draghi",
+                        "Una studentessa di archeologia a Capua che scopre un manoscritto magico",
+                        "Una ragazza ordinaria che incontra un ragazzo dagli occhi color tempesta",
+                        "La proprietaria di una libreria misteriosa nel cuore di Corso Appio"
+                    ];
+
+                    const actions = [
+                        "scopre che il suo peggior nemico a scuola è in realtà un principe esiliato",
+                        "stipula un patto di finto fidanzamento con il ribelle più ricercato del regno",
+                        "viene risucchiata all'interno del suo romanzo fantasy preferito",
+                        "decide di addestrare un lupo mannaro a comportarsi da perfetto gentiluomo",
+                        "trova una lettera d'amore scritta cento anni fa che parla proprio di lei"
+                    ];
+
+                    const twists = [
+                        "ma scopre che l'unico modo per spezzare la maledizione è tradire il suo vero amore!",
+                        "ma la persona di cui si fida di più si rivela essere il villain principale della storia!",
+                        "ma si rende conto che il destino del mondo dipende dal fatto che lei non finisca quel libro!",
+                        "e l'amore che sboccerà cambierà per sempre il destino di entrambe le casate rivali.",
+                        "ma c'è un piccolo problema: lui è il custode del portale e lei ha appena perso la chiave!"
+                    ];
+
+                    const genres = [
+                        "ROMANCE FANTASY ✦",
+                        "DARK ACADEMIA 📜",
+                        "ENEMIES TO LOVERS 🔥",
+                        "THRILLER ROMANTICO 🕵️‍♀️",
+                        "CHRISTMAS ROMANCE ❄️"
+                    ];
+
+                    const p = protagonists[Math.floor(Math.random() * protagonists.length)];
+                    const a = actions[Math.floor(Math.random() * actions.length)];
+                    const t = twists[Math.floor(Math.random() * twists.length)];
+                    const g = genres[Math.floor(Math.random() * genres.length)];
+
+                    const textEl = document.getElementById('plot-twist-text');
+                    const genreEl = document.getElementById('plot-twist-genre');
+                    const boxEl = document.getElementById('plot-twist-result');
+
+                    if (textEl && genreEl && boxEl) {
+                        boxEl.style.transform = 'scale(0.95)';
+                        boxEl.style.opacity = '0.5';
+
+                        setTimeout(() => {
+                            textEl.innerHTML = `"${p} ${a}, ${t}"`;
+                            genreEl.textContent = `GENERE CONSIGLIATO: ${g}`;
+                            genreEl.style.display = 'block';
+                            boxEl.style.transform = 'scale(1)';
+                            boxEl.style.opacity = '1';
+                        }, 200);
+                    }
+                }
+            </script>
+
+            <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
+
             <!-- Rules section -->
-            <section class="rules-card" id="regole">
-                <h2>Le Regole d'Oro del <em>Club</em></h2>
-                <div class="rules-list">
-                    <div class="rule-item">
-                        <span class="rule-num">01.</span>
-                        <p><strong>Niente Spoiler prima del tempo!</strong> Rispettiamo i tempi di lettura stabiliti insieme per non rovinare a nessuna la sorpresa del colpo di scena. Chi sgarra... offre la tisana al prossimo incontro! 🐸</p>
+            <section class="rules-card" id="regole"
+                style="background:var(--lilac-deep); color:white; padding:3rem; border-radius:var(--r-md);">
+                <h2
+                    style="font-family:var(--font-display); font-size:2rem; margin-bottom:2rem; text-align:center; color:white;">
+                    Le Regole d'Oro del <em>Club</em></h2>
+                <div class="rules-list" style="display:flex; flex-direction:column; gap:1.5rem;">
+                    <div class="rule-item" style="display:flex; gap:1.5rem; align-items:flex-start;">
+                        <span class="rule-num"
+                            style="font-family:var(--font-display); font-size:1.5rem; font-weight:700; color:rgba(255,255,255,0.5);">01.</span>
+                        <p style="font-size:1rem; line-height:1.6;"><strong>Niente Spoiler prima del tempo!</strong>
+                            Rispettiamo i tempi di lettura stabiliti insieme per non rovinare a nessuna la sorpresa del
+                            colpo di scena. Chi sgarra... offre la tisana al prossimo incontro! 🐸</p>
                     </div>
-                    <div class="rule-item">
-                        <span class="rule-num">02.</span>
-                        <p><strong>Spazio privo di giudizio.</strong> Le opinioni letterarie sono tutte valide. Ci piace confrontare pareri opposti in modo aperto, solare ed estremamente affettuoso.</p>
+                    <div class="rule-item" style="display:flex; gap:1.5rem; align-items:flex-start;">
+                        <span class="rule-num"
+                            style="font-family:var(--font-display); font-size:1.5rem; font-weight:700; color:rgba(255,255,255,0.5);">02.</span>
+                        <p style="font-size:1rem; line-height:1.6;"><strong>Spazio privo di giudizio.</strong> Le
+                            opinioni letterarie sono tutte valide. Ci piace confrontare pareri opposti in modo aperto,
+                            solare ed estremamente affettuoso.</p>
                     </div>
-                    <div class="rule-item">
-                        <span class="rule-num">03.</span>
-                        <p><strong>Partecipazione e Magia.</strong> Porta sempre la tua allegria, la tua passione e le tue teorie preferite ai nostri incontri fisici mensili in libreria.</p>
+                    <div class="rule-item" style="display:flex; gap:1.5rem; align-items:flex-start;">
+                        <span class="rule-num"
+                            style="font-family:var(--font-display); font-size:1.5rem; font-weight:700; color:rgba(255,255,255,0.5);">03.</span>
+                        <p style="font-size:1rem; line-height:1.6;"><strong>Partecipazione e Magia.</strong> Porta
+                            sempre la tua allegria, la tua passione e le tue teorie preferite ai nostri incontri fisici
+                            mensili in libreria.</p>
                     </div>
                 </div>
             </section>
@@ -131,18 +375,34 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-logo">Plot Twisters!</div>
-        <p class="footer-tagline">"Dove le storie prendono vita e la magia accade tra le pagine."</p>
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+            <div style="margin-top: 2rem; display:flex; justify-content:center; gap:1.5rem;">
+                <a href="https://www.instagram.com/c.plot.twisters/" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="TikTok"><i
+                        class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                    style="color:var(--plum-light); font-size:1.2rem; transition:color 0.2s;" title="Spotify"><i
+                        class="fab fa-spotify"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Firebase SDKs (Compat Version) -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-    
-    <script src="firebase-config.js"></script>
+    <!-- Script LOCALI -->
     <script src="script.js"></script>
 </body>
 
