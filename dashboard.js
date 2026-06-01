@@ -96,7 +96,32 @@ window.switchTab = function(tabName) {
     const targetTab = document.getElementById(`tab-${tabName}`);
     const targetNav = document.getElementById(`nav-${tabName}`);
     if (targetTab) targetTab.classList.add('active');
-    if (targetNav) targetNav.classList.add('active');
+    if (targetNav) {
+        targetNav.classList.add('active');
+        
+        // Aggiorna il testo del pulsante toggle mobile
+        const toggleText = document.getElementById('dash-menu-toggle-text');
+        if (toggleText) {
+            toggleText.textContent = targetNav.textContent.trim();
+        }
+    }
+
+    // Chiudi il menu mobile se aperto
+    const navMenu = document.getElementById('dash-nav-menu');
+    if (navMenu) navMenu.classList.remove('open');
+
+    // Su mobile (schermo <= 768px), scorri automaticamente fino al contenuto della scheda
+    if (window.innerWidth <= 768) {
+        const mainContent = document.querySelector('.dash-main');
+        if (mainContent) {
+            mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+};
+
+window.toggleMobileMenu = function() {
+    const nav = document.getElementById('dash-nav-menu');
+    if (nav) nav.classList.toggle('open');
 };
 
 // ═══════════════════════════════════════════════════════════════

@@ -2247,6 +2247,10 @@ i.serif {
     color: var(--lilac-mid);
 }
 
+.dash-menu-toggle {
+    display: none;
+}
+
 .dash-nav {
     flex: 1;
     display: flex;
@@ -2989,20 +2993,61 @@ i.serif {
         margin-bottom: 0.75rem;
     }
 
+    .dash-menu-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        padding: 0.8rem 1.2rem !important;
+        background: var(--surface-1) !important;
+        border: 1.5px solid var(--border-dark) !important;
+        border-radius: var(--r-md) !important;
+        font-family: var(--font-body) !important;
+        font-size: 0.88rem !important;
+        font-weight: 600 !important;
+        color: var(--plum) !important;
+        cursor: pointer !important;
+        box-shadow: var(--shadow-sm) !important;
+        margin-bottom: 0.5rem !important;
+        box-sizing: border-box !important;
+    }
+
+    .dash-menu-toggle i {
+        color: var(--lilac-deep) !important;
+        font-size: 0.85rem !important;
+        transition: transform 0.2s var(--ease) !important;
+    }
+
     .dash-nav {
-        flex-direction: row;
-        overflow-x: auto;
-        width: 100%;
-        gap: 0.4rem;
-        padding-bottom: 0.5rem;
-        -webkit-overflow-scrolling: touch;
+        display: none !important; /* nascosto di default su mobile */
+    }
+
+    .dash-nav.open {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0.35rem !important;
+        margin-top: 0.25rem !important;
+        padding: 0.5rem !important;
+        background: var(--surface-2) !important;
+        border-radius: var(--r-sm) !important;
+        border: 1px solid var(--border) !important;
+        animation: fadeSlideIn 0.25s var(--ease) !important;
+        box-sizing: border-box !important;
     }
 
     .dash-nav-btn {
-        white-space: nowrap;
-        padding: 0.65rem 1rem;
-        font-size: 0.8rem;
+        width: 100% !important;
+        white-space: nowrap !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 0.85rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 0.75rem !important;
+        border-radius: var(--r-sm) !important;
         flex-shrink: 0;
+        box-sizing: border-box !important;
     }
 
     .dash-sidebar-footer {

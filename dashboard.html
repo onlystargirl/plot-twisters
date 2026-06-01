@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.1">
+    <link rel="stylesheet" href="style.css?v=2.2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ── Wishlist ── */
@@ -142,7 +142,12 @@
                 </div>
             </div>
 
-            <nav class="dash-nav">
+            <!-- Pulsante menu mobile (visibile solo su smartphone) -->
+            <button class="dash-menu-toggle" id="dash-menu-toggle" onclick="toggleMobileMenu()">
+                <span id="dash-menu-toggle-text">📓 Diario di Bordo</span> <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <nav class="dash-nav" id="dash-nav-menu">
                 <button class="dash-nav-btn active" id="nav-diary" onclick="switchTab('diary')">
                     <span class="nav-icon">📓</span> Diario di Bordo
                 </button>
@@ -559,6 +564,6 @@
         </main>
     </div>
 
-    <script src="dashboard.js?v=2.1"></script>
+    <script src="dashboard.js?v=2.2"></script>
 </body>
 </html>
