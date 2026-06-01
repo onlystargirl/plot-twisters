@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Inizializzazione archivio libri
     if (document.getElementById('dynamic-books-archive')) loadBooksArchive();
+
+    // Inizializzazione pagina Novità (media + avvisi dinamici)
+    if (document.getElementById('news-yt-container') || document.getElementById('news-notices-container')) {
+        loadNewsToPage();
+    }
 });
 
 // ─── THEME TOGGLE ─────────────────────────────────────────────
@@ -955,5 +960,149 @@ function loadBooksArchive() {
 
     } catch (e) {
         console.warn('Errore caricamento archivio libri:', e);
+    }
+}
+
+// ─── PAGINA NOVITÀ — MEDIA & AVVISI DINAMICI ──────────────────
+function loadNewsToPage() {
+
+    // ── Defaults (usati se l'admin non ha ancora salvato nulla) ──
+    const defaultMedia = {
+        ytCaption : '🎬 Guarda l\'After-Book in Cucina #1 dei Plot Twisters!',
+        ytCover   : 'pt.jpeg',
+        ytLink    : 'https://www.youtube.com/watch?v=DqMhcxTwcLA',
+        igVideo   : 'reel.mp4',
+        igCover   : 'pt.jpeg',
+        igLink    : 'https://www.instagram.com/reel/DYoqs3MiRTX/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
+    };
+
+    const defaultNotices = [
+        {
+            id    : 'notice-default-1',
+            icon  : '📖',
+            tag   : 'Lettura del Mese',
+            title : 'Stiamo leggendo <em>"Get to You"</em> di Sara Rampado',
+            desc  : 'Prepara il tuo diario di lettura! Parleremo del libro al prossimo incontro. Tieniti pronta con i tuoi pensieri e le tue teorie preferite 💜'
+        },
+        {
+            id    : 'notice-default-2',
+            icon  : '🎨',
+            tag   : 'Evento Speciale · 30-31 Maggio',
+            title : 'After Book al Museo Campano — Ingresso Libero!',
+            desc  : 'Porta con te un amico, un pennello o semplicemente la tua curiosità. La libreria apre le porte all\'arte in tutte le sue forme per due serate indimenticabili.'
+        },
+        {
+            id    : 'notice-default-3',
+            icon  : '🎵',
+            tag   : 'Playlist Aggiornata',
+            title : 'La playlist da lettura è stata aggiornata!',
+            desc  : 'Nuovi brani aggiunti per le sessioni di lettura di questo mese. Perfetta per leggere "Get to You" in atmosfera! <a href="https://open.spotify.com/playlist/6fl1qtLXPhmt9OuxHhkpZP?si=1fb8b8e379eb4c6a" target="_blank" rel="noopener" style="color:var(--lilac-deep);font-weight:600;">Ascolta su Spotify →</a>'
+        }
+    ];
+
+    // ── Leggi da localStorage ──
+    let media = { ...defaultMedia };
+    try {
+        const raw = localStorage.getItem('pt-news-media');
+        if (raw) Object.assign(media, JSON.parse(raw));
+    } catch(e) {}
+
+    let notices = defaultNotices;
+    try {
+        const raw = localStorage.getItem('pt-news-notices');
+        if (raw) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length > 0) notices = parsed;
+        }
+    } catch(e) {}
+
+    // ── Renderizza sezione YouTube ──
+    const ytContainer = document.getElementById('news-yt-container');
+    if (ytContainer) {
+        ytContainer.innerHTML = `
+        <p style="margin:5px auto 15px auto;font-family:var(--font-sans,sans-serif);font-size:0.85rem;color:#7f7555;font-style:italic;text-align:center;width:100%;max-width:380px;line-height:1.4;">
+            ${media.ytCaption}
+        </p>
+        <div style="width:100%;max-width:440px;margin:2rem auto;padding:25px 20px;background:#f4edd2;border-radius:12px;border:2px dashed #d1c7a3;box-shadow:inset 0 0 20px rgba(0,0,0,0.05),0 10px 25px rgba(0,0,0,0.1);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;box-sizing:border-box;">
+            <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:20px;height:20px;background:#e74c3c;border-radius:50%;box-shadow:0 4px 5px rgba(0,0,0,0.3);z-index:10;">
+                <div style="position:absolute;top:3px;left:3px;width:6px;height:6px;background:rgba(255,255,255,0.6);border-radius:50%;"></div>
+            </div>
+            <div style="width:100%;max-width:360px;background:#fff;padding:10px;border-radius:4px;box-shadow:0 5px 15px rgba(0,0,0,0.15);transform:rotate(-1deg);transition:transform 0.3s ease;margin:0 auto 15px;box-sizing:border-box;"
+                onmouseover="this.style.transform='rotate(0deg) scale(1.02)'"
+                onmouseout="this.style.transform='rotate(-1deg)'">
+                <div style="width:100%;aspect-ratio:16/9;border-radius:2px;overflow:hidden;background:#1a1a1a;display:flex;align-items:center;justify-content:center;position:relative;">
+                    <img src="${escHtml(media.ytCover)}" alt="Copertina video" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.src='pt.jpeg'"/>
+                    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.15);"></div>
+                </div>
+            </div>
+            <p style="margin:0 auto 18px;font-family:var(--font-sans,sans-serif);font-size:0.85rem;color:#7f7555;font-style:italic;text-align:center;width:100%;max-width:360px;line-height:1.4;display:block;box-sizing:border-box;">
+                ${media.ytCaption}
+            </p>
+            <a href="${escHtml(media.ytLink)}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block;margin:0 auto;">
+                <div style="background-color:var(--plum-dark,#4A154B);color:#fff;padding:0.75rem 1.6rem;border-radius:8px;font-family:var(--font-sans,sans-serif);font-weight:bold;font-size:0.85rem;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:background-color 0.2s,transform 0.2s;"
+                    onmouseover="this.style.backgroundColor='var(--plum-light,#6B206B)';this.style.transform='scale(1.03)'"
+                    onmouseout="this.style.backgroundColor='var(--plum-dark,#4A154B)';this.style.transform='scale(1)'">
+                    <span>Guarda su YouTube</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </div>
+            </a>
+        </div>`;
+    }
+
+    // ── Renderizza Reel Instagram ──
+    const igContainer = document.getElementById('news-ig-container');
+    if (igContainer) {
+        igContainer.innerHTML = `
+        <div style="width:100%;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-sm);background:var(--ivory-2);">
+            <div style="padding:1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.75rem;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--lilac-deep),#E1306C);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <i class="fab fa-instagram" style="color:white;font-size:1rem;"></i>
+                </div>
+                <div>
+                    <div style="font-weight:700;font-size:0.85rem;color:var(--plum);">c.plot.twisters</div>
+                    <div style="font-size:0.75rem;color:var(--plum-light);">Reel</div>
+                </div>
+            </div>
+            <div style="aspect-ratio:9/16;max-height:500px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;">
+                <video src="${escHtml(media.igVideo)}" controls width="100%" height="100%" poster="${escHtml(media.igCover)}" style="object-fit:cover;">
+                    Il tuo browser non supporta il tag video.
+                </video>
+            </div>
+            <div style="padding:1rem;text-align:center;">
+                <a href="${escHtml(media.igLink)}" target="_blank" rel="noopener"
+                    style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.25rem;border-radius:999px;background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:white;font-weight:700;text-decoration:none;font-size:0.8rem;">
+                    <i class="fab fa-instagram"></i> Guarda su Instagram
+                </a>
+            </div>
+        </div>`;
+    }
+
+    // ── Renderizza Avvisi ──
+    const noticesContainer = document.getElementById('news-notices-container');
+    if (noticesContainer) {
+        if (!notices.length) {
+            noticesContainer.innerHTML = '<p style="color:var(--plum-light);text-align:center;font-size:0.9rem;">Nessun avviso in bacheca al momento.</p>';
+            return;
+        }
+
+        // Colori accento ciclici per i bordi laterali
+        const accentColors = ['var(--lilac-deep)', '#f5a623', '#1DB954', '#e05b5b', '#3a9bd5'];
+
+        noticesContainer.innerHTML = notices.map((n, i) => {
+            const color = accentColors[i % accentColors.length];
+            return `
+            <div style="display:flex;gap:1.25rem;background:var(--ivory-2);border-radius:var(--r-md);padding:1.5rem;border-left:4px solid ${color};border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+                <div style="font-size:1.75rem;flex-shrink:0;">${n.icon || '📌'}</div>
+                <div>
+                    <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:${color};font-weight:700;margin-bottom:0.3rem;">${escHtml(n.tag)}</div>
+                    <h4 style="font-size:1rem;margin-bottom:0.4rem;">${n.title}</h4>
+                    <p style="font-size:0.88rem;color:var(--plum-dark);margin:0;line-height:1.6;">${n.desc}</p>
+                </div>
+            </div>`;
+        }).join('');
     }
 }
