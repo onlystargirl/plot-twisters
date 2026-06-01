@@ -82,67 +82,16 @@
                     <p>Iscriviti per non perdere i nostri video, recap degli incontri e letture speciali!</p>
                 </div>
 
-                <p
-                    style="margin: 5px auto 15px auto; font-family: var(--font-sans, sans-serif); font-size: 0.85rem; color: #7f7555; font-style: italic; text-align: center; width: 100%; max-width: 380px; line-height: 1.4;">
-                    🎬 Guarda l'After-Book in Cucina #1 dei Plot Twisters!
-                </p>
+                <!-- Container dinamico YouTube — popolato da script.js -->
+                <div id="news-yt-container"></div>
 
-                <div
-                    style="width: 100%; max-width: 440px; margin: 2rem auto; padding: 25px 20px; background: #f4edd2; border-radius: 12px; border: 2px dashed #d1c7a3; box-shadow: inset 0 0 20px rgba(0,0,0,0.05), 0 10px 25px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; box-sizing: border-box;">
-
-                    <div
-                        style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: #e74c3c; border-radius: 50%; box-shadow: 0 4px 5px rgba(0,0,0,0.3); z-index: 10;">
-                        <div
-                            style="position: absolute; top: 3px; left: 3px; width: 6px; height: 6px; background: rgba(255,255,255,0.6); border-radius: 50%;">
-                        </div>
-                    </div>
-
-                    <div style="width: 100%; max-width: 360px; background: #ffffff; padding: 10px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); transform: rotate(-1deg); transition: transform 0.3s ease; margin: 0 auto 15px auto; box-sizing: border-box;"
-                        onmouseover="this.style.transform='rotate(0deg) scale(1.02)';"
-                        onmouseout="this.style.transform='rotate(-1deg)';">
-
-                        <div
-                            style="width: 100%; aspect-ratio: 16/9; border-radius: 2px; overflow: hidden; background: #1a1a1a; display: flex; align-items: center; justify-content: center; position: relative;">
-                            <img src="pt.jpeg" alt="Copertina After-Book"
-                                style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                            <div
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.15);">
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <p
-                        style="margin: 0 auto 18px auto; font-family: var(--font-sans, sans-serif); font-size: 0.85rem; color: #7f7555; font-style: italic; text-align: center; width: 100%; max-width: 360px; line-height: 1.4; display: block; box-sizing: border-box;">
-                        🎬 Guarda l'After-Book in Cucina #1 dei Plot Twisters!
-                    </p>
-
-                    <a href="https://www.youtube.com/watch?v=DqMhcxTwcLA" target="_blank"
-                        style="text-decoration: none; display: inline-block; margin: 0 auto;">
-                        <div style="background-color: var(--plum-dark, #4A154B); color: #ffffff; padding: 0.75rem 1.6rem; border-radius: 8px; font-family: var(--font-sans, sans-serif); font-weight: bold; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: background-color 0.2s, transform 0.2s;"
-                            onmouseover="this.style.backgroundColor='var(--plum-light, #6B206B)'; this.style.transform='scale(1.03)';"
-                            onmouseout="this.style.backgroundColor='var(--plum-dark, #4A154B)'; this.style.transform='scale(1)';">
-                            <span>Guarda su YouTube</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                        </div>
+                <div style="width: 100%; display: flex; justify-content: center; margin: 1.5rem auto;">
+                    <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener" class="btn-primary"
+                        style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 1rem; text-decoration: none;">
+                        <i class="fab fa-youtube"></i> Visita il Canale e Iscriviti
                     </a>
                 </div>
-
-        </div>
-        <div style="width: 100%; display: flex; justify-content: center; margin: 1.5rem auto;">
-            <a href="https://www.youtube.com/@c.plot.twisters" target="_blank" rel="noopener" class="btn-primary"
-                style="display: inline-flex; align-items: center; justify-content: center; gap: 0 rem; font-size: 1rem; text-decoration: none;">
-                <i class="fab fa-youtube"></i> Visita il Canale e Iscriviti
-            </a>
-
-        </div>
-        </div>
-        </section>
+            </section>
 
         <hr style="border:none; border-top:1px solid var(--border); margin:4rem 0;">
 
@@ -155,39 +104,8 @@
             </div>
 
             <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; align-items:flex-start;">
-                <!-- Video Reel — carica il tuo .mp4 oppure clicca il pulsante per vederlo su IG -->
-                <div style="flex:1; min-width:280px; max-width:380px;">
-                    <div
-                        style="width:100%; border-radius:var(--r-md); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-sm); background:var(--ivory-2);">
-                        <div
-                            style="padding:1rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:0.75rem;">
-                            <div
-                                style="width:36px; height:36px; background:linear-gradient(135deg, var(--lilac-deep), #E1306C); border-radius:50%; display:flex; align-items:center; justify-content:center;">
-                                <i class="fab fa-instagram" style="color:white; font-size:1rem;"></i>
-                            </div>
-                            <div>
-                                <div style="font-weight:700; font-size:0.85rem; color:var(--plum);">c.plot.twisters
-                                </div>
-                                <div style="font-size:0.75rem; color:var(--plum-light);">Reel</div>
-                            </div>
-                        </div>
-                        <!-- Video locale — sostituisci src="reel-1.mp4" con il tuo file -->
-                        <div
-                            style="aspect-ratio:9/16; max-height:500px; overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center;">
-                            <video src="reel.mp4" controls width="100%" height="100%" poster="pt.jpeg"
-                                style="object-fit:cover;">
-                                Il tuo browser non supporta il tag video.
-                            </video>
-                        </div>
-                        <div style="padding:1rem; text-align:center;">
-                            <a href="https://www.instagram.com/reel/DYoqs3MiRTX/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-                                target="_blank" rel="noopener"
-                                style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1.25rem; border-radius:999px; background:linear-gradient(135deg, #f09433, #dc2743, #bc1888); color:white; font-weight:700; text-decoration:none; font-size:0.8rem;">
-                                <i class="fab fa-instagram"></i> Guarda su Instagram
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <!-- Container dinamico Reel IG — popolato da script.js -->
+                <div id="news-ig-container" style="flex:1; min-width:280px; max-width:380px;"></div>
 
                 <!-- Box "Segui su IG" -->
                 <div style="flex:1; min-width:280px; max-width:380px; display:flex; flex-direction:column; gap:1.5rem;">
@@ -254,55 +172,9 @@
                 <p>Tutto quello che devi sapere prima del prossimo incontro</p>
             </div>
 
-            <div style="display:flex; flex-direction:column; gap:1.25rem; max-width:750px; margin:0 auto;">
-                <!-- Avviso 1 -->
-                <div
-                    style="display:flex; gap:1.25rem; background:var(--ivory-2); border-radius:var(--r-md); padding:1.5rem; border-left:4px solid var(--lilac-deep); border-top:1px solid var(--border); border-right:1px solid var(--border); border-bottom:1px solid var(--border);">
-                    <div style="font-size:1.75rem; flex-shrink:0;">📖</div>
-                    <div>
-                        <div
-                            style="font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color:var(--lilac-deep); font-weight:700; margin-bottom:0.3rem;">
-                            Lettura del Mese</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.4rem;">Stiamo leggendo <em>"Get to You"</em> di
-                            Sara Rampado</h4>
-                        <p style="font-size:0.88rem; color:var(--plum-dark); margin:0; line-height:1.6;">Prepara il
-                            tuo diario di lettura! Parleremo del libro al prossimo incontro. Tieniti pronta con i
-                            tuoi pensieri e le tue teorie preferite 💜</p>
-                    </div>
-                </div>
-                <!-- Avviso 2 -->
-                <div
-                    style="display:flex; gap:1.25rem; background:var(--ivory-2); border-radius:var(--r-md); padding:1.5rem; border-left:4px solid #f5a623; border-top:1px solid var(--border); border-right:1px solid var(--border); border-bottom:1px solid var(--border);">
-                    <div style="font-size:1.75rem; flex-shrink:0;">🎨</div>
-                    <div>
-                        <div
-                            style="font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color:#c47a00; font-weight:700; margin-bottom:0.3rem;">
-                            Evento Speciale · 30-31 Maggio</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.4rem;">After Book al Museo Campano — Ingresso Libero!
-                        </h4>
-                        <p style="font-size:0.88rem; color:var(--plum-dark); margin:0; line-height:1.6;">Porta con
-                            te un amico, un pennello o semplicemente la tua curiosità. La libreria apre le porte
-                            all'arte in tutte le sue forme per due serate indimenticabili.</p>
-                    </div>
-                </div>
-                <!-- Avviso 3 -->
-                <div
-                    style="display:flex; gap:1.25rem; background:var(--ivory-2); border-radius:var(--r-md); padding:1.5rem; border-left:4px solid #1DB954; border-top:1px solid var(--border); border-right:1px solid var(--border); border-bottom:1px solid var(--border);">
-                    <div style="font-size:1.75rem; flex-shrink:0;">🎵</div>
-                    <div>
-                        <div
-                            style="font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color:#1DB954; font-weight:700; margin-bottom:0.3rem;">
-                            Playlist Aggiornata</div>
-                        <h4 style="font-size:1rem; margin-bottom:0.4rem;">La playlist da lettura è stata aggiornata!
-                        </h4>
-                        <p style="font-size:0.88rem; color:var(--plum-dark); margin:0; line-height:1.6;">Nuovi brani
-                            aggiunti per le sessioni di lettura di questo mese. Perfetta per leggere "Get to You" in
-                            atmosfera! <a
-                                href="https://open.spotify.com/playlist/6fl1qtLXPhmt9OuxHhkpZP?si=1fb8b8e379eb4c6a"
-                                target="_blank" rel="noopener" style="color:var(--lilac-deep); font-weight:600;">Ascolta
-                                su Spotify →</a></p>
-                    </div>
-                </div>
+            <!-- Container dinamico Avvisi — popolato da script.js -->
+            <div id="news-notices-container" style="display:flex; flex-direction:column; gap:1.25rem; max-width:750px; margin:0 auto;">
+                <!-- Avvisi caricati dinamicamente -->
             </div>
         </section>
 
