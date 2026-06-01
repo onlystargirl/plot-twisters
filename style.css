@@ -4346,3 +4346,87 @@ a:has(.book-3d-wrap):hover {
         font-size: 1.3rem !important;
     }
 }
+
+/* ─── EXTRA MOBILE & TABLET LAYOUT REFINEMENTS (NEW) ─── */
+@media (max-width: 768px) {
+    /* Stacking event/review details headers cleanly */
+    .bento-box > div[style*="display:flex"][style*="justify-content:space-between"],
+    .bento-box > div[style*="display: flex"][style*="justify-content:space-between"],
+    .bento-box > div[style*="display:flex"][style*="justify-content: space-between"],
+    .bento-box > div[style*="display: flex"][style*="justify-content: space-between"],
+    .bento-box > div[style*="display:flex"][style*="gap:2rem"],
+    .bento-box > div[style*="display: flex"][style*="gap:2rem"],
+    .bento-box > div[style*="display:flex"][style*="gap:1.5rem"],
+    .bento-box > div[style*="display: flex"][style*="gap:1.5rem"] {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+    }
+
+    .bento-box div[style*="display:flex"][style*="gap:2rem"],
+    .bento-box div[style*="display: flex"][style*="gap:2rem"],
+    .bento-box div[style*="display:flex"][style*="gap:1.5rem"],
+    .bento-box div[style*="display: flex"][style*="gap:1.5rem"] {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 1rem !important;
+    }
+
+    .bento-box div[style*="text-align:right"],
+    .bento-box div[style*="text-align: right"] {
+        text-align: center !important;
+        margin-top: 0.5rem !important;
+    }
+
+    /* Fixing dashboard top bar header wrap and alignment */
+    .dash-top-bar {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .dash-top-bar div[style*="font-size:0.82rem"],
+    .dash-top-bar div[style*="font-size: 0.82rem"] {
+        font-size: 0.75rem !important;
+        text-align: center !important;
+    }
+
+    /* Fixing current read section text block */
+    .bento-current-read div[style*="min-width:280px"],
+    .bento-current-read div[style*="min-width: 280px"] {
+        min-width: 100% !important;
+    }
+
+    /* Star rating selector on dashboard and single reviews */
+    .star-rating {
+        justify-content: center !important;
+    }
+
+    /* Center iframe maps */
+    iframe[src*="maps"] {
+        max-width: 100% !important;
+        height: 240px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Force all layout-level multi-column grids styled inline to collapse to 1 column on phone */
+    [style*="display:grid"], [style*="display: grid"] {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+    }
+    
+    #dynamic-books-archive, #novita-upcoming-events {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* About stats flex centering */
+    .about-text-col div[style*="display:flex"],
+    .about-text-col div[style*="display: flex"] {
+        justify-content: center !important;
+        gap: 1rem !important;
+    }
+}
