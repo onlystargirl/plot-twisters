@@ -519,6 +519,40 @@
                             <i class="fas fa-plus"></i> Aggiungi Libro
                         </button>
                     </div>
+
+                    <div class="bento-box">
+                        <span class="bento-tag">video & reel</span>
+                        <h3 style="margin-bottom:1rem;">Video in Evidenza (News)</h3>
+                        <div class="input-group"><label for="admin-yt-caption">Didascalia YouTube</label><input type="text" id="admin-yt-caption" placeholder="Didascalia..."></div>
+                        <div class="input-group"><label for="admin-yt-link">Link Video YouTube</label><input type="url" id="admin-yt-link" placeholder="https://youtube.com/..."></div>
+                        <div class="input-group"><label for="admin-yt-cover">URL Copertina YouTube</label><input type="text" id="admin-yt-cover" placeholder="pt.jpeg o link url"></div>
+                        <div class="input-group"><label for="admin-ig-video">Video Reel (.mp4)</label><input type="text" id="admin-ig-video" placeholder="reel.mp4 o link url"></div>
+                        <div class="input-group"><label for="admin-ig-link">Link Instagram Reel</label><input type="url" id="admin-ig-link" placeholder="https://instagram.com/..."></div>
+                        <button class="btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;" onclick="updateNewsMedia()">
+                            <i class="fas fa-save"></i> Salva Media
+                        </button>
+                    </div>
+
+                    <div class="bento-box" style="grid-column: 1 / -1;">
+                        <span class="bento-tag">avvisi news</span>
+                        <h3 style="margin-bottom:1rem;">Gestione Bacheca Avvisi</h3>
+                        
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:1rem;" class="admin-form-grid">
+                            <div class="input-group"><label for="admin-notice-icon">Emoji Icona (es. 📖, 🎨, 🎵)</label><input type="text" id="admin-notice-icon" placeholder="📖"></div>
+                            <div class="input-group"><label for="admin-notice-tag">Categoria / Tag</label><input type="text" id="admin-notice-tag" placeholder="es. Lettura del Mese"></div>
+                        </div>
+                        <div class="input-group"><label for="admin-notice-title">Titolo Avviso</label><input type="text" id="admin-notice-title" placeholder="Titolo dell'avviso"></div>
+                        <div class="input-group"><label for="admin-notice-desc">Testo dell'Avviso (HTML consentito)</label><textarea id="admin-notice-desc" rows="3" placeholder="Contenuto dell'avviso..."></textarea></div>
+                        
+                        <button class="btn-primary" style="width:100%;justify-content:center;margin-bottom:1.5rem;" onclick="addNewsNotice()">
+                            <i class="fas fa-plus"></i> Aggiungi Avviso
+                        </button>
+                        
+                        <h4 style="margin-bottom:0.75rem; color:var(--plum);">Avvisi Correnti</h4>
+                        <div id="admin-notices-list" style="display:flex; flex-direction:column; gap:0.5rem; max-height:300px; overflow-y:auto; padding-right:0.25rem;">
+                            <!-- Popolato da JS -->
+                        </div>
+                    </div>
                 </div>
             </div>
 

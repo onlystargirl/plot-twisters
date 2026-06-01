@@ -14,10 +14,33 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .form-field {
-            margin-bottom: 1.25rem;
+        /* ── Login page layout ── */
+        .login-page {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
         }
 
+        /* ── Form side ── */
+        .login-form-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 3rem 2.5rem;
+            background: var(--surface-2);
+            overflow-y: auto;
+            min-height: 100vh;
+        }
+
+        .login-form-card {
+            width: 100%;
+            max-width: 420px;
+            padding-top: 1rem;
+        }
+
+        /* ── Back link ── */
         .login-back {
             display: inline-flex;
             align-items: center;
@@ -29,69 +52,139 @@
             transition: transform 0.3s var(--ease);
             text-decoration: none;
         }
+        .login-back:hover { transform: translateX(-4px); }
 
-        .login-back:hover {
-            transform: translateX(-4px);
+        /* ── User grid ── */
+        .select-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--plum-light);
+            margin-bottom: 0.75rem;
+            display: block;
         }
 
-        /* User selector pills */
-        .user-selector {
-            display: flex;
-            flex-wrap: wrap;
+        /* Grid a 2 colonne su mobile, 3 su desktop */
+        .user-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        @media (min-width: 500px) {
+            .user-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         .user-pill {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
+            padding: 0.65rem 0.75rem;
+            border-radius: var(--r-sm, 8px);
             border: 2px solid var(--border);
             background: var(--white);
             color: var(--plum-dark);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.25s var(--ease);
-            flex-shrink: 0;
+            transition: all 0.2s ease;
+            text-align: left;
+            width: 100%;
+            /* Minimum touch target */
+            min-height: 44px;
         }
 
         .user-pill:hover {
             border-color: var(--lilac-mid);
             background: var(--ivory-2);
+            transform: translateY(-1px);
         }
 
         .user-pill.selected {
             border-color: var(--lilac-deep);
             background: var(--lilac-deep);
             color: white;
+            box-shadow: 0 4px 12px rgba(115, 86, 190, 0.3);
         }
 
         .user-pill .avatar-sm {
             width: 1.6rem;
             height: 1.6rem;
+            min-width: 1.6rem;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.25);
+            background: var(--lilac-pale, rgba(179,160,221,0.2));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
+            color: var(--lilac-deep);
         }
 
         .user-pill.selected .avatar-sm {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255,255,255,0.25);
+            color: white;
         }
 
-        .select-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--plum-light);
-            margin-bottom: 0.6rem;
+        .pill-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+        }
+
+        /* ── Form fields ── */
+        .form-field { margin-bottom: 1.25rem; }
+
+        /* ── Mobile overrides ── */
+        @media (max-width: 640px) {
+            .login-deco { display: none !important; }
+            .login-page  { grid-template-columns: 1fr !important; }
+
+            .login-form-side {
+                padding: 1.5rem 1.25rem;
+                align-items: stretch;
+                justify-content: flex-start;
+            }
+
+            .login-form-card {
+                max-width: 100%;
+                padding-top: 0.5rem;
+            }
+
+            .login-back { margin-bottom: 1.25rem; }
+
+            /* Titolo più compatto */
+            .login-form-card h1 {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+                margin-bottom: 0.4rem;
+            }
+
+            .login-form-card .login-form-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 1.25rem;
+            }
+
+            /* Griglia nomi: 2 colonne sempre su telefono */
+            .user-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.4rem;
+            }
+
+            .user-pill {
+                padding: 0.55rem 0.6rem;
+                font-size: 0.82rem;
+                min-height: 42px;
+            }
+
+            .user-pill .avatar-sm {
+                width: 1.4rem;
+                height: 1.4rem;
+                min-width: 1.4rem;
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
@@ -118,7 +211,7 @@
             <div class="login-form-card">
 
                 <a href="index.html" class="login-back" title="Torna alla Homepage">
-                    <i class="fas fa-arrow-left"></i> Torna alla Home
+                    <i class="fas fa-arrow-left"></i> Home
                 </a>
 
                 <h1>Benvenuta <em>di nuovo</em></h1>
@@ -127,12 +220,10 @@
                 <form class="login-form" id="login-form" novalidate>
 
                     <!-- Selezione Utente -->
-                    <div style="margin-bottom:1.5rem;">
-                        <p class="select-label">Chi sei?</p>
-                        <div id="user-scroll" class="user-scroll"
-                            style="margin-bottom:1.5rem; overflow-x:auto; white-space:nowrap;">
-                            <!-- User pills will be populated by login.js -->
-                        </div>
+                    <div style="margin-bottom:1.25rem;">
+                        <span class="select-label">Chi sei? 👇</span>
+                        <!-- User pills popolate da login.js -->
+                        <div id="user-scroll" class="user-grid"></div>
                     </div>
 
                     <!-- Password -->
@@ -148,16 +239,16 @@
                     </div>
 
                     <button type="submit" class="btn-primary login-submit" id="login-submit-btn"
-                        style="width:100%;justify-content:center;">
+                        style="width:100%;justify-content:center;min-height:48px;">
                         Accedi <i class="fas fa-arrow-right"></i>
                     </button>
                 </form>
 
-                <p class="login-footer-note" style="margin-top:1.5rem;font-size:0.85rem;color:var(--plum-light);">
+                <p style="margin-top:1.25rem;font-size:0.82rem;color:var(--plum-light);line-height:1.5;">
                     Non trovi il tuo nome o hai dimenticato la password? Contatta le admin! 🔑
                 </p>
 
-                <div style="margin-top:2rem;display:flex;justify-content:center;">
+                <div style="margin-top:1.5rem;display:flex;justify-content:center;">
                     <button class="theme-toggle" id="theme-toggle-login" title="Cambia tema">🌙</button>
                 </div>
             </div>

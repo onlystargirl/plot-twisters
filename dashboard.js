@@ -71,6 +71,11 @@ window.addEventListener('DOMContentLoaded', () => {
     loadLeaderboard();
     loadPdfs();
     
+    if (isAdmin) {
+        loadNewsMediaAdmin();
+        loadNewsNoticesAdmin();
+    }
+    
     // Inizializza stelle
     setRating(5);
 });
@@ -723,6 +728,152 @@ window.addBookToArchive = function() {
     ['admin-archive-id', 'admin-archive-title', 'admin-archive-author', 'admin-archive-cover', 'admin-archive-stars', 'admin-archive-rating', 'admin-archive-desc'].forEach(fieldId => {
         document.getElementById(fieldId).value = '';
     });
+};
+
+// ─── GESTIONE DINAMICA NEWS & AVVISI (ADMIN) ───
+window.loadNewsMediaAdmin = function() {
+    const raw = localStorage.getItem('pt-news-media');
+    let media = {
+        ytCaption: '🎬 Guarda l\'After-Book in Cucina #1 dei Plot Twisters!',
+        ytCover: 'pt.jpeg',
+        ytLink: 'https://www.youtube.com/watch?v=DqMhcxTwcLA',
+        igVideo: 'reel.mp4',
+        igCover: 'pt.jpeg',
+        igLink: 'https://www.instagram.com/reel/DYoqs3MiRTX/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
+    };
+    if (raw) {
+        try { Object.assign(media, JSON.parse(raw)); } catch(e) {}
+    } else {
+        localStorage.setItem('pt-news-media', JSON.stringify(media));
+    }
+
+    const captionEl = document.getElementById('admin-yt-caption');
+    const linkEl = document.getElementById('admin-yt-link');
+    const coverEl = document.getElementById('admin-yt-cover');
+    const videoEl = document.getElementById('admin-ig-video');
+    const igLinkEl = document.getElementById('admin-ig-link');
+
+    if (captionEl) captionEl.value = media.ytCaption || '';
+    if (linkEl) linkEl.value = media.ytLink || '';
+    if (coverEl) coverEl.value = media.ytCover || '';
+    if (videoEl) videoEl.value = media.igVideo || '';
+    if (igLinkEl) igLinkEl.value = media.igLink || '';
+};
+
+window.updateNewsMedia = function() {
+    const media = {
+        ytCaption: document.getElementById('admin-yt-caption').value.trim(),
+        ytLink: document.getElementById('admin-yt-link').value.trim(),
+        ytCover: document.getElementById('admin-yt-cover').value.trim(),
+        igVideo: document.getElementById('admin-ig-video').value.trim(),
+        igLink: document.getElementById('admin-ig-link').value.trim()
+    };
+
+    localStorage.setItem('pt-news-media', JSON.stringify(media));
+    alert('Media bacheca news aggiornati con successo! ✦');
+};
+
+window.loadNewsNoticesAdmin = function() {
+    const container = document.getElementById('admin-notices-list');
+    if (!container) return;
+
+    let notices = [];
+    const raw = localStorage.getItem('pt-news-notices');
+    if (raw) {
+        try { notices = JSON.parse(raw); } catch(e) {}
+    } else {
+        // Popola di default
+        notices = [
+            {
+                id: 'notice-1',
+                icon: '📖',
+                tag: 'Lettura del Mese',
+                title: 'Stiamo leggendo <em>"Get to You"</em> di Sara Rampado',
+                desc: 'Prepara il tuo diario di lettura! Parleremo del libro al prossimo incontro. Tieniti pronta con i tuoi pensieri e le deine teorie preferite 💜'
+            },
+            {
+                id: 'notice-2',
+                icon: '🎨',
+                tag: 'Evento Speciale · 30-31 Maggio',
+                title: 'After Book al Museo Campano — Ingresso Libero!',
+                desc: 'Porta con te un amico, un pennello o semplicemente la tua curiosità. La libreria apre le porte all\'arte in tutte le sei forme per due serate indimenticabili.'
+            },
+            {
+                id: 'notice-3',
+                icon: '🎵',
+                tag: 'Playlist Aggiornata',
+                title: 'La playlist da lettura è stata aggiornata!',
+                desc: 'Nuovi brani aggiunti per le sessioni di lettura di questo mese. Perfetta per leggere "Get to You" in atmosfera! <a href="https://open.spotify.com/playlist/6fl1qtLXPhmt9OuxHhkpZP?si=1fb8b8e379eb4c6a" target="_blank" rel="noopener" style="color:var(--lilac-deep); font-weight:600;">Ascolta su Spotify →</a>'
+            }
+        ];
+        localStorage.setItem('pt-news-notices', JSON.stringify(notices));
+    }
+
+    if (notices.length === 0) {
+        container.innerHTML = '<p style="font-size:0.85rem; color:var(--plum-light); text-align:center;">Nessun avviso in bacheca.</p>';
+        return;
+    }
+
+    container.innerHTML = notices.map(n => `
+        <div style="display:flex; justify-content:space-between; align-items:center; background:var(--ivory-2); border:1px solid var(--border); padding:0.75rem; border-radius:var(--r-sm); gap:1rem;">
+            <div style="font-size:0.82rem; min-width:0; color:var(--plum-dark);">
+                <strong>${n.icon || '📌'} [${escHtml(n.tag)}]</strong> ${escHtml(n.title.replace(/<[^>]*>/g, ''))}
+            </div>
+            <button class="wish-delete" onclick="deleteNewsNotice('${n.id}')" title="Rimuovi avviso">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+    `).join('');
+};
+
+window.addNewsNotice = function() {
+    const icon = document.getElementById('admin-notice-icon').value.trim() || '📌';
+    const tag = document.getElementById('admin-notice-tag').value.trim() || 'Bacheca';
+    const title = document.getElementById('admin-notice-title').value.trim();
+    const desc = document.getElementById('admin-notice-desc').value.trim();
+
+    if (!title || !desc) {
+        alert('Titolo e testo dell\'avviso sono obbligatori!');
+        return;
+    }
+
+    let notices = [];
+    try {
+        notices = JSON.parse(localStorage.getItem('pt-news-notices') || '[]');
+    } catch(e) {}
+
+    const newNotice = {
+        id: 'notice-' + Date.now(),
+        icon,
+        tag,
+        title,
+        desc
+    };
+
+    notices.push(newNotice);
+    localStorage.setItem('pt-news-notices', JSON.stringify(notices));
+    alert('Avviso aggiunto in bacheca! ✦');
+
+    // Pulisci campi
+    ['admin-notice-icon', 'admin-notice-tag', 'admin-notice-title', 'admin-notice-desc'].forEach(id => {
+        document.getElementById(id).value = '';
+    });
+
+    loadNewsNoticesAdmin();
+};
+
+window.deleteNewsNotice = function(id) {
+    if (!confirm('Sei sicura di voler eliminare questo avviso?')) return;
+
+    let notices = [];
+    try {
+        notices = JSON.parse(localStorage.getItem('pt-news-notices') || '[]');
+    } catch(e) {}
+
+    notices = notices.filter(n => n.id !== id);
+    localStorage.setItem('pt-news-notices', JSON.stringify(notices));
+
+    loadNewsNoticesAdmin();
 };
 
 // ─── UTILS ────────────────────────────────────────────────────
