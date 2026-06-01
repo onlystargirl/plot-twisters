@@ -683,6 +683,48 @@ window.downloadNewsletter = function() {
     link.click();
 };
 
+window.addBookToArchive = function() {
+    const id = document.getElementById('admin-archive-id').value.trim();
+    const title = document.getElementById('admin-archive-title').value.trim();
+    const author = document.getElementById('admin-archive-author').value.trim();
+    const cover = document.getElementById('admin-archive-cover').value.trim();
+    const stars = document.getElementById('admin-archive-stars').value.trim() || '★★★★★';
+    const rating = document.getElementById('admin-archive-rating').value.trim() || '5.0';
+    const desc = document.getElementById('admin-archive-desc').value.trim();
+
+    if (!id || !title || !author) {
+        alert('ID, Titolo e Autore sono obbligatori!');
+        return;
+    }
+
+    let books = [];
+    try {
+        books = JSON.parse(localStorage.getItem('pt-books') || '[]');
+    } catch (e) { }
+
+    // Controlla se esiste già
+    const existingIndex = books.findIndex(b => b.id === id);
+    const newBook = { id, title, author, cover, stars, rating, desc };
+
+    if (existingIndex >= 0) {
+        if (confirm('Esiste già un libro con questo ID. Vuoi sovrascriverlo?')) {
+            books[existingIndex] = newBook;
+        } else {
+            return;
+        }
+    } else {
+        books.push(newBook);
+    }
+
+    localStorage.setItem('pt-books', JSON.stringify(books));
+    alert("Libro aggiunto all'archivio! ✦");
+    
+    // Pulisci i campi
+    ['admin-archive-id', 'admin-archive-title', 'admin-archive-author', 'admin-archive-cover', 'admin-archive-stars', 'admin-archive-rating', 'admin-archive-desc'].forEach(fieldId => {
+        document.getElementById(fieldId).value = '';
+    });
+};
+
 // ─── UTILS ────────────────────────────────────────────────────
 function escHtml(str) {
     return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');

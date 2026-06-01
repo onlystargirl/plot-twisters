@@ -504,6 +504,21 @@
                             <i class="fas fa-download"></i> Scarica CSV
                         </button>
                     </div>
+
+                    <div class="bento-box">
+                        <span class="bento-tag">nuovo libro</span>
+                        <h3 style="margin-bottom:1rem;">Aggiungi Libro all'Archivio</h3>
+                        <div class="input-group"><label for="admin-archive-id">ID URL (es. nuovo-libro)</label><input type="text" id="admin-archive-id" placeholder="id-senza-spazi"></div>
+                        <div class="input-group"><label for="admin-archive-title">Titolo</label><input type="text" id="admin-archive-title" placeholder="Titolo del libro"></div>
+                        <div class="input-group"><label for="admin-archive-author">Autrice</label><input type="text" id="admin-archive-author" placeholder="Autrice"></div>
+                        <div class="input-group"><label for="admin-archive-cover">URL Copertina</label><input type="url" id="admin-archive-cover" placeholder="https://..."></div>
+                        <div class="input-group"><label for="admin-archive-stars">Stelle (es. ★★★★★)</label><input type="text" id="admin-archive-stars" placeholder="★★★★★"></div>
+                        <div class="input-group"><label for="admin-archive-rating">Voto Medio (es. 4.5)</label><input type="number" id="admin-archive-rating" step="0.1" min="0" max="5" placeholder="4.5"></div>
+                        <div class="input-group"><label for="admin-archive-desc">Recensione (HTML consentito)</label><textarea id="admin-archive-desc" rows="4" placeholder="<p>Recensione...</p>"></textarea></div>
+                        <button class="btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;" onclick="addBookToArchive()">
+                            <i class="fas fa-plus"></i> Aggiungi Libro
+                        </button>
+                    </div>
                 </div>
             </div>
 
