@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
         populateDefaultReviews();
     }
 
+    // Inizializza archivio libri di default se non presenti in localStorage
+    if (!localStorage.getItem('pt-books')) {
+        populateDefaultBooks();
+    }
+
     initTheme();
     initParticles();
     initNavbar();
@@ -29,9 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inizializzazioni per la Homepage
     if (document.getElementById('lettura-mese')) loadDynamicCurrentBook();
-    if (document.getElementById('upcoming-meetings')) loadUpcomingMeetings();
+    if (document.getElementById('upcoming-meetings') || document.getElementById('novita-upcoming-events')) loadUpcomingMeetings();
     if (document.getElementById('bookcrush-highlight')) loadBookCrushHighlight();
     if (document.getElementById('home-leaderboard')) loadLeaderboardHome();
+    
+    // Inizializzazione archivio libri
+    if (document.getElementById('dynamic-books-archive')) loadBooksArchive();
 });
 
 // ─── THEME TOGGLE ─────────────────────────────────────────────
@@ -117,8 +125,10 @@ function loadDynamicCurrentBook() {
 }
 
 function loadUpcomingMeetings() {
-    const container = document.getElementById('upcoming-meetings');
-    if (!container) return;
+    const homeContainer = document.getElementById('upcoming-meetings');
+    const novitaContainer = document.getElementById('novita-upcoming-events');
+    
+    if (!homeContainer && !novitaContainer) return;
 
     try {
         const raw = localStorage.getItem('pt-meetings');
@@ -128,32 +138,62 @@ function loadUpcomingMeetings() {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
+        // Filtra solo quelli di oggi o futuri
         const valid = meetings.filter(m => new Date(m.date) >= today);
         valid.sort((a, b) => new Date(a.date) - new Date(b.date));
 
         if (valid.length === 0) {
-            container.innerHTML = '<p style="color:var(--plum-light); font-size:0.9rem;">Nessun incontro in programma al momento.</p>';
+            if (homeContainer) {
+                homeContainer.innerHTML = '<p style="color:var(--plum-light); font-size:0.9rem;">Nessun incontro in programma al momento.</p>';
+            }
+            if (novitaContainer) {
+                novitaContainer.innerHTML = '<p style="color:var(--plum-light); font-size:0.9rem; grid-column: 1 / -1; text-align: center;">Nessun incontro in arrivo. Controlla presto le novità!</p>';
+            }
             return;
         }
 
-        // Mostra i prossimi 2 incontri
-        const toShow = valid.slice(0, 2);
-        container.innerHTML = toShow.map(m => {
-            const d = new Date(m.date);
-            const day = d.getDate();
-            const mon = d.toLocaleDateString('it-IT', { month: 'short' });
-            return `
-            <div style="display:flex; gap:1rem; align-items:center; background:var(--ivory-2); padding:1rem; border-radius:var(--r-sm); border:1px solid var(--border); margin-bottom:0.75rem;">
-                <div style="text-align:center; background:var(--lilac-deep); color:white; border-radius:var(--r-sm); padding:0.5rem; min-width:4.5rem;">
-                    <div style="font-size:1.5rem; font-weight:700; line-height:1;">${day}</div>
-                    <div style="font-size:0.7rem; text-transform:uppercase;">${mon}</div>
-                </div>
-                <div>
-                    <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.25rem;">${escHtml(m.title)}</h4>
-                    <p style="font-size:0.82rem; color:var(--plum-light);"><i class="fas fa-clock"></i> ${escHtml(m.time)} • <i class="fas fa-map-marker-alt"></i> ${escHtml(m.location)}</p>
-                </div>
-            </div>`;
-        }).join('');
+        // Home: mostra massimo 2 eventi
+        if (homeContainer) {
+            const homeShow = valid.slice(0, 2);
+            homeContainer.innerHTML = homeShow.map(m => {
+                const d = new Date(m.date);
+                const day = d.getDate();
+                const mon = d.toLocaleDateString('it-IT', { month: 'short' });
+                return `
+                <div style="display:flex; gap:1rem; align-items:center; background:var(--ivory-2); padding:1rem; border-radius:var(--r-sm); border:1px solid var(--border); margin-bottom:0.75rem;">
+                    <div style="text-align:center; background:var(--lilac-deep); color:white; border-radius:var(--r-sm); padding:0.5rem; min-width:4.5rem;">
+                        <div style="font-size:1.5rem; font-weight:700; line-height:1;">${day}</div>
+                        <div style="font-size:0.7rem; text-transform:uppercase;">${mon}</div>
+                    </div>
+                    <div>
+                        <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.25rem;">${escHtml(m.title)}</h4>
+                        <p style="font-size:0.82rem; color:var(--plum-light);"><i class="fas fa-clock"></i> ${escHtml(m.time)} • <i class="fas fa-map-marker-alt"></i> ${escHtml(m.location)}</p>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // Novità: mostra tutti i validi nel layout bento
+        if (novitaContainer) {
+            novitaContainer.innerHTML = valid.map(m => {
+                const d = new Date(m.date);
+                const day = d.getDate();
+                const mon = d.toLocaleDateString('it-IT', { month: 'short' });
+                return `
+                <div class="bento-box" style="background: var(--ivory-2); padding: 1.5rem; border: 1px solid var(--border); display: flex; gap: 1.25rem; align-items: center; width: 100%; box-sizing: border-box;">
+                    <div style="background: var(--lilac-deep); color: white; border-radius: var(--r-sm); padding: 0.75rem; text-align: center; min-width: 60px; flex-shrink: 0;">
+                        <div style="font-size: 1.6rem; font-weight: 800; line-height: 1;">${day}</div>
+                        <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">${mon}</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--plum-light); margin-bottom: 0.2rem;">
+                            Prossimamente ✦</div>
+                        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem;">${escHtml(m.title)}</h4>
+                        <p style="font-size: 0.82rem; color: var(--plum-light); margin: 0;">ore ${escHtml(m.time)} · ${escHtml(m.location)}</p>
+                    </div>
+                </div>`;
+            }).join('');
+        }
 
     } catch (e) {
         console.warn('Errore lettura incontri:', e);
@@ -541,51 +581,21 @@ function loadSingleReview() {
     const params = new URLSearchParams(window.location.search);
     const bookKey = params.get('book') || 'shatter-me';
 
-    const booksData = {
-        'shatter-me': {
-            title: 'Shatter Me',
-            author: 'Tahereh Mafi',
-            cover: 'https://m.media-amazon.com/images/I/710p8hFwd9L._AC_UF1000,1000_QL80_.jpg',
-            stars: '★★★★☆',
-            rating: '4.2',
-            desc: `<p style="margin-bottom:1.5rem;">"Shatter Me" è stato uno dei libri più divisivi del nostro club. Da una parte lo stile di scrittura di Tahereh Mafi, poetico, frammentato, quasi claustrofobico all'inizio, ci ha catturate e costrette a metterci nei panni di Juliette. I suoi pensieri barrati sono stati un colpo di genio per mostrarci la sua salute mentale fragile.</p>
-            <p style="margin-bottom:1.5rem;">Ma parliamo di quello che ha animato davvero il gruppo: <strong>Aaron Warner e Adam Kent</strong>. Il dibattito in libreria è stato acceso! Molte di noi non sopportano Adam (troppo protettivo, quasi asfissiante in certi momenti), mentre il fascino letale e i traumi complessi di Warner hanno conquistato una buona metà del club (sì, abbiamo un debole per i villain moralmente grigi!).</p>
-            <p style="margin-bottom:1.5rem;">La trama distopica a volte fa da sfondo alle dinamiche romantiche e interiori dei personaggi, e questo può non piacere a tutti, ma per le amanti del character-driven romance, questo libro è una droga.</p>
-            <p><em>In breve:</em> Preparati emotivamente. E se non ti convince al primo libro... aspetta di leggere "Ignite Me". La vera magia inizia lì!</p>`
-        },
-        'brave-ragazze': {
-            title: 'Come uccidono le brave ragazze',
-            author: 'Holly Jackson',
-            cover: 'https://www.letture.org/wp-content/uploads/2022/09/come-uccidono-le-brave-ragazze-holly-jackson-copertina.jpeg',
-            stars: '★★★★★',
-            rating: '4.7',
-            desc: `<p style="margin-bottom:1.5rem;">Un thriller ad altissima tensione che ci ha tenute incollate alle pagine! Il caso di Andie Bell e Sal Singh a Little Kilton è gestito con un ritmo serratissimo. Abbiamo adorato Pip, la nostra giovane investigatrice tenace, intelligente ed estremamente determinata.</p>
-            <p style="margin-bottom:1.5rem;">I colpi di scena finali ci hanno lasciate senza fiato durante l'incontro in libreria! È stata una delle discussioni più animate, in cui ognuna di noi ha cercato di indovinare il colpevole fino all'ultima riga. Consigliatissimo per chi ama i misteri adrenalinici.</p>
-            <p><em>In breve:</em> Un ritmo pazzesco, indizi disseminati in modo geniale ed una protagonista indimenticabile. Non riuscirai a smettere di leggere!</p>`
-        },
-        'e-poi-ci-sono-io': {
-            title: 'E poi ci sono io',
-            author: 'Kathleen Glasgow',
-            cover: 'https://m.media-amazon.com/images/I/71oxIHcsUZL.jpg',
-            stars: '★★★☆☆',
-            rating: '4.0',
-            desc: `<p style="margin-bottom:1.5rem;">Un romanzo profondo, crudo ed estremamente toccante. La storia di Charlie Davis e del suo percorso di guarigione e rinascita ci ha commosse ed emozionate tantissimo. Kathleen Glasgow affronta temi difficili e sensibili con una delicatezza e un'onestà disarmanti.</p>
-            <p style="margin-bottom:1.5rem;">È stata una lettura intensa, che ha stimolato riflessioni intime e importanti tra tutte le partecipanti del club. Uno dei libri più significativi e amati del nostro scaffale, che ci ha ricordato il valore del supporto reciproco.</p>
-            <p><em>In breve:</em> Una lettura toccante che lascia il segno, un inno alla rinascita ed alla speranza anche nei momenti più bui.</p>`
-        },
-        'but-santa-i-love-him': {
-            title: 'But Santa, I love him',
-            author: 'Hazel Riley & Karim B.',
-            cover: 'https://www.sperling.it/content/uploads/2025/10/978882008377HIG.JPG',
-            stars: '★★★★☆',
-            rating: '4.1',
-            desc: `<p style="margin-bottom:1.5rem;">La primissima lettura ufficiale del nostro club! Un delizioso calendario dell'avvento romance che ci ha riscaldato il cuore durante le feste natalizie.</p>
-            <p style="margin-bottom:1.5rem;">Con le sue atmosfere accoglienti, i segreti sotto il vischio e le dolci storie d'amore, ci ha fatto sognare ed è stato il perfetto punto d'inizio per la nostra magica cerchia letteraria. Discuterlo davanti a tazze di tisana calda e dolcetti natalizi alla Libreria Cose d'Interni ha reso tutto ancora più speciale.</p>
-            <p><em>In breve:</em> Un romance natalizio soffice, accattivante ed avvolgente, perfetto per iniziare l'avventura delle Plot Twisters!</p>`
+    let booksData = [];
+    try {
+        const rawBooks = localStorage.getItem('pt-books');
+        if (rawBooks) {
+            booksData = JSON.parse(rawBooks);
         }
-    };
+    } catch (e) {
+        console.warn('Errore lettura pt-books:', e);
+    }
 
-    const data = booksData[bookKey] || booksData['shatter-me'];
+    const data = booksData.find(b => b.id === bookKey);
+    if (!data) {
+        if (titleEl) titleEl.textContent = "Libro non trovato";
+        return;
+    }
 
     // Aggiorna elementi HTML
     if (pageTitleEl) pageTitleEl.innerHTML = `Recensione: <em>${escHtml(data.title)}</em>`;
@@ -854,5 +864,96 @@ function loadSingleEvent() {
                 };
             }
         });
+    }
+}
+
+// ─── GESTIONE ARCHIVIO LIBRI ─────────────────────────────────────
+function populateDefaultBooks() {
+    const defaultBooks = [
+        {
+            id: 'but-santa-i-love-him',
+            title: 'But Santa, I love him',
+            author: 'Hazel Riley & Karim B.',
+            cover: 'https://www.sperling.it/content/uploads/2025/11/978882008377HIG.JPG',
+            stars: '★★★★★',
+            rating: '4.1',
+            desc: `<p style="margin-bottom:1.5rem;">La primissima lettura ufficiale del nostro club! Un delizioso calendario dell'avvento romance che ci ha riscaldato il cuore durante le feste natalizie.</p>
+            <p style="margin-bottom:1.5rem;">Con le sue atmosfere accoglienti, i segreti sotto il vischio e le dolci storie d'amore, ci ha fatto sognare ed è stato il perfetto punto d'inizio per la nostra magica cerchia letteraria. Discuterlo davanti a tazze di tisana calda e dolcetti natalizi alla Libreria Cose d'Interni ha reso tutto ancora più speciale.</p>
+            <p><em>In breve:</em> Un romance natalizio soffice, accattivante ed avvolgente, perfetto per iniziare l'avventura delle Plot Twisters!</p>`
+        },
+        {
+            id: 'e-poi-ci-sono-io',
+            title: 'E poi ci sono io',
+            author: 'Kathleen Glasgow',
+            cover: 'https://m.media-amazon.com/images/I/71oxIHcsUZL.jpg',
+            stars: '★★★★★',
+            rating: '4.0',
+            desc: `<p style="margin-bottom:1.5rem;">Un romanzo profondo, crudo ed estremamente toccante. La storia di Charlie Davis e del suo percorso di guarigione e rinascita ci ha commosse ed emozionate tantissimo. Kathleen Glasgow affronta temi difficili e sensibili con una delicatezza e un'onestà disarmanti.</p>
+            <p style="margin-bottom:1.5rem;">È stata una lettura intensa, che ha stimolato riflessioni intime e importanti tra tutte le partecipanti del club. Uno dei libri più significativi e amati del nostro scaffale, che ci ha ricordato il valore del supporto reciproco.</p>
+            <p><em>In breve:</em> Una lettura toccante che lascia il segno, un inno alla rinascita ed alla speranza anche nei momenti più bui.</p>`
+        },
+        {
+            id: 'brave-ragazze',
+            title: 'Come uccidono le brave ragazze',
+            author: 'Holly Jackson',
+            cover: 'https://www.letture.org/wp-content/uploads/2022/09/come-uccidono-le-brave-ragazze-holly-jackson-copertina.jpeg',
+            stars: '★★★★☆',
+            rating: '4.7',
+            desc: `<p style="margin-bottom:1.5rem;">Un thriller ad altissima tensione che ci ha tenute incollate alle pagine! Il caso di Andie Bell e Sal Singh a Little Kilton è gestito con un ritmo serratissimo. Abbiamo adorato Pip, la nostra giovane investigatrice tenace, intelligente ed estremamente determinata.</p>
+            <p style="margin-bottom:1.5rem;">I colpi di scena finali ci hanno lasciate senza fiato durante l'incontro in libreria! È stata una delle discussioni più animate, in cui ognuna di noi ha cercato di indovinare il colpevole fino all'ultima riga. Consigliatissimo per chi ama i misteri adrenalinici.</p>
+            <p><em>In breve:</em> Un ritmo pazzesco, indizi disseminati in modo geniale ed una protagonista indimenticabile. Non riuscirai a smettere di leggere!</p>`
+        },
+        {
+            id: 'shatter-me',
+            title: 'Shatter Me',
+            author: 'Tahereh Mafi',
+            cover: 'https://m.media-amazon.com/images/I/710p8hFwd9L._AC_UF1000,1000_QL80_.jpg',
+            stars: '★★★★★',
+            rating: '4.2',
+            desc: `<p style="margin-bottom:1.5rem;">"Shatter Me" è stato uno dei libri più divisivi del nostro club. Da una parte lo stile di scrittura di Tahereh Mafi, poetico, frammentato, quasi claustrofobico all'inizio, ci ha catturate e costrette a metterci nei panni di Juliette. I suoi pensieri barrati sono stati un colpo di genio per mostrarci la sua salute mentale fragile.</p>
+            <p style="margin-bottom:1.5rem;">Ma parliamo di quello che ha animato davvero il gruppo: <strong>Aaron Warner e Adam Kent</strong>. Il dibattito in libreria è stato acceso! Molte di noi non sopportano Adam (troppo protettivo, quasi asfissiante in certi momenti), mentre il fascino letale e i traumi complessi di Warner hanno conquistato una buona metà del club (sì, abbiamo un debole per i villain moralmente grigi!).</p>
+            <p style="margin-bottom:1.5rem;">La trama distopica a volte fa da sfondo alle dinamiche romantiche e interiori dei personaggi, e questo può non piacere a tutti, ma per le amanti del character-driven romance, questo libro è una droga.</p>
+            <p><em>In breve:</em> Preparati emotivamente. E se non ti convince al primo libro... aspetta di leggere "Ignite Me". La vera magia inizia lì!</p>`
+        }
+    ];
+    localStorage.setItem('pt-books', JSON.stringify(defaultBooks));
+}
+
+function loadBooksArchive() {
+    const container = document.getElementById('dynamic-books-archive');
+    if (!container) return;
+
+    try {
+        const raw = localStorage.getItem('pt-books');
+        if (!raw) return;
+
+        const books = JSON.parse(raw);
+        if (books.length === 0) {
+            container.innerHTML = '<p style="text-align:center; color:var(--plum-light); grid-column:1/-1;">Nessun libro in archivio al momento.</p>';
+            return;
+        }
+
+        container.innerHTML = books.map(book => `
+            <div class="bento-box" style="background:var(--ivory-2); padding:1.5rem; text-align:center; border:1px solid var(--border);">
+                <div style="display:flex; justify-content:center; align-items:center; margin-bottom:1rem; width:100%; height:220px;">
+                    <div class="book-3d-wrap" style="transform: scale(0.75); margin: 0;">
+                        <div class="book-3d">
+                            <img src="${escHtml(book.cover)}" alt="${escHtml(book.title)}">
+                            <div class="book-pages"></div>
+                            <div class="book-spine"></div>
+                        </div>
+                    </div>
+                </div>
+                <h3 style="font-family:var(--font-display); font-size:1.4rem; margin-bottom:0.2rem;">${escHtml(book.title)}</h3>
+                <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1rem;">di ${escHtml(book.author)}</p>
+                <div style="display:flex; justify-content:center; gap:0.2rem; color:#f5a623; margin-bottom:1rem;">
+                    ${escHtml(book.stars)}
+                </div>
+                <a href="recensione-singola.html?book=${escHtml(book.id)}" class="btn-outline" style="width:100%; justify-content:center; padding:0.4rem;">Leggi Recensioni</a>
+            </div>
+        `).join('');
+
+    } catch (e) {
+        console.warn('Errore caricamento archivio libri:', e);
     }
 }
