@@ -52,10 +52,13 @@
             if (typeof window.loadReviews === 'function') window.loadReviews();
             if (typeof window.loadWishlist === 'function') window.loadWishlist();
             if (typeof window.loadMeetings === 'function') window.loadMeetings();
+            if (typeof window.loadEventsAdmin === 'function') window.loadEventsAdmin();
             if (typeof window.loadBookCrush === 'function') window.loadBookCrush();
             if (typeof window.loadLeaderboard === 'function') window.loadLeaderboard();
             if (typeof window.loadPdfs === 'function') window.loadPdfs();
             if (typeof window.loadCurrentBookAdmin === 'function') window.loadCurrentBookAdmin();
+            if (typeof window.loadNewsMediaAdmin === 'function') window.loadNewsMediaAdmin();
+            if (typeof window.loadNewsNoticesAdmin === 'function') window.loadNewsNoticesAdmin();
 
             // Script.js functions (Public pages)
             if (typeof window.loadDynamicCurrentBook === 'function' && (document.getElementById('lettura-mese') || document.querySelector('.current-book-title') || document.querySelector('.bento-book-cover'))) {

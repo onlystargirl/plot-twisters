@@ -158,23 +158,17 @@ function loadUpcomingMeetings() {
                 const d = new Date(m.date);
                 const day = isNaN(d) ? '✦' : d.getDate();
                 const mon = isNaN(d) ? '' : d.toLocaleDateString('it-IT', { month: 'short' });
-                const icon = m.icon || '📅';
-                const pageUrl = `evento-singolo.html?event=${m.id}`;
                 return `
-                <a href="${pageUrl}" style="text-decoration:none; color:inherit; display:block; margin-bottom:0.75rem;">
-                    <div style="display:flex; gap:1rem; align-items:center; background:var(--ivory-2); padding:1rem; border-radius:var(--r-sm); border:1px solid var(--border); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-                        <div style="text-align:center; background:var(--lilac-deep); color:white; border-radius:var(--r-sm); padding:0.5rem; min-width:4.5rem; flex-shrink:0;">
-                            <div style="font-size:1.5rem; font-weight:700; line-height:1;">${day}</div>
-                            <div style="font-size:0.7rem; text-transform:uppercase;">${mon}</div>
-                        </div>
-                        <div style="flex:1;">
-                            <div style="font-size:0.75rem; color:var(--lilac-deep); font-weight:600; margin-bottom:0.15rem;">${icon} Incontro Club</div>
-                            <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.25rem;">${escHtml(m.title)}</h4>
-                            <p style="font-size:0.82rem; color:var(--plum-light); margin:0;"><i class="fas fa-clock"></i> ${escHtml(m.time || '18:00')} • <i class="fas fa-map-marker-alt"></i> ${escHtml(m.location || 'Libreria Cose d\'Interni')}</p>
-                        </div>
-                        <div style="color:var(--lilac-mid); font-size:0.9rem; padding-right:0.5rem;">→</div>
+                <div style="display:flex; gap:1rem; align-items:center; background:var(--ivory-2); padding:1rem; border-radius:var(--r-sm); border:1px solid var(--border); margin-bottom:0.75rem;">
+                    <div style="text-align:center; background:var(--lilac-deep); color:white; border-radius:var(--r-sm); padding:0.5rem; min-width:4.5rem; flex-shrink:0;">
+                        <div style="font-size:1.5rem; font-weight:700; line-height:1;">${day}</div>
+                        <div style="font-size:0.7rem; text-transform:uppercase;">${mon}</div>
                     </div>
-                </a>`;
+                    <div style="flex:1;">
+                        <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.25rem;">${escHtml(m.title)}</h4>
+                        <p style="font-size:0.82rem; color:var(--plum-light); margin:0;"><i class="fas fa-clock"></i> ore ${escHtml(m.time || '18:00')} • <i class="fas fa-map-marker-alt"></i> ${escHtml(m.location || 'Libreria Cose d\'Interni')}</p>
+                    </div>
+                </div>`;
             }).join('');
         }
 
@@ -184,24 +178,19 @@ function loadUpcomingMeetings() {
                 const d = new Date(m.date);
                 const day = isNaN(d) ? '✦' : d.getDate();
                 const mon = isNaN(d) ? '' : d.toLocaleDateString('it-IT', { month: 'short' });
-                const icon = m.icon || '📅';
-                const pageUrl = `evento-singolo.html?event=${m.id}`;
                 return `
-                <a href="${pageUrl}" style="text-decoration:none; color:inherit; display:block; width:100%; box-sizing:border-box;">
-                    <div class="bento-box" style="background: var(--ivory-2); padding: 1.5rem; border: 1px solid var(--border); display: flex; gap: 1.25rem; align-items: center; width: 100%; box-sizing: border-box; transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-                        <div style="background: var(--lilac-deep); color: white; border-radius: var(--r-sm); padding: 0.75rem; text-align: center; min-width: 60px; flex-shrink: 0;">
-                            <div style="font-size: 1.6rem; font-weight: 800; line-height: 1;">${day}</div>
-                            <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">${mon}</div>
-                        </div>
-                        <div style="flex:1;">
-                            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--lilac-deep); font-weight:700; margin-bottom: 0.2rem;">
-                                ${icon} Prossimamente ✦</div>
-                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem;">${escHtml(m.title)}</h4>
-                            <p style="font-size: 0.82rem; color: var(--plum-light); margin: 0;">ore ${escHtml(m.time || '18:00')} · ${escHtml(m.location || 'Libreria Cose d\'Interni')}</p>
-                        </div>
-                        <div style="color:var(--lilac-mid); font-size:1.1rem;">→</div>
+                <div class="bento-box" style="background: var(--ivory-2); padding: 1.5rem; border: 1px solid var(--border); display: flex; gap: 1.25rem; align-items: center; width: 100%; box-sizing: border-box;">
+                    <div style="background: var(--lilac-deep); color: white; border-radius: var(--r-sm); padding: 0.75rem; text-align: center; min-width: 60px; flex-shrink: 0;">
+                        <div style="font-size: 1.6rem; font-weight: 800; line-height: 1;">${day}</div>
+                        <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">${mon}</div>
                     </div>
-                </a>`;
+                    <div style="flex:1;">
+                        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--lilac-deep); font-weight:700; margin-bottom: 0.2rem;">
+                            Prossimamente ✦</div>
+                        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem;">${escHtml(m.title)}</h4>
+                        <p style="font-size: 0.82rem; color: var(--plum-light); margin: 0;">ore ${escHtml(m.time || '18:00')} · ${escHtml(m.location || 'Libreria Cose d\'Interni')}</p>
+                    </div>
+                </div>`;
             }).join('');
         }
 
@@ -385,18 +374,10 @@ function renderCalendar(year, month) {
             cell.classList.add('has-event');
             cell.dataset.id = eventsForDay[0].id;
 
-            // click cell to navigate to single event page
+            // click cell to show encounter details popup modal
             cell.addEventListener('click', (e) => {
                 if (e.target.classList.contains('edit-event-btn')) return;
-                const eventMap = {
-                    'meet-shoah': 'evento-shoah.html',
-                    'meet-legal-talent': 'evento-legaltalent.html',
-                    'meet-placito-capua': 'evento-placito.html',
-                    'meet-notte-artisti': 'evento-afterbook.html',
-                    'meet-after-book': 'evento-afterbook.html'
-                };
-                const targetPage = eventMap[eventsForDay[0].id] || `evento-singolo.html?event=${eventsForDay[0].id}`;
-                window.location.href = targetPage;
+                showEventDetails(eventsForDay[0]);
             });
 
             eventsForDay.forEach(ev => {
@@ -747,76 +728,109 @@ function loadSingleReview() {
     }
 }
 
-// ─── AUTO-INIZIALIZZAZIONE EVENTI DI DEFAULT ───────────────────
+// ─── AUTO-INIZIALIZZAZIONE INCONTRI CALENDARIO DI DEFAULT ─────────
 function populateDefaultMeetings() {
     const defaults = [
         {
-            id: 'meet-shoah',
-            date: '2024-01-27',
+            id: 'meet-1',
+            date: '2026-03-15',
+            time: '18:00',
+            title: 'Discussione "Get to You"',
+            location: "Libreria Cose d'Interni, Capua",
+            description: "Condivisione delle nostre teorie, citazioni preferite e votazione finale su Get to You."
+        },
+        {
+            id: 'meet-2',
+            date: '2026-03-29',
             time: '18:30',
-            title: 'Commemorazione Shoah 🕯️',
-            location: 'Libreria Cose d\'Interni, Capua',
-            description: `Il 27 gennaio 2024 abbiamo partecipato alla Giornata della Memoria con un incontro speciale presso la Libreria Cose d'Interni di Capua. Abbiamo letto insieme brani tratti da diari, lettere e testimonianze di sopravvissuti all'Olocausto, riflettendo sull'importanza di non dimenticare. Un momento toccante e profondo, che ci ha ricordate perché la letteratura è anche custode di memoria storica. Non dimenticheremo mai.`
-        },
-        {
-            id: 'meet-legal-talent',
-            date: '2026-02-15',
-            time: '17:00',
-            title: 'Legal Talent ⚖️',
-            location: 'Libreria Cose d\'Interni, Capua',
-            description: `Un format innovativo e appassionante dedicato al mondo del diritto e della letteratura giuridica. Le nostre Plot Twisters si sono confrontate su casi letterari, testi normativi raccontati con voce narrativa e dibattiti su grandi processi della storia. Un pomeriggio intenso che ha unito la passione per la lettura con la cultura giuridica, dimostrando che anche il diritto può essere un'avventura da leggere.`
-        },
-        {
-            id: 'meet-placito-capua',
-            date: '2026-03-10',
-            time: '19:00',
-            title: 'Placito Capua 📜',
-            location: 'Libreria Cose d\'Interni, Capua',
-            description: `Un tuffo alle origini della lingua italiana! Il Placito Capuano del 960 d.C. è uno dei primi documenti scritti in volgare italiano, e nasce proprio nella nostra Capua. Abbiamo celebrato questa pietra miliare con letture, spiegazioni storiche e un piccolo laboratorio sulla bellezza dell'evoluzione linguistica. Essere capuane e orgogliosamente parte di questa storia ci riempie il cuore!`
-        },
-        {
-            id: 'meet-notte-artisti',
-            date: '2026-05-30',
-            time: '19:30',
-            title: 'Notte degli Artisti 🎨',
-            location: 'Libreria Cose d\'Interni, Capua',
-            description: `Un evento speciale a cavallo di due giorni, il 30 e 31 maggio 2026, dedicato all'arte in tutte le sue forme: dalla letteratura alla pittura, dalla musica alla fotografia. Le Plot Twisters incontrano gli artisti locali di Capua per un dialogo creativo e ispirazionale. Letture ad alta voce, musica dal vivo e un'installazione fotografica apriranno la serata. L'ingresso è libero e aperto a tutta la comunità.`
+            title: 'Presentazione Nuova Lettura',
+            location: "Libreria Cose d'Interni, Capua",
+            description: "Annuncio del libro del mese di Aprile e aperitivo letterario insieme!"
         }
     ];
     localStorage.setItem('pt-meetings', JSON.stringify(defaults));
 }
 
+// ─── EVENTI SPECIALI (Pagine Web Dedicate) ────────────────────
+const DEFAULT_SPECIAL_EVENTS = [
+    {
+        id: 'event-shoah',
+        title: 'Shoah - Racconti per non dimenticare',
+        dateStr: '27 Gennaio 2026',
+        icon: '🕯️',
+        location: "Libreria Cose d'Interni, Capua",
+        cover: '',
+        shortDesc: "Un incontro dedicato alla memoria della Shoah, con riflessioni, letture di diari e testimonianze storiche per non dimenticare.",
+        customUrl: 'evento-shoah.html',
+        description: `Il 27 gennaio abbiamo partecipato alla Giornata della Memoria con un incontro speciale presso la Libreria Cose d'Interni di Capua. Abbiamo letto insieme brani tratti da diari, lettere e testimonianze di sopravvissuti all'Olocausto, riflettendo sull'importanza di non dimenticare. Un momento toccante e profondo, che ci ha ricordate perché la letteratura è anche custode di memoria storica. Non dimenticheremo mai.`
+    },
+    {
+        id: 'event-legaltalent',
+        title: 'Legal Talent',
+        dateStr: '30 Marzo 2026',
+        icon: '⚖️',
+        location: "Libreria Cose d'Interni, Capua",
+        cover: '',
+        shortDesc: "Il nostro format innovativo incentrato sul mondo legale e forense, unendo cultura giuridica e dibattiti accattivanti.",
+        customUrl: 'evento-legaltalent.html',
+        description: `Un format innovativo e appassionante dedicato al mondo del diritto e della letteratura giuridica. Le nostre Plot Twisters si sono confrontate su casi letterari, testi normativi raccontati con voce narrativa e dibattiti su grandi processi della storia. Un pomeriggio intenso che ha unito la passione per la lettura con la cultura giuridica, dimostrando che anche il diritto può essere un'avventura da leggere.`
+    },
+    {
+        id: 'event-placito',
+        title: 'Placito Capua',
+        dateStr: '16 Maggio 2026',
+        icon: '📜',
+        location: "Libreria Cose d'Interni, Capua",
+        cover: '',
+        shortDesc: "Riscopriamo la pietra miliare della lingua italiana nata proprio nella nostra Capua nel 960 d.C., celebrandola con letture e spiegazioni.",
+        customUrl: 'evento-placito.html',
+        description: `Un tuffo alle origini della lingua italiana! Il Placito Capuano del 960 d.C. è uno dei primi documenti scritti in volgare italiano, e nasce proprio nella nostra Capua. Abbiamo celebrato questa pietra miliare con letture, spiegazioni storiche e un piccolo laboratorio sulla bellezza dell'evoluzione linguistica. Essere capuane e orgogliosamente parte di questa storia ci riempie il cuore!`
+    },
+    {
+        id: 'event-afterbook',
+        title: 'After-Book al Museo Campano',
+        dateStr: '30-31 Maggio 2026',
+        icon: '🎨',
+        location: "Museo Campano, Capua",
+        cover: '',
+        shortDesc: "Un appuntamento speciale immersi nella storia e nell'arte del Museo Campano per discutere le ultime letture del club.",
+        customUrl: 'evento-afterbook.html',
+        description: `Un evento speciale a cavallo di due giorni, il 30 e 31 maggio 2026, dedicato all'arte in tutte le sue forme: dalla letteratura alla pittura, dalla musica alla fotografia. Le Plot Twisters incontrano gli artisti locali di Capua per un dialogo creativo e ispirazionale. Letture ad alta voce, musica dal vivo e un'installazione fotografica apriranno la serata. L'ingresso è libero e aperto a tutta la comunità.`
+    }
+];
+
+function getSpecialEventsData() {
+    try {
+        const raw = localStorage.getItem('pt-events');
+        if (raw) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+    } catch (e) { }
+    return DEFAULT_SPECIAL_EVENTS;
+}
+
 // ─── AUTO-INIZIALIZZAZIONE RECENSIONI DI DEFAULT ─────────────────
 function populateDefaultReviews() {
-    const defaultReviews = [
-
-    ];
+    const defaultReviews = [];
     localStorage.setItem('pt-reviews', JSON.stringify(defaultReviews));
 }
 
-// ─── CARICAMENTO ARCHIVIO EVENTI (PAGINA EVENTI) ───────────────
+// ─── CARICAMENTO ARCHIVIO EVENTI SPECIALI (PAGINA EVENTI) ─────────
 function loadEventsArchive() {
     const grid = document.getElementById('dynamic-events-grid');
     if (!grid) return;
 
-    let meetings = [];
-    try {
-        meetings = JSON.parse(localStorage.getItem('pt-meetings') || '[]');
-    } catch (e) { }
+    const events = getSpecialEventsData();
 
-    if (meetings.length === 0) {
-        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:var(--plum-light); padding:2rem;">Nessun evento presente al momento.</p>';
+    if (events.length === 0) {
+        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:var(--plum-light); padding:2rem;">Nessun evento speciale presente al momento.</p>';
         return;
     }
 
-    // Ordina eventi per data
-    const sorted = [...meetings].sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    grid.innerHTML = sorted.map(ev => {
-        const d = new Date(ev.date);
-        const formattedDate = isNaN(d) ? ev.date : d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
-        const icon = ev.icon || '📅';
-        const pageUrl = `evento-singolo.html?event=${ev.id}`;
+    grid.innerHTML = events.map(ev => {
+        const icon = ev.icon || '🎨';
+        const pageUrl = ev.customUrl || `evento-singolo.html?event=${encodeURIComponent(ev.id)}`;
         
         const coverHtml = ev.cover ? `
             <div style="height:170px; border-radius:var(--r-sm) var(--r-sm) 0 0; overflow:hidden; margin:-1.5rem -1.5rem 1rem -1.5rem; background:var(--ivory-1);">
@@ -824,32 +838,30 @@ function loadEventsArchive() {
             </div>
         ` : '';
 
-        const descSnippet = ev.description 
-            ? (ev.description.replace(/<[^>]+>/g, '').length > 130 ? ev.description.replace(/<[^>]+>/g, '').substring(0, 130) + '...' : ev.description.replace(/<[^>]+>/g, ''))
-            : `Incontro del club alle ore ${escHtml(ev.time || '18:00')} presso ${escHtml(ev.location || "Libreria Cose d'Interni")}.`;
+        const descSnippet = ev.shortDesc || (ev.description ? (ev.description.replace(/<[^>]+>/g, '').length > 130 ? ev.description.replace(/<[^>]+>/g, '').substring(0, 130) + '...' : ev.description.replace(/<[^>]+>/g, '')) : 'Evento speciale del club.');
 
         return `
         <div class="bento-box" style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--border); gap:1.25rem;">
             <div>
                 ${coverHtml}
                 <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep); margin-bottom:0.6rem; display:inline-block;">
-                    ${icon} ${formattedDate}
+                    ${icon} ${escHtml(ev.dateStr || '')}
                 </span>
                 <h3 style="margin:0.4rem 0 0.5rem 0; font-family:var(--font-display); font-size:1.25rem; color:var(--plum-dark);">${escHtml(ev.title)}</h3>
                 <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6; margin:0 0 0.5rem 0;">${escHtml(descSnippet)}</p>
                 <p style="font-size:0.8rem; color:var(--plum-light); margin:0;">
-                    <i class="fas fa-clock"></i> ore ${escHtml(ev.time || '18:00')} • <i class="fas fa-map-marker-alt"></i> ${escHtml(ev.location || "Libreria Cose d'Interni")}
+                    <i class="fas fa-map-marker-alt"></i> ${escHtml(ev.location || "Libreria Cose d'Interni")}
                 </p>
             </div>
             <a href="${pageUrl}" class="btn-outline" style="justify-content:center; padding:0.6rem; font-size:0.85rem; text-decoration:none; text-align:center; font-weight:600;">
-                Visualizza Dettagli Pagina →
+                Scopri l'Evento →
             </a>
         </div>
         `;
     }).join('');
 }
 
-// ─── CARICAMENTO EVENTO SINGOLO ─────────────────────────────────
+// ─── CARICAMENTO PAGINA EVENTO SINGOLO ───────────────────────────
 function loadSingleEvent() {
     const titleEl = document.getElementById('event-title');
     const dateEl = document.getElementById('event-date');
@@ -868,24 +880,17 @@ function loadSingleEvent() {
     const params = new URLSearchParams(window.location.search);
     const eventId = params.get('event');
 
-    let meetings = [];
-    try {
-        meetings = JSON.parse(localStorage.getItem('pt-meetings') || '[]');
-    } catch (e) { }
+    const events = getSpecialEventsData();
+    const ev = events.find(m => m.id === eventId) || events[0];
 
-    const ev = meetings.find(m => m.id === eventId) || meetings[0];
     if (!ev) {
         titleEl.textContent = "Evento non trovato";
         return;
     }
 
     // Imposta icona badge
-    const icon = ev.icon || (ev.id.includes('shoah') ? "🕯️" : ev.id.includes('legal') ? "⚖️" : ev.id.includes('placito') ? "📜" : ev.id.includes('artisti') ? "🎨" : "📅");
+    const icon = ev.icon || '🎨';
     if (iconBadgeEl) iconBadgeEl.textContent = icon;
-
-    // Formatta la data
-    const dateObj = new Date(ev.date);
-    const formattedDate = isNaN(dateObj) ? ev.date : dateObj.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
 
     // Copertina
     if (coverContainer && coverImg) {
@@ -899,19 +904,27 @@ function loadSingleEvent() {
 
     // Aggiorna elementi HTML
     if (pageTitleEl) pageTitleEl.innerHTML = `Evento: <em>${escHtml(ev.title)}</em>`;
-    if (dateHeroEl) dateHeroEl.textContent = `Incontro del ${formattedDate} alle ore ${escHtml(ev.time || '18:00')}`;
+    if (dateHeroEl) dateHeroEl.textContent = `${escHtml(ev.dateStr || '')} • ${escHtml(ev.location || "Libreria Cose d'Interni")}`;
     if (titleEl) titleEl.textContent = ev.title;
-    if (dateEl) dateEl.textContent = formattedDate;
-    if (timeEl) timeEl.textContent = ev.time || '18:00';
+    if (dateEl) dateEl.textContent = ev.dateStr || 'Prossimamente';
+    if (timeEl) {
+        if (ev.time) {
+            timeEl.textContent = ev.time;
+            timeEl.parentElement.style.display = 'inline';
+        } else {
+            timeEl.parentElement.style.display = 'none';
+        }
+    }
     if (locationEl) locationEl.textContent = ev.location || "Libreria Cose d'Interni, Capua";
     
     // Descrizione formattata in paragrafi
     if (descEl) {
-        if (ev.description) {
-            if (ev.description.includes('<p>') || ev.description.includes('<div>')) {
-                descEl.innerHTML = ev.description;
+        const fullContent = ev.description || ev.shortDesc;
+        if (fullContent) {
+            if (fullContent.includes('<p>') || fullContent.includes('<div>')) {
+                descEl.innerHTML = fullContent;
             } else {
-                const paragraphs = ev.description.split(/\n+/).filter(Boolean);
+                const paragraphs = fullContent.split(/\n+/).filter(Boolean);
                 descEl.innerHTML = paragraphs.map(p => `<p style="margin-bottom:1.25rem;">${escHtml(p)}</p>`).join('');
             }
         } else {
@@ -923,9 +936,9 @@ function loadSingleEvent() {
     if (adminContainer && localStorage.getItem('pt-user-admin') === '1') {
         adminContainer.innerHTML = `
             <div style="text-align:center; margin-top:3rem; padding:2rem; background:linear-gradient(135deg, var(--lilac-pale), var(--ivory-2)); border-radius:var(--r-md); border:1px solid var(--border);">
-                <span style="font-size:1.5rem; display:block; margin-bottom:0.75rem;">⚙️ Pannello Amministratore Evento</span>
+                <span style="font-size:1.5rem; display:block; margin-bottom:0.75rem;">⚙️ Pannello Amministratore Evento Speciale</span>
                 <h4 style="font-family:var(--font-display); margin-bottom:0.5rem;">Gestisci questa pagina evento</h4>
-                <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1.25rem;">Puoi modificare il titolo, la data, l'orario, l'icona, la locandina e il programma completo di questo appuntamento.</p>
+                <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1.25rem;">Puoi modificare il titolo, la data, l'icona, la locandina e il programma completo di questo evento speciale.</p>
                 <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
                     <button id="edit-event-page-btn" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.5rem; cursor:pointer;">
                         <i class="fas fa-edit"></i> Modifica Pagina Evento
@@ -947,33 +960,27 @@ function loadSingleEvent() {
             }
             modal.innerHTML = `
                 <form id="edit-form" style="font-family:var(--font-sans); display:flex; flex-direction:column; gap:1rem;">
-                    <h3 style="font-family:var(--font-display); color:var(--lilac-deep); margin-bottom:0.5rem; font-size:1.4rem;">Modifica Evento & Pagina</h3>
+                    <h3 style="font-family:var(--font-display); color:var(--lilac-deep); margin-bottom:0.5rem; font-size:1.4rem;">Modifica Evento Speciale</h3>
                     
                     <div class="input-group">
-                        <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Titolo Incontro *</label>
+                        <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Titolo Evento *</label>
                         <input type="text" name="title" value="${escHtml(ev.title)}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
                     </div>
                     
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+                    <div style="display:grid; grid-template-columns:2fr 1fr; gap:0.75rem;">
                         <div class="input-group">
-                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Data</label>
-                            <input type="date" name="date" value="${ev.date}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Data / Periodo *</label>
+                            <input type="text" name="dateStr" value="${escHtml(ev.dateStr || '')}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
                         </div>
                         <div class="input-group">
-                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Ora</label>
-                            <input type="time" name="time" value="${ev.time || '18:00'}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Icona Emoji</label>
+                            <input type="text" name="icon" value="${escHtml(ev.icon || '🎨')}" style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
                         </div>
                     </div>
 
-                    <div style="display:grid; grid-template-columns:1fr 2fr; gap:0.75rem;">
-                        <div class="input-group">
-                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Icona Emoji</label>
-                            <input type="text" name="icon" value="${escHtml(ev.icon || '📅')}" style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
-                        </div>
-                        <div class="input-group">
-                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Luogo</label>
-                            <input type="text" name="location" value="${escHtml(ev.location || "Libreria Cose d'Interni, Capua")}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
-                        </div>
+                    <div class="input-group">
+                        <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Luogo</label>
+                        <input type="text" name="location" value="${escHtml(ev.location || "Libreria Cose d'Interni, Capua")}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
                     </div>
 
                     <div class="input-group">
@@ -982,8 +989,13 @@ function loadSingleEvent() {
                     </div>
 
                     <div class="input-group">
-                        <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Descrizione & Programma</label>
-                        <textarea name="description" rows="5" style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box; resize:vertical;">${escHtml(ev.description || '')}</textarea>
+                        <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Breve Descrizione</label>
+                        <input type="text" name="shortDesc" value="${escHtml(ev.shortDesc || '')}" style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                    </div>
+
+                    <div class="input-group">
+                        <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Descrizione & Programma Completo</label>
+                        <textarea name="description" rows="5" style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box; resize:vertical;">${escHtml(ev.description || ev.shortDesc || '')}</textarea>
                     </div>
                     
                     <div style="margin-top:0.5rem; display:flex; justify-content:flex-end; gap:0.75rem;">
@@ -998,14 +1010,14 @@ function loadSingleEvent() {
                 e.preventDefault();
                 const data = new FormData(e.target);
                 ev.title = data.get('title').trim();
-                ev.date = data.get('date');
-                ev.time = data.get('time');
-                ev.icon = data.get('icon').trim() || '📅';
+                ev.dateStr = data.get('dateStr').trim();
+                ev.icon = data.get('icon').trim() || '🎨';
                 ev.location = data.get('location').trim();
                 ev.cover = data.get('cover').trim();
+                ev.shortDesc = data.get('shortDesc').trim();
                 ev.description = data.get('description').trim();
 
-                localStorage.setItem('pt-meetings', JSON.stringify(meetings));
+                localStorage.setItem('pt-events', JSON.stringify(events));
                 modal.close();
                 loadSingleEvent();
                 alert('✦ Modifiche salvate con successo!');
@@ -1013,9 +1025,9 @@ function loadSingleEvent() {
         });
 
         document.getElementById('delete-event-page-btn').addEventListener('click', () => {
-            if (!confirm('Sei sicura di voler eliminare definitivamente questo evento?')) return;
-            const updated = meetings.filter(m => m.id !== ev.id);
-            localStorage.setItem('pt-meetings', JSON.stringify(updated));
+            if (!confirm('Sei sicura di voler eliminare definitivamente questo evento speciale?')) return;
+            const updated = events.filter(m => m.id !== ev.id);
+            localStorage.setItem('pt-events', JSON.stringify(updated));
             alert('✦ Evento eliminato.');
             window.location.href = 'eventi.html';
         });
