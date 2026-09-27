@@ -4156,10 +4156,21 @@ a:has(.book-3d-wrap):hover {
     transition: all 0.2s var(--ease);
     background: var(--surface-1);
     border: 1px solid var(--border);
-    min-height: 80px;
+    aspect-ratio: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
     cursor: pointer;
     position: relative;
     box-sizing: border-box;
+}
+
+/* Custom scrollbar for calendar cell */
+.cal-cell::-webkit-scrollbar {
+    width: 3px;
+}
+.cal-cell::-webkit-scrollbar-thumb {
+    background-color: var(--lilac-mid);
+    border-radius: 4px;
 }
 
 .cal-cell:hover {
