@@ -114,61 +114,8 @@
                     <p>Scopri i dettagli e la storia dei nostri eventi principali.</p>
                 </div>
 
-                <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem;">
-                    <div class="bento-box"
-                        style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--border); gap:1.25rem;">
-                        <div>
-                            <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep);">🕯️
-                                27 Gennaio 2026</span>
-                            <h3 style="margin:0.5rem 0; font-family:var(--font-display);">Shoah - Racconti per non
-                                dimenticare</h3>
-                            <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6;">Un incontro dedicato
-                                alla memoria della Shoah, con riflessioni, letture di diari e testimonianze storiche per
-                                non dimenticare.</p>
-                        </div>
-                        <a href="evento-shoah.html" class="btn-outline"
-                            style="justify-content:center; padding:0.5rem; font-size:0.85rem; text-decoration:none; text-align:center;">Visualizza
-                            Dettagli →</a>
-                    </div>
-                    <div class="bento-box"
-                        style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--border); gap:1.25rem;">
-                        <div>
-                            <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep);">⚖️ 30
-                                Marzo 2026</span>
-                            <h3 style="margin:0.5rem 0; font-family:var(--font-display);">Legal Talent</h3>
-                            <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6;">Il nostro format
-                                innovativo incentrato sul mondo legale e forense, unendo cultura giuridica e dibattiti
-                                accattivanti.</p>
-                        </div>
-                        <a href="evento-legaltalent.html" class="btn-outline"
-                            style="justify-content:center; padding:0.5rem; font-size:0.85rem; text-decoration:none; text-align:center;">Visualizza
-                            Dettagli →</a>
-                    </div>
-                    <div class="bento-box"
-                        style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--border); gap:1.25rem;">
-                        <div>
-                            <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep);">📜 16
-                                Maggio 2026</span>
-                            <h3 style="margin:0.5rem 0; font-family:var(--font-display);">Placito Capua</h3>
-                            <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6;">Riscopriamo la pietra
-                                miliare della lingua italiana nata proprio nella nostra Capua nel 960 d.C., celebrandola
-                                con letture e spiegazioni.</p>
-                        </div>
-                        <a href="evento-placito.html" class="btn-outline"
-                            style="justify-content:center; padding:0.5rem; font-size:0.85rem; text-decoration:none; text-align:center;">Visualizza
-                            Dettagli →</a>
-                    </div>
-                    <!-- Evento 4: After-Book al Museo Campano -->
-                    <div class="bento-box"
-                        style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--border); gap:1.25rem;">
-                        <div>
-                            <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep);">🎨 30-31 Maggio 2026</span>
-                            <h3 style="margin:0.5rem 0; font-family:var(--font-display);">After-Book al Museo Campano</h3>
-                            <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6;">Un appuntamento speciale immersi nella storia e nell'arte del Museo Campano per discutere le ultime letture del club.</p>
-                        </div>
-                        <a href="evento-afterbook.html" class="btn-outline"
-                            style="justify-content:center; padding:0.5rem; font-size:0.85rem; text-decoration:none; text-align:center;">Visualizza Dettagli →</a>
-                    </div>
+                <div id="dynamic-events-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem;">
+                    <!-- Popolato dinamicamente da JS / Firebase -->
                 </div>
             </section>
 

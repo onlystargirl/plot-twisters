@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inizializzazioni specifiche per pagina
     if (document.getElementById('calendar-grid')) initCalendar();
+    if (document.getElementById('dynamic-events-grid')) loadEventsArchive();
     if (document.getElementById('review-book-title')) loadSingleReview();
     if (document.getElementById('dynamic-reviews-container')) loadDynamicReviews();
     if (document.getElementById('event-title')) loadSingleEvent();
@@ -155,19 +156,25 @@ function loadUpcomingMeetings() {
             const homeShow = valid.slice(0, 2);
             homeContainer.innerHTML = homeShow.map(m => {
                 const d = new Date(m.date);
-                const day = d.getDate();
-                const mon = d.toLocaleDateString('it-IT', { month: 'short' });
+                const day = isNaN(d) ? '✦' : d.getDate();
+                const mon = isNaN(d) ? '' : d.toLocaleDateString('it-IT', { month: 'short' });
+                const icon = m.icon || '📅';
+                const pageUrl = `evento-singolo.html?event=${m.id}`;
                 return `
-                <div style="display:flex; gap:1rem; align-items:center; background:var(--ivory-2); padding:1rem; border-radius:var(--r-sm); border:1px solid var(--border); margin-bottom:0.75rem;">
-                    <div style="text-align:center; background:var(--lilac-deep); color:white; border-radius:var(--r-sm); padding:0.5rem; min-width:4.5rem;">
-                        <div style="font-size:1.5rem; font-weight:700; line-height:1;">${day}</div>
-                        <div style="font-size:0.7rem; text-transform:uppercase;">${mon}</div>
+                <a href="${pageUrl}" style="text-decoration:none; color:inherit; display:block; margin-bottom:0.75rem;">
+                    <div style="display:flex; gap:1rem; align-items:center; background:var(--ivory-2); padding:1rem; border-radius:var(--r-sm); border:1px solid var(--border); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+                        <div style="text-align:center; background:var(--lilac-deep); color:white; border-radius:var(--r-sm); padding:0.5rem; min-width:4.5rem; flex-shrink:0;">
+                            <div style="font-size:1.5rem; font-weight:700; line-height:1;">${day}</div>
+                            <div style="font-size:0.7rem; text-transform:uppercase;">${mon}</div>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="font-size:0.75rem; color:var(--lilac-deep); font-weight:600; margin-bottom:0.15rem;">${icon} Incontro Club</div>
+                            <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.25rem;">${escHtml(m.title)}</h4>
+                            <p style="font-size:0.82rem; color:var(--plum-light); margin:0;"><i class="fas fa-clock"></i> ${escHtml(m.time || '18:00')} • <i class="fas fa-map-marker-alt"></i> ${escHtml(m.location || 'Libreria Cose d\'Interni')}</p>
+                        </div>
+                        <div style="color:var(--lilac-mid); font-size:0.9rem; padding-right:0.5rem;">→</div>
                     </div>
-                    <div>
-                        <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.25rem;">${escHtml(m.title)}</h4>
-                        <p style="font-size:0.82rem; color:var(--plum-light);"><i class="fas fa-clock"></i> ${escHtml(m.time)} • <i class="fas fa-map-marker-alt"></i> ${escHtml(m.location)}</p>
-                    </div>
-                </div>`;
+                </a>`;
             }).join('');
         }
 
@@ -175,21 +182,26 @@ function loadUpcomingMeetings() {
         if (novitaContainer) {
             novitaContainer.innerHTML = valid.map(m => {
                 const d = new Date(m.date);
-                const day = d.getDate();
-                const mon = d.toLocaleDateString('it-IT', { month: 'short' });
+                const day = isNaN(d) ? '✦' : d.getDate();
+                const mon = isNaN(d) ? '' : d.toLocaleDateString('it-IT', { month: 'short' });
+                const icon = m.icon || '📅';
+                const pageUrl = `evento-singolo.html?event=${m.id}`;
                 return `
-                <div class="bento-box" style="background: var(--ivory-2); padding: 1.5rem; border: 1px solid var(--border); display: flex; gap: 1.25rem; align-items: center; width: 100%; box-sizing: border-box;">
-                    <div style="background: var(--lilac-deep); color: white; border-radius: var(--r-sm); padding: 0.75rem; text-align: center; min-width: 60px; flex-shrink: 0;">
-                        <div style="font-size: 1.6rem; font-weight: 800; line-height: 1;">${day}</div>
-                        <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">${mon}</div>
+                <a href="${pageUrl}" style="text-decoration:none; color:inherit; display:block; width:100%; box-sizing:border-box;">
+                    <div class="bento-box" style="background: var(--ivory-2); padding: 1.5rem; border: 1px solid var(--border); display: flex; gap: 1.25rem; align-items: center; width: 100%; box-sizing: border-box; transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+                        <div style="background: var(--lilac-deep); color: white; border-radius: var(--r-sm); padding: 0.75rem; text-align: center; min-width: 60px; flex-shrink: 0;">
+                            <div style="font-size: 1.6rem; font-weight: 800; line-height: 1;">${day}</div>
+                            <div style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">${mon}</div>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--lilac-deep); font-weight:700; margin-bottom: 0.2rem;">
+                                ${icon} Prossimamente ✦</div>
+                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem;">${escHtml(m.title)}</h4>
+                            <p style="font-size: 0.82rem; color: var(--plum-light); margin: 0;">ore ${escHtml(m.time || '18:00')} · ${escHtml(m.location || 'Libreria Cose d\'Interni')}</p>
+                        </div>
+                        <div style="color:var(--lilac-mid); font-size:1.1rem;">→</div>
                     </div>
-                    <div>
-                        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--plum-light); margin-bottom: 0.2rem;">
-                            Prossimamente ✦</div>
-                        <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem;">${escHtml(m.title)}</h4>
-                        <p style="font-size: 0.82rem; color: var(--plum-light); margin: 0;">ore ${escHtml(m.time)} · ${escHtml(m.location)}</p>
-                    </div>
-                </div>`;
+                </a>`;
             }).join('');
         }
 
@@ -782,6 +794,61 @@ function populateDefaultReviews() {
     localStorage.setItem('pt-reviews', JSON.stringify(defaultReviews));
 }
 
+// ─── CARICAMENTO ARCHIVIO EVENTI (PAGINA EVENTI) ───────────────
+function loadEventsArchive() {
+    const grid = document.getElementById('dynamic-events-grid');
+    if (!grid) return;
+
+    let meetings = [];
+    try {
+        meetings = JSON.parse(localStorage.getItem('pt-meetings') || '[]');
+    } catch (e) { }
+
+    if (meetings.length === 0) {
+        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:var(--plum-light); padding:2rem;">Nessun evento presente al momento.</p>';
+        return;
+    }
+
+    // Ordina eventi per data
+    const sorted = [...meetings].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    grid.innerHTML = sorted.map(ev => {
+        const d = new Date(ev.date);
+        const formattedDate = isNaN(d) ? ev.date : d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+        const icon = ev.icon || '📅';
+        const pageUrl = `evento-singolo.html?event=${ev.id}`;
+        
+        const coverHtml = ev.cover ? `
+            <div style="height:170px; border-radius:var(--r-sm) var(--r-sm) 0 0; overflow:hidden; margin:-1.5rem -1.5rem 1rem -1.5rem; background:var(--ivory-1);">
+                <img src="${escHtml(ev.cover)}" alt="${escHtml(ev.title)}" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+        ` : '';
+
+        const descSnippet = ev.description 
+            ? (ev.description.replace(/<[^>]+>/g, '').length > 130 ? ev.description.replace(/<[^>]+>/g, '').substring(0, 130) + '...' : ev.description.replace(/<[^>]+>/g, ''))
+            : `Incontro del club alle ore ${escHtml(ev.time || '18:00')} presso ${escHtml(ev.location || "Libreria Cose d'Interni")}.`;
+
+        return `
+        <div class="bento-box" style="background:var(--ivory-2); padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--border); gap:1.25rem;">
+            <div>
+                ${coverHtml}
+                <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep); margin-bottom:0.6rem; display:inline-block;">
+                    ${icon} ${formattedDate}
+                </span>
+                <h3 style="margin:0.4rem 0 0.5rem 0; font-family:var(--font-display); font-size:1.25rem; color:var(--plum-dark);">${escHtml(ev.title)}</h3>
+                <p style="font-size:0.88rem; color:var(--plum-dark); line-height:1.6; margin:0 0 0.5rem 0;">${escHtml(descSnippet)}</p>
+                <p style="font-size:0.8rem; color:var(--plum-light); margin:0;">
+                    <i class="fas fa-clock"></i> ore ${escHtml(ev.time || '18:00')} • <i class="fas fa-map-marker-alt"></i> ${escHtml(ev.location || "Libreria Cose d'Interni")}
+                </p>
+            </div>
+            <a href="${pageUrl}" class="btn-outline" style="justify-content:center; padding:0.6rem; font-size:0.85rem; text-decoration:none; text-align:center; font-weight:600;">
+                Visualizza Dettagli Pagina →
+            </a>
+        </div>
+        `;
+    }).join('');
+}
+
 // ─── CARICAMENTO EVENTO SINGOLO ─────────────────────────────────
 function loadSingleEvent() {
     const titleEl = document.getElementById('event-title');
@@ -792,75 +859,165 @@ function loadSingleEvent() {
     const pageTitleEl = document.getElementById('event-page-title');
     const dateHeroEl = document.getElementById('event-date-hero');
     const iconBadgeEl = document.getElementById('event-icon-badge');
+    const coverContainer = document.getElementById('event-cover-container');
+    const coverImg = document.getElementById('event-cover-img');
     const adminContainer = document.getElementById('event-admin-controls');
 
     if (!titleEl) return;
 
     const params = new URLSearchParams(window.location.search);
-    const eventId = params.get('event') || 'meet-shoah';
+    const eventId = params.get('event');
 
     let meetings = [];
     try {
         meetings = JSON.parse(localStorage.getItem('pt-meetings') || '[]');
     } catch (e) { }
 
-    const ev = meetings.find(m => m.id === eventId);
+    const ev = meetings.find(m => m.id === eventId) || meetings[0];
     if (!ev) {
         titleEl.textContent = "Evento non trovato";
         return;
     }
 
-    // Imposta icona badge in base all'evento
-    let icon = "📅";
-    if (ev.id.includes('shoah')) icon = "🕯️";
-    else if (ev.id.includes('legal')) icon = "⚖️";
-    else if (ev.id.includes('placito')) icon = "📜";
-    else if (ev.id.includes('notte') || ev.id.includes('artisti')) icon = "🎨";
+    // Imposta icona badge
+    const icon = ev.icon || (ev.id.includes('shoah') ? "🕯️" : ev.id.includes('legal') ? "⚖️" : ev.id.includes('placito') ? "📜" : ev.id.includes('artisti') ? "🎨" : "📅");
     if (iconBadgeEl) iconBadgeEl.textContent = icon;
 
-    // Formatta la data per il sottotitolo
+    // Formatta la data
     const dateObj = new Date(ev.date);
     const formattedDate = isNaN(dateObj) ? ev.date : dateObj.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
 
+    // Copertina
+    if (coverContainer && coverImg) {
+        if (ev.cover) {
+            coverImg.src = ev.cover;
+            coverContainer.style.display = 'block';
+        } else {
+            coverContainer.style.display = 'none';
+        }
+    }
+
     // Aggiorna elementi HTML
     if (pageTitleEl) pageTitleEl.innerHTML = `Evento: <em>${escHtml(ev.title)}</em>`;
-    if (dateHeroEl) dateHeroEl.textContent = `Incontro del ${formattedDate} alle ore ${escHtml(ev.time)}`;
+    if (dateHeroEl) dateHeroEl.textContent = `Incontro del ${formattedDate} alle ore ${escHtml(ev.time || '18:00')}`;
     if (titleEl) titleEl.textContent = ev.title;
-    if (dateEl) dateEl.textContent = ev.date;
-    if (timeEl) timeEl.textContent = ev.time;
-    if (locationEl) locationEl.textContent = ev.location;
-    if (descEl) descEl.innerHTML = `<p style="margin:0;">${escHtml(ev.description || 'Nessuna descrizione disponibile.')}</p>`;
+    if (dateEl) dateEl.textContent = formattedDate;
+    if (timeEl) timeEl.textContent = ev.time || '18:00';
+    if (locationEl) locationEl.textContent = ev.location || "Libreria Cose d'Interni, Capua";
+    
+    // Descrizione formattata in paragrafi
+    if (descEl) {
+        if (ev.description) {
+            if (ev.description.includes('<p>') || ev.description.includes('<div>')) {
+                descEl.innerHTML = ev.description;
+            } else {
+                const paragraphs = ev.description.split(/\n+/).filter(Boolean);
+                descEl.innerHTML = paragraphs.map(p => `<p style="margin-bottom:1.25rem;">${escHtml(p)}</p>`).join('');
+            }
+        } else {
+            descEl.innerHTML = `<p style="color:var(--plum-light); font-style:italic;">Nessuna descrizione o programma dettagliato inserito per questo evento.</p>`;
+        }
+    }
 
     // Controlli admin
     if (adminContainer && localStorage.getItem('pt-user-admin') === '1') {
         adminContainer.innerHTML = `
             <div style="text-align:center; margin-top:3rem; padding:2rem; background:linear-gradient(135deg, var(--lilac-pale), var(--ivory-2)); border-radius:var(--r-md); border:1px solid var(--border);">
-                <span style="font-size:1.5rem; display:block; margin-bottom:0.75rem;">⚙️ Area Amministratore</span>
-                <h4 style="font-family:var(--font-display); margin-bottom:0.5rem;">Vuoi modificare questo evento?</h4>
-                <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1.25rem;">Puoi modificare la data, l'ora, il titolo, il luogo o la descrizione di questo incontro.</p>
-                <button id="edit-event-page-btn" class="btn-primary" style="display:inline-flex; margin:0 auto; cursor:pointer;">Modifica Evento <i class="fas fa-edit" style="margin-left:0.5rem;"></i></button>
+                <span style="font-size:1.5rem; display:block; margin-bottom:0.75rem;">⚙️ Pannello Amministratore Evento</span>
+                <h4 style="font-family:var(--font-display); margin-bottom:0.5rem;">Gestisci questa pagina evento</h4>
+                <p style="font-size:0.9rem; color:var(--plum-light); margin-bottom:1.25rem;">Puoi modificare il titolo, la data, l'orario, l'icona, la locandina e il programma completo di questo appuntamento.</p>
+                <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+                    <button id="edit-event-page-btn" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                        <i class="fas fa-edit"></i> Modifica Pagina Evento
+                    </button>
+                    <button id="delete-event-page-btn" class="btn-ghost" style="display:inline-flex; align-items:center; gap:0.5rem; color:#e05b5b; border:1px solid #e05b5b44; cursor:pointer;">
+                        <i class="fas fa-trash"></i> Elimina Evento
+                    </button>
+                </div>
             </div>
         `;
-        document.getElementById('edit-event-page-btn').addEventListener('click', () => {
-            editMeeting(eventId);
-            // Override editMeeting onsubmit callback to reload the page on edit!
-            const form = document.getElementById('edit-form');
-            if (form) {
-                form.onsubmit = e => {
-                    e.preventDefault();
-                    const data = new FormData(e.target);
-                    ev.title = data.get('title');
-                    ev.date = data.get('date');
-                    ev.time = data.get('time');
-                    ev.location = data.get('location');
-                    ev.description = data.get('description');
 
-                    localStorage.setItem('pt-meetings', JSON.stringify(meetings));
-                    document.getElementById('edit-modal').close();
-                    // Ricarica i dati per mostrare le modifiche in tempo reale
-                    loadSingleEvent();
-                };
+        document.getElementById('edit-event-page-btn').addEventListener('click', () => {
+            let modal = document.getElementById('edit-modal');
+            if (!modal) {
+                modal = document.createElement('dialog');
+                modal.id = 'edit-modal';
+                modal.style.cssText = 'border:none; border-radius:var(--r-md); padding:2rem; max-width:550px; width:90%; box-shadow:var(--shadow-lg); background:var(--surface-1); color:var(--plum-dark);';
+                document.body.appendChild(modal);
             }
+            modal.innerHTML = `
+                <form id="edit-form" style="font-family:var(--font-sans); display:flex; flex-direction:column; gap:1rem;">
+                    <h3 style="font-family:var(--font-display); color:var(--lilac-deep); margin-bottom:0.5rem; font-size:1.4rem;">Modifica Evento & Pagina</h3>
+                    
+                    <div class="input-group">
+                        <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Titolo Incontro *</label>
+                        <input type="text" name="title" value="${escHtml(ev.title)}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                    </div>
+                    
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+                        <div class="input-group">
+                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Data</label>
+                            <input type="date" name="date" value="${ev.date}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                        </div>
+                        <div class="input-group">
+                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Ora</label>
+                            <input type="time" name="time" value="${ev.time || '18:00'}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 2fr; gap:0.75rem;">
+                        <div class="input-group">
+                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Icona Emoji</label>
+                            <input type="text" name="icon" value="${escHtml(ev.icon || '📅')}" style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                        </div>
+                        <div class="input-group">
+                            <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Luogo</label>
+                            <input type="text" name="location" value="${escHtml(ev.location || "Libreria Cose d'Interni, Capua")}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">URL Locandina / Immagine (Opzionale)</label>
+                        <input type="url" name="cover" value="${escHtml(ev.cover || '')}" placeholder="https://..." style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                    </div>
+
+                    <div class="input-group">
+                        <label style="font-size:0.85rem; font-weight:600; color:var(--plum-light);">Descrizione & Programma</label>
+                        <textarea name="description" rows="5" style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box; resize:vertical;">${escHtml(ev.description || '')}</textarea>
+                    </div>
+                    
+                    <div style="margin-top:0.5rem; display:flex; justify-content:flex-end; gap:0.75rem;">
+                        <button type="button" id="cancel-event-edit-btn" class="btn-ghost" style="padding:0.5rem 1rem; border:1px solid var(--border); border-radius:var(--r-sm); cursor:pointer;">Annulla</button>
+                        <button type="submit" class="btn-primary" style="padding:0.5rem 1.25rem; border-radius:var(--r-sm); cursor:pointer;">Salva Modifiche</button>
+                    </div>
+                </form>
+            `;
+            modal.showModal();
+            document.getElementById('cancel-event-edit-btn').onclick = () => modal.close();
+            document.getElementById('edit-form').onsubmit = e => {
+                e.preventDefault();
+                const data = new FormData(e.target);
+                ev.title = data.get('title').trim();
+                ev.date = data.get('date');
+                ev.time = data.get('time');
+                ev.icon = data.get('icon').trim() || '📅';
+                ev.location = data.get('location').trim();
+                ev.cover = data.get('cover').trim();
+                ev.description = data.get('description').trim();
+
+                localStorage.setItem('pt-meetings', JSON.stringify(meetings));
+                modal.close();
+                loadSingleEvent();
+                alert('✦ Modifiche salvate con successo!');
+            };
+        });
+
+        document.getElementById('delete-event-page-btn').addEventListener('click', () => {
+            if (!confirm('Sei sicura di voler eliminare definitivamente questo evento?')) return;
+            const updated = meetings.filter(m => m.id !== ev.id);
+            localStorage.setItem('pt-meetings', JSON.stringify(updated));
+            alert('✦ Evento eliminato.');
+            window.location.href = 'eventi.html';
         });
     }
 }
@@ -1110,4 +1267,5 @@ window.loadNewsToPage = loadNewsToPage;
 window.loadDynamicReviews = loadDynamicReviews;
 window.loadSingleReview = loadSingleReview;
 window.loadSingleEvent = loadSingleEvent;
+window.loadEventsArchive = loadEventsArchive;
 window.initCalendar = initCalendar;

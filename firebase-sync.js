@@ -85,6 +85,9 @@
             if (typeof window.loadSingleEvent === 'function' && document.getElementById('event-title')) {
                 window.loadSingleEvent();
             }
+            if (typeof window.loadEventsArchive === 'function' && document.getElementById('dynamic-events-grid')) {
+                window.loadEventsArchive();
+            }
             if (typeof window.initCalendar === 'function' && document.getElementById('calendar-grid')) {
                 window.initCalendar();
             }

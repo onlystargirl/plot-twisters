@@ -451,37 +451,57 @@ function loadMeetings() {
     const empty = document.getElementById('meeting-empty');
     if(!list) return;
 
-    // Filtra incontri futuri/odierni
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    const validMeetings = meetings.filter(m => new Date(m.date) >= today);
-    validMeetings.sort((a,b) => new Date(a.date) - new Date(b.date));
-
-    if(!validMeetings.length) {
+    if(!meetings.length) {
         list.innerHTML = '';
         if(empty) empty.classList.remove('hidden');
         return;
     }
     if(empty) empty.classList.add('hidden');
 
-    list.innerHTML = validMeetings.map(m => {
+    // Ordina per data (più recenti / futuri)
+    const sorted = [...meetings].sort((a,b) => new Date(a.date) - new Date(b.date));
+
+    list.innerHTML = sorted.map(m => {
         const d = new Date(m.date);
-        const day = d.getDate();
-        const mon = d.toLocaleDateString('it-IT', {month: 'short'});
-        const deleteBtn = isAdmin ? `<button onclick="deleteMeeting('${m.id}')" style="background:none;border:none;color:#e05b5b;cursor:pointer;margin-left:auto;"><i class="fas fa-trash"></i></button>` : '';
+        const day = isNaN(d) ? '✦' : d.getDate();
+        const mon = isNaN(d) ? '' : d.toLocaleDateString('it-IT', {month: 'short'});
+        const icon = m.icon || '📅';
+        const pageUrl = `evento-singolo.html?event=${m.id}`;
+        
+        const adminActions = isAdmin ? `
+            <div style="display:flex; gap:0.5rem; align-items:center; margin-top:0.75rem;">
+                <a href="${pageUrl}" target="_blank" class="btn-outline" style="font-size:0.78rem; padding:0.35rem 0.75rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.3rem;">
+                    <i class="fas fa-external-link-alt"></i> Pagina Evento
+                </a>
+                <button onclick="editMeetingAdmin('${m.id}')" class="btn-ghost" style="font-size:0.78rem; padding:0.35rem 0.75rem; border:1px solid var(--border); border-radius:var(--r-sm); cursor:pointer;">
+                    <i class="fas fa-edit"></i> Modifica
+                </button>
+                <button onclick="deleteMeeting('${m.id}')" class="btn-ghost" style="font-size:0.78rem; padding:0.35rem 0.75rem; color:#e05b5b; border:1px solid #e05b5b44; border-radius:var(--r-sm); cursor:pointer;">
+                    <i class="fas fa-trash"></i> Elimina
+                </button>
+            </div>
+        ` : `
+            <div style="margin-top:0.5rem;">
+                <a href="${pageUrl}" class="btn-outline" style="font-size:0.78rem; padding:0.35rem 0.75rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.3rem;">
+                    <i class="fas fa-external-link-alt"></i> Visualizza Dettagli Pagina
+                </a>
+            </div>
+        `;
         
         return `
-        <div class="meeting-item">
-            <div class="meeting-date-box">
-                <div class="meet-day">${day}</div>
-                <div class="meet-mon">${mon}</div>
+        <div class="meeting-item" style="display:flex; gap:1.25rem; align-items:flex-start; padding:1.25rem; background:var(--surface-1); border-radius:var(--r-md); border:1px solid var(--border); margin-bottom:1rem;">
+            <div class="meeting-date-box" style="flex-shrink:0; text-align:center; min-width:65px; background:var(--lilac-deep); color:white; padding:0.75rem 0.5rem; border-radius:var(--r-sm);">
+                <div style="font-size:1.1rem; margin-bottom:0.2rem;">${icon}</div>
+                <div class="meet-day" style="font-size:1.3rem; font-weight:700; line-height:1;">${day}</div>
+                <div class="meet-mon" style="font-size:0.65rem; text-transform:uppercase;">${mon}</div>
             </div>
-            <div class="meeting-info" style="display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <h4>${escHtml(m.title)}</h4>
-                    <p><i class="fas fa-clock"></i> ${escHtml(m.time)} • <i class="fas fa-map-marker-alt"></i> ${escHtml(m.location)}</p>
-                </div>
-                ${deleteBtn}
+            <div class="meeting-info" style="flex:1;">
+                <h4 style="font-size:1.05rem; font-weight:700; color:var(--plum-dark); margin-bottom:0.3rem;">${escHtml(m.title)}</h4>
+                <p style="font-size:0.85rem; color:var(--plum-light); margin:0 0 0.4rem 0;">
+                    <i class="fas fa-clock" style="color:var(--lilac-mid);"></i> ore ${escHtml(m.time || '18:00')} • <i class="fas fa-map-marker-alt" style="color:var(--lilac-mid);"></i> ${escHtml(m.location || 'Libreria Cose d\'Interni')}
+                </p>
+                ${m.description ? `<p style="font-size:0.83rem; color:var(--plum-dark); margin:0.3rem 0 0 0; line-height:1.5; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${escHtml(m.description)}</p>` : ''}
+                ${adminActions}
             </div>
         </div>
         `;
@@ -489,23 +509,130 @@ function loadMeetings() {
 }
 
 window.addMeeting = function() {
-    const date = document.getElementById('meet-date').value;
-    const time = document.getElementById('meet-time').value;
     const title = document.getElementById('meet-title').value.trim();
-    const location = document.getElementById('meet-location').value.trim();
+    const icon = document.getElementById('meet-icon') ? document.getElementById('meet-icon').value.trim() || '📅' : '📅';
+    const date = document.getElementById('meet-date').value;
+    const time = document.getElementById('meet-time').value || '18:00';
+    const location = document.getElementById('meet-location').value.trim() || 'Libreria Cose d\'Interni, Capua';
+    const cover = document.getElementById('meet-cover') ? document.getElementById('meet-cover').value.trim() : '';
+    const description = document.getElementById('meet-desc') ? document.getElementById('meet-desc').value.trim() : '';
     
-    if(!date || !title) { alert('Data e titolo sono obbligatori!'); return; }
+    if(!title || !date) { 
+        alert('Compila almeno il titolo e la data dell\'evento!'); 
+        return; 
+    }
     
     const m = getMeetings();
-    m.push({ id: 'meet-' + Date.now(), date, time, title, location });
+    const newId = 'meet-' + Date.now();
+    m.push({ 
+        id: newId, 
+        title, 
+        icon, 
+        date, 
+        time, 
+        location, 
+        cover, 
+        description 
+    });
+    
     saveMeetings(m);
     
+    // Pulisci i campi
     document.getElementById('meet-title').value = '';
+    document.getElementById('meet-date').value = '';
+    if(document.getElementById('meet-cover')) document.getElementById('meet-cover').value = '';
+    if(document.getElementById('meet-desc')) document.getElementById('meet-desc').value = '';
+    
     loadMeetings();
+    alert('✦ Evento creato con successo! La pagina dedicata è pronta.');
+};
+
+window.editMeetingAdmin = function(id) {
+    const meetings = getMeetings();
+    const m = meetings.find(x => x.id === id);
+    if (!m) return;
+
+    let modal = document.getElementById('dash-edit-event-modal');
+    if (!modal) {
+        modal = document.createElement('dialog');
+        modal.id = 'dash-edit-event-modal';
+        modal.style.cssText = 'border:none; border-radius:var(--r-md); padding:2rem; max-width:550px; width:90%; box-shadow:var(--shadow-lg); background:var(--surface-1); color:var(--plum-dark);';
+        document.body.appendChild(modal);
+    }
+
+    modal.innerHTML = `
+        <form id="dash-edit-event-form" style="font-family:var(--font-sans); display:flex; flex-direction:column; gap:1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:0.75rem;">
+                <h3 style="font-family:var(--font-display); color:var(--lilac-deep); margin:0; font-size:1.3rem;">Modifica Evento e Pagina</h3>
+                <button type="button" onclick="document.getElementById('dash-edit-event-modal').close()" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            
+            <div class="input-group">
+                <label style="font-size:0.85rem; font-weight:600;">Titolo Incontro *</label>
+                <input type="text" name="title" value="${escHtml(m.title)}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+            </div>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+                <div class="input-group">
+                    <label style="font-size:0.85rem; font-weight:600;">Data *</label>
+                    <input type="date" name="date" value="${m.date}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                </div>
+                <div class="input-group">
+                    <label style="font-size:0.85rem; font-weight:600;">Ora</label>
+                    <input type="time" name="time" value="${m.time || '18:00'}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 2fr; gap:0.75rem;">
+                <div class="input-group">
+                    <label style="font-size:0.85rem; font-weight:600;">Emoji Icona</label>
+                    <input type="text" name="icon" value="${escHtml(m.icon || '📅')}" style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                </div>
+                <div class="input-group">
+                    <label style="font-size:0.85rem; font-weight:600;">Luogo</label>
+                    <input type="text" name="location" value="${escHtml(m.location || 'Libreria Cose d\'Interni, Capua')}" required style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label style="font-size:0.85rem; font-weight:600;">URL Locandina / Immagine Copertina (Opzionale)</label>
+                <input type="url" name="cover" value="${escHtml(m.cover || '')}" placeholder="https://..." style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box;">
+            </div>
+
+            <div class="input-group">
+                <label style="font-size:0.85rem; font-weight:600;">Descrizione & Contenuto Pagina Evento</label>
+                <textarea name="description" rows="4" style="padding:0.5rem; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--surface-2); color:var(--plum-dark); width:100%; box-sizing:border-box; resize:vertical;">${escHtml(m.description || '')}</textarea>
+            </div>
+            
+            <div style="margin-top:0.5rem; display:flex; justify-content:flex-end; gap:0.75rem;">
+                <button type="button" onclick="document.getElementById('dash-edit-event-modal').close()" class="btn-ghost" style="padding:0.5rem 1rem; border:1px solid var(--border); border-radius:var(--r-sm); cursor:pointer;">Annulla</button>
+                <button type="submit" class="btn-primary" style="padding:0.5rem 1.25rem; border-radius:var(--r-sm); cursor:pointer;">Salva Modifiche</button>
+            </div>
+        </form>
+    `;
+
+    modal.showModal();
+
+    document.getElementById('dash-edit-event-form').onsubmit = function(e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        m.title = data.get('title').trim();
+        m.date = data.get('date');
+        m.time = data.get('time');
+        m.icon = data.get('icon').trim() || '📅';
+        m.location = data.get('location').trim();
+        m.cover = data.get('cover').trim();
+        m.description = data.get('description').trim();
+
+        saveMeetings(meetings);
+        modal.close();
+        loadMeetings();
+        alert('✦ Evento e pagina aggiornati!');
+    };
 };
 
 window.deleteMeeting = function(id) {
-    if(!confirm('Eliminare questo incontro?')) return;
+    if(!confirm('Sei sicura di voler eliminare questo evento e la sua pagina?')) return;
     saveMeetings(getMeetings().filter(m => m.id !== id));
     loadMeetings();
 };

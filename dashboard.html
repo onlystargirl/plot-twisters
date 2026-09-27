@@ -361,29 +361,66 @@
                     <p>I prossimi appuntamenti alla Libreria Cose d'Interni</p>
                 </div>
 
-                <!-- Admin: aggiungi incontro -->
+                <!-- Admin: aggiungi incontro con pagina dedicata -->
                 <div class="admin-form-card hidden" id="meeting-admin-bar">
-                    <h3 style="margin-bottom:1rem;">📅 Aggiungi incontro</h3>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                        <h3 style="margin:0;"><i class="fas fa-calendar-plus" style="color:var(--lilac-deep); margin-right:0.5rem;"></i> Crea Nuovo Evento con Pagina Dedicata</h3>
+                        <span class="bento-tag" style="background:var(--lilac-pale); color:var(--lilac-deep);">Pubblicazione Istantanea</span>
+                    </div>
+
                     <div class="admin-form-grid">
                         <div class="input-group">
-                            <label for="meet-date">Data</label>
-                            <input type="date" id="meet-date">
+                            <label for="meet-title">Titolo dell'Evento / Incontro *</label>
+                            <input type="text" id="meet-title" placeholder="es. Incontro Mensile — Il Narratore di Suicidi" required>
                         </div>
                         <div class="input-group">
-                            <label for="meet-time">Ora</label>
+                            <label for="meet-icon">Icona / Emoji</label>
+                            <div style="display:flex; gap:0.5rem; align-items:center;">
+                                <input type="text" id="meet-icon" value="📅" style="max-width:70px; text-align:center; font-size:1.2rem;">
+                                <div style="display:flex; gap:0.25rem; flex-wrap:wrap;">
+                                    <button type="button" class="btn-ghost" style="padding:0.2rem 0.4rem; font-size:1rem;" onclick="document.getElementById('meet-icon').value='📅'">📅</button>
+                                    <button type="button" class="btn-ghost" style="padding:0.2rem 0.4rem; font-size:1rem;" onclick="document.getElementById('meet-icon').value='📖'">📖</button>
+                                    <button type="button" class="btn-ghost" style="padding:0.2rem 0.4rem; font-size:1rem;" onclick="document.getElementById('meet-icon').value='🕯️'">🕯️</button>
+                                    <button type="button" class="btn-ghost" style="padding:0.2rem 0.4rem; font-size:1rem;" onclick="document.getElementById('meet-icon').value='⚖️'">⚖️</button>
+                                    <button type="button" class="btn-ghost" style="padding:0.2rem 0.4rem; font-size:1rem;" onclick="document.getElementById('meet-icon').value='📜'">📜</button>
+                                    <button type="button" class="btn-ghost" style="padding:0.2rem 0.4rem; font-size:1rem;" onclick="document.getElementById('meet-icon').value='🎨'">🎨</button>
+                                    <button type="button" class="btn-ghost" style="padding:0.2rem 0.4rem; font-size:1rem;" onclick="document.getElementById('meet-icon').value='💖'">💖</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-grid" style="margin-top:0.75rem;">
+                        <div class="input-group">
+                            <label for="meet-date">Data dell'Evento *</label>
+                            <input type="date" id="meet-date" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="meet-time">Ora di Inizio</label>
                             <input type="time" id="meet-time" value="18:00">
                         </div>
                     </div>
+
+                    <div class="admin-form-grid" style="margin-top:0.75rem;">
+                        <div class="input-group">
+                            <label for="meet-location">Luogo dell'Evento</label>
+                            <input type="text" id="meet-location" value="Libreria Cose d'Interni, Capua">
+                        </div>
+                        <div class="input-group">
+                            <label for="meet-cover">URL Locandina / Immagine (Opzionale)</label>
+                            <input type="url" id="meet-cover" placeholder="https://... o locandina.jpeg">
+                        </div>
+                    </div>
+
                     <div class="input-group" style="margin-top:0.75rem;">
-                        <label for="meet-title">Titolo incontro</label>
-                        <input type="text" id="meet-title" placeholder="es. Incontro mensile — Get to You">
+                        <label for="meet-desc">Descrizione Completa & Programma della Pagina Evento</label>
+                        <textarea id="meet-desc" rows="4" placeholder="Scrivi i dettagli dell'incontro: di cosa parleremo, scaletta, letture di brani o informazioni utili per le partecipanti..."></textarea>
                     </div>
-                    <div class="input-group">
-                        <label for="meet-location">Luogo</label>
-                        <input type="text" id="meet-location" value="Libreria Cose d'Interni, Capua">
-                    </div>
-                    <div style="display:flex;gap:0.75rem;margin-top:0.75rem;">
-                        <button class="btn-primary" onclick="addMeeting()"><i class="fas fa-plus"></i> Aggiungi</button>
+
+                    <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1rem;">
+                        <button class="btn-primary" style="padding:0.65rem 1.5rem;" onclick="addMeeting()">
+                            <i class="fas fa-sparkles"></i> ✦ Crea Evento & Genera Pagina
+                        </button>
                     </div>
                 </div>
 

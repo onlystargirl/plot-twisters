@@ -66,28 +66,36 @@
         <div class="container" style="padding-bottom: 4rem; max-width:800px; margin:0 auto;">
 
             <!-- SCHEDA DETTAGLIO EVENTO -->
-            <article class="bento-box" style="background:var(--white); padding:3rem 2rem; margin-bottom:2rem;">
+            <article class="bento-box" style="background:var(--white); padding:3rem 2.2rem; margin-bottom:2rem; border:1px solid var(--border);">
+                <!-- Immagine di Copertina / Locandina (opzionale) -->
+                <div id="event-cover-container" style="display:none; margin:-3rem -2.2rem 2.5rem -2.2rem; border-radius:var(--r-md) var(--r-md) 0 0; overflow:hidden; max-height:420px; background:var(--ivory-2); border-bottom:1px solid var(--border);">
+                    <img id="event-cover-img" src="" alt="Locandina Evento" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; margin-bottom:2rem; border-bottom:1px solid var(--border); padding-bottom:2rem;">
                     <div style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
-                        <span style="font-size:3rem; display:block;" id="event-icon-badge">📅</span>
+                        <span style="font-size:3rem; display:flex; align-items:center; justify-content:center; width:70px; height:70px; background:var(--lilac-pale); border-radius:var(--r-md);" id="event-icon-badge">📅</span>
                         <div>
-                            <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2rem;" id="event-title">Caricamento...</h2>
-                            <p style="margin:0 0 0.5rem 0; color:var(--plum-light); font-size:1rem; display:flex; gap:1rem; flex-wrap:wrap;">
-                                <span><i class="fas fa-calendar-alt" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> <strong id="event-date">--/--/----</strong></span>
-                                <span><i class="fas fa-clock" style="color:var(--lilac-mid); margin-right:0.25rem;"></i> <strong id="event-time">--:--</strong></span>
+                            <h2 style="margin:0 0 0.5rem 0; font-family:var(--font-display); font-size:2.2rem; color:var(--plum-dark);" id="event-title">Caricamento...</h2>
+                            <p style="margin:0; color:var(--plum-light); font-size:1.05rem; display:flex; gap:1.25rem; flex-wrap:wrap;">
+                                <span><i class="fas fa-calendar-alt" style="color:var(--lilac-mid); margin-right:0.35rem;"></i> <strong id="event-date">--/--/----</strong></span>
+                                <span><i class="fas fa-clock" style="color:var(--lilac-mid); margin-right:0.35rem;"></i> <strong id="event-time">--:--</strong></span>
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div style="display:flex; flex-direction:column; gap:1.5rem;">
-                    <div>
-                        <h4 style="font-family:var(--font-sans); text-transform:uppercase; font-size:0.75rem; letter-spacing:1px; color:var(--plum-light); margin-bottom:0.4rem;">📍 Luogo e Posizione</h4>
-                        <p style="font-size:1.05rem; font-weight:600; color:var(--plum-dark); margin:0;" id="event-location">Caricamento...</p>
+                <div style="display:flex; flex-direction:column; gap:1.75rem;">
+                    <div style="background:var(--ivory-1); padding:1.2rem 1.5rem; border-radius:var(--r-sm); border:1px solid var(--border);">
+                        <h4 style="font-family:var(--font-sans); text-transform:uppercase; font-size:0.75rem; letter-spacing:1px; color:var(--plum-light); margin-bottom:0.3rem;">📍 Luogo e Posizione</h4>
+                        <p style="font-size:1.1rem; font-weight:600; color:var(--plum-dark); margin:0;" id="event-location">Caricamento...</p>
                     </div>
 
-                    <div style="font-size:1.08rem; line-height:1.8; color:var(--plum-dark); border-top:1px solid var(--border); padding-top:1.5rem;" id="event-desc">
-                        <!-- Popolata via JS -->
+                    <div>
+                        <h4 style="font-family:var(--font-sans); text-transform:uppercase; font-size:0.75rem; letter-spacing:1px; color:var(--lilac-deep); margin-bottom:0.75rem;">✨ Dettagli e Programma dell'Incontro</h4>
+                        <div style="font-size:1.08rem; line-height:1.85; color:var(--plum-dark);" id="event-desc">
+                            <!-- Popolata via JS -->
+                        </div>
                     </div>
                 </div>
             </article>
