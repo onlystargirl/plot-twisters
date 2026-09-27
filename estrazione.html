@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrazione Libro | Plot Twisters!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Cormorant:ital,wght@1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ─── SIDEBAR DRAWER ─── -->
+    <div class="sidebar-drawer" id="sidebar-drawer" role="navigation" aria-label="Navigazione laterale">
+        <span class="close-sidebar-btn" onclick="toggleSidebar(false)" aria-label="Chiudi menu">&times;</span>
+        <div class="sidebar-brand">Plot Twisters<span class="dot">!</span></div>
+        <ul class="sidebar-links">
+            <li><span class="sidebar-num">01.</span><a href="index.html">Home</a></li>
+            <li><span class="sidebar-num">02.</span><a href="chi-siamo.html">Chi Siamo</a></li>
+            <li><span class="sidebar-num">03.</span><a href="lettura.html">Letture</a></li>
+            <li><span class="sidebar-num">04.</span><a href="eventi.html">Eventi</a></li>
+            <li><span class="sidebar-num">05.</span><a href="novita.html">Novità 📰</a></li>
+            <li><span class="sidebar-num">06.</span><a href="login.html">Area Privata 🔒</a></li>
+        </ul>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-extra" style="padding: 0 0.5rem;">
+            <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--plum); margin-bottom:0.75rem;">
+                Utility del Club 🜗</h4>
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DX8UebhnvMp2S" target="_blank" rel="noopener"
+                class="sidebar-extra-link"
+                style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">
+                <i class="fab fa-spotify" style="color:#1DB954;"></i> Playlist da Lettura
+            </a>
+            <a href="estrazione.html" class="sidebar-extra-link active"
+                style="display:block; font-size:0.8rem; color:var(--lilac-deep); margin-bottom:0.5rem;">🎲 Sorteggio Libro</a>
+            <a href="chi-siamo.html#regole" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light); margin-bottom:0.5rem;">📜 Le Regole d'Oro</a>
+            <a href="eventi.html#mappa" class="sidebar-extra-link"
+                style="display:block; font-size:0.8rem; color:var(--plum-light);">📍 Come Raggiungerci</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="nav-logo"><a href="index.html">Plot Twisters<span class="dot">!</span></a></div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">🌙</button>
+            <a href="login.html" class="btn-ghost auth-nav-link"
+                style="border: 1px solid var(--border-dark); border-radius: var(--r-sm); padding: 0.5rem 1rem;">
+                Area Privata <i class="fas fa-lock" style="margin-left: 0.25rem;"></i>
+            </a>
+            <button class="btn-ghost menu-pill-btn" onclick="toggleSidebar(true)" aria-label="Apri menu">Menu ☰</button>
+        </div>
+    </nav>
+
+    <!-- ─── HEADER ─── -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="overline">il fato decide 🜗</span>
+            <h1>Sorteggio <em>Libro del Mese</em></h1>
+            <p>Estrai a sorte tra tutti i libri desiderati dalle lettrici</p>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 4rem;">
+        
+        <div class="bento-box" style="padding: 3rem; text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+            <h2 style="margin-bottom: 1rem;">L'Urna dei Desideri</h2>
+            <p style="color: var(--plum-light); margin-bottom: 2.5rem;">
+                In questa pagina raccogliamo automaticamente tutti i libri che le iscritte hanno salvato nella loro Lista dei Desideri personale.
+                Premi il pulsante per estrarre casualmente il prossimo libro!
+            </p>
+            
+            <button id="draw-btn" class="btn-primary" style="font-size: 1.2rem; padding: 1rem 2.5rem; margin: 0 auto; display: inline-flex; justify-content: center; width: auto; box-shadow: 0 4px 15px rgba(115, 86, 190, 0.4);">
+                🎲 Estrai un Libro!
+            </button>
+            
+            <div id="draw-result-container" class="hidden" style="margin-top: 3rem; padding-top: 3rem; border-top: 1px dashed var(--border);">
+                <div style="font-family: var(--font-display); font-size: 1.2rem; color: var(--lilac-deep); margin-bottom: 0.5rem; animation: pulse 2s infinite;">
+                    🎉 Il Libro Estratto è... 🎉
+                </div>
+                <h3 id="drawn-title" style="font-size: 2rem; margin: 0.5rem 0;"></h3>
+                <p id="drawn-author" style="font-size: 1.2rem; color: var(--plum-dark);"></p>
+                <p id="drawn-user" style="font-size: 0.9rem; color: var(--plum-light); margin-top: 1rem; font-style: italic;"></p>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin-bottom: 2rem;">Tutti i libri nell'urna <span id="total-books-count" style="font-size: 0.9rem; background: var(--lilac-pale); color: var(--lilac-deep); padding: 0.2rem 0.6rem; border-radius: 20px; vertical-align: middle;"></span></h3>
+        
+        <div id="all-books-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
+            <!-- Rendered by JS -->
+        </div>
+
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="site-footer"
+        style="background: var(--ivory-2); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="footer-logo"
+                style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--plum); margin-bottom: 0.5rem;">
+                Plot Twisters<span class="dot">!</span></div>
+            <p class="footer-tagline"
+                style="font-size: 0.9rem; color: var(--plum-light); font-family: var(--font-italic);">"Dove le storie
+                prendono vita e la magia accade tra le pagine."</p>
+        </div>
+    </footer>
+
+    <!-- Script LOCALI -->
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('all-books-grid');
+            const countEl = document.getElementById('total-books-count');
+            const drawBtn = document.getElementById('draw-btn');
+            const resultContainer = document.getElementById('draw-result-container');
+            const drawnTitle = document.getElementById('drawn-title');
+            const drawnAuthor = document.getElementById('drawn-author');
+            const drawnUser = document.getElementById('drawn-user');
+            
+            let allWishlistBooks = [];
+            
+            // Gather all wishlists from localStorage
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('pt-wishlist-')) {
+                    const username = key.replace('pt-wishlist-', '');
+                    try {
+                        const userBooks = JSON.parse(localStorage.getItem(key) || '[]');
+                        userBooks.forEach(b => {
+                            allWishlistBooks.push({
+                                title: b.title,
+                                author: b.author,
+                                notes: b.notes,
+                                user: username
+                            });
+                        });
+                    } catch(e) {}
+                }
+            }
+            
+            // Display count
+            if (countEl) countEl.textContent = allWishlistBooks.length;
+            
+            // Display books
+            if (allWishlistBooks.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--plum-light);">Nessun libro trovato nelle liste dei desideri.</p>';
+                drawBtn.disabled = true;
+                drawBtn.style.opacity = '0.5';
+                drawBtn.style.cursor = 'not-allowed';
+            } else {
+                grid.innerHTML = allWishlistBooks.map(b => `
+                    <div class="bento-box" style="padding: 1.5rem; background: var(--ivory-2); border: 1px solid var(--border);">
+                        <div style="font-weight: 700; font-size: 1.1rem; color: var(--plum); margin-bottom: 0.5rem;">${b.title}</div>
+                        <div style="font-size: 0.9rem; color: var(--plum-dark); margin-bottom: 1rem;">di ${b.author}</div>
+                        <div style="font-size: 0.75rem; color: var(--lilac-deep); background: var(--lilac-pale); display: inline-block; padding: 0.2rem 0.5rem; border-radius: 4px;">
+                            <i class="fas fa-user"></i> Dalla lista di: ${b.user}
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            // Draw functionality
+            drawBtn.addEventListener('click', () => {
+                if (allWishlistBooks.length === 0) return;
+                
+                // Fancy animation (simulate drawing)
+                drawBtn.innerHTML = '🎲 Estrazione in corso...';
+                drawBtn.disabled = true;
+                resultContainer.classList.add('hidden');
+                
+                let counter = 0;
+                const interval = setInterval(() => {
+                    const randomIdx = Math.floor(Math.random() * allWishlistBooks.length);
+                    const b = allWishlistBooks[randomIdx];
+                    drawnTitle.textContent = b.title;
+                    drawnAuthor.textContent = 'di ' + b.author;
+                    drawnUser.textContent = 'Desiderato da: ' + b.user;
+                    resultContainer.classList.remove('hidden');
+                    
+                    counter++;
+                    if (counter > 15) {
+                        clearInterval(interval);
+                        drawBtn.innerHTML = '🎲 Estrai un nuovo Libro!';
+                        drawBtn.disabled = false;
+                        
+                        // Final result styling
+                        drawnTitle.style.color = 'var(--plum)';
+                        drawnTitle.style.transform = 'scale(1.1)';
+                        setTimeout(() => { drawnTitle.style.transform = 'scale(1)'; drawnTitle.style.transition = 'transform 0.3s ease'; }, 300);
+                    }
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
