@@ -255,6 +255,262 @@
         </div>
     </div>
 
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!--  MODAL CAMBIO PASSWORD (primo accesso)                     -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="change-pw-overlay" class="cpw-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="cpw-title">
+        <div class="cpw-card" id="cpw-card">
+            <div class="cpw-icon">🔑</div>
+            <h2 class="cpw-title" id="cpw-title">Primo accesso!</h2>
+            <p class="cpw-subtitle">
+                Vuoi impostare una password personale?
+                <br><span style="font-size:0.82rem;opacity:0.75;">Potrai sempre cambiarla contattando le admin.</span>
+            </p>
+
+            <!-- Scelta sì/no -->
+            <div class="cpw-choice" id="cpw-choice">
+                <button class="cpw-btn cpw-btn-yes" id="cpw-yes-btn">
+                    <i class="fas fa-lock"></i> Sì, cambio password
+                </button>
+                <button class="cpw-btn cpw-btn-no" id="cpw-no-btn">
+                    <i class="fas fa-forward"></i> No, per ora no
+                </button>
+            </div>
+
+            <!-- Form nuova password (hidden inizialmente) -->
+            <form class="cpw-form hidden" id="cpw-form" novalidate>
+                <div class="cpw-field">
+                    <label for="cpw-new">Nuova password</label>
+                    <div class="cpw-input-wrap">
+                        <input type="password" id="cpw-new" placeholder="••••••••" autocomplete="new-password" minlength="6" required>
+                        <button type="button" class="cpw-eye" data-target="cpw-new" title="Mostra/Nascondi">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="cpw-hint">Minimo 6 caratteri</span>
+                </div>
+                <div class="cpw-field">
+                    <label for="cpw-confirm">Conferma password</label>
+                    <div class="cpw-input-wrap">
+                        <input type="password" id="cpw-confirm" placeholder="••••••••" autocomplete="new-password" required>
+                        <button type="button" class="cpw-eye" data-target="cpw-confirm" title="Mostra/Nascondi">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="cpw-error hidden" id="cpw-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="cpw-error-msg"></span>
+                </div>
+                <div class="cpw-actions">
+                    <button type="button" class="cpw-btn cpw-btn-back" id="cpw-back-btn">
+                        <i class="fas fa-arrow-left"></i> Indietro
+                    </button>
+                    <button type="submit" class="cpw-btn cpw-btn-save" id="cpw-save-btn">
+                        <i class="fas fa-check"></i> Salva
+                    </button>
+                </div>
+            </form>
+
+            <!-- Stato successo -->
+            <div class="cpw-success hidden" id="cpw-success">
+                <div class="cpw-success-icon">✅</div>
+                <p>Password salvata! Benvenuta 🎉</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* ══════════════════════════════════════════════
+           STILI MODAL CAMBIO PASSWORD
+        ══════════════════════════════════════════════ */
+        .cpw-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(30, 15, 50, 0.72);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            animation: cpwFadeIn 0.3s ease;
+        }
+        .cpw-overlay.hidden { display: none; }
+
+        @keyframes cpwFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .cpw-card {
+            background: var(--surface-2, #fff);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 24px 60px rgba(80, 40, 140, 0.28);
+            text-align: center;
+            animation: cpwSlideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes cpwSlideUp {
+            from { transform: translateY(32px) scale(0.96); opacity: 0; }
+            to   { transform: translateY(0)    scale(1);    opacity: 1; }
+        }
+
+        .cpw-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+
+        .cpw-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.65rem;
+            color: var(--plum-dark, #3d1f5e);
+            margin: 0 0 0.4rem;
+        }
+
+        .cpw-subtitle {
+            font-size: 0.95rem;
+            color: var(--plum-light, #7b5c9e);
+            margin-bottom: 1.75rem;
+            line-height: 1.5;
+        }
+
+        .cpw-choice {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .cpw-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.4rem;
+            border-radius: 10px;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cpw-btn-yes {
+            background: linear-gradient(135deg, #7356be, #a27dd8);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(115, 86, 190, 0.35);
+        }
+        .cpw-btn-yes:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(115,86,190,0.45); }
+
+        .cpw-btn-no {
+            background: transparent;
+            color: var(--plum-light, #7b5c9e);
+            border: 2px solid var(--border, #e0d6f0);
+        }
+        .cpw-btn-no:hover { background: var(--ivory-2, #f5f0fb); }
+
+        .cpw-btn-back {
+            background: transparent;
+            color: var(--plum-light, #7b5c9e);
+            border: 2px solid var(--border, #e0d6f0);
+            flex: 1;
+        }
+        .cpw-btn-back:hover { background: var(--ivory-2, #f5f0fb); }
+
+        .cpw-btn-save {
+            background: linear-gradient(135deg, #7356be, #a27dd8);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(115, 86, 190, 0.35);
+            flex: 2;
+        }
+        .cpw-btn-save:hover { transform: translateY(-2px); }
+        .cpw-btn-save:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .cpw-form {
+            text-align: left;
+            margin-top: 0.25rem;
+        }
+        .cpw-form.hidden { display: none; }
+
+        .cpw-field {
+            margin-bottom: 1rem;
+        }
+        .cpw-field label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--plum-light, #7b5c9e);
+            margin-bottom: 0.4rem;
+        }
+        .cpw-input-wrap {
+            position: relative;
+        }
+        .cpw-input-wrap input {
+            width: 100%;
+            padding: 0.75rem 3rem 0.75rem 1rem;
+            border-radius: 10px;
+            border: 2px solid var(--border, #e0d6f0);
+            background: var(--white, #fff);
+            font-size: 0.95rem;
+            color: var(--plum-dark, #3d1f5e);
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        .cpw-input-wrap input:focus {
+            outline: none;
+            border-color: var(--lilac-deep, #7356be);
+        }
+        .cpw-eye {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--plum-light, #7b5c9e);
+            font-size: 0.9rem;
+            padding: 0.25rem;
+        }
+        .cpw-hint {
+            font-size: 0.75rem;
+            color: var(--plum-light, #7b5c9e);
+            margin-top: 0.3rem;
+            display: block;
+        }
+        .cpw-error {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #fff0f0;
+            border: 1.5px solid #ffb3b3;
+            color: #c0392b;
+            border-radius: 8px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.88rem;
+            margin-bottom: 0.75rem;
+        }
+        .cpw-error.hidden { display: none; }
+
+        .cpw-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .cpw-success.hidden { display: none; }
+        .cpw-success { text-align: center; padding: 1rem 0; }
+        .cpw-success-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+        .cpw-success p { font-size: 1.05rem; font-weight: 600; color: var(--plum-dark); }
+    </style>
+
+    <!-- Firebase compat SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
     <script src="login.js"></script>
 </body>
 

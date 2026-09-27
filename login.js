@@ -6,7 +6,7 @@
 // Aggiungi o rimuovi membri qui. admin:true mostra il pannello admin.
 const CLUB_USERS = [
 
-    { name: 'Samia', password: 'admin!plot', admin: true },
+    { name: 'Samia', password: 'Meleandra', admin: true },
     { name: 'Giorgia', password: 'amosamia2705' },
     { name: 'Elisabetta', password: 'mispososamiaenonandrea' },
     { name: 'Angela', password: 'odiogliobesicomegiacomo' },
