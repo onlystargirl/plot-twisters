@@ -124,6 +124,17 @@ function loadDynamicCurrentBook() {
             progressTexts.forEach(pt => pt.textContent = data.progress + '%');
             progressWraps.forEach(pw => pw.textContent = `Avanzamento Gruppo · ${data.progress}%`);
         }
+
+        // Aggiorna anche lo scaffale nella homepage ("I Libri che Abbiamo Amato")
+        const shelfCover = document.getElementById('shelf-current-cover');
+        const shelfTitle = document.getElementById('shelf-current-title');
+        if (shelfCover && data.cover) {
+            shelfCover.src = escHtml(data.cover);
+            shelfCover.alt = `Copertina di ${escHtml(data.title)}`;
+        }
+        if (shelfTitle && data.title) {
+            shelfTitle.textContent = escHtml(data.title);
+        }
     } catch (e) {
         console.warn('Errore lettura libro corrente:', e);
     }

@@ -257,14 +257,15 @@
                             style="font-size:0.78rem; font-weight:600; color:var(--plum-light); margin-top:0.75rem; max-width:130px;">
                             E poi ci sono io</p>
                     </a>
-                    <!-- Get to You (In lettura) -->
-                    <a href="lettura.html"
+                    <!-- Libro del Mese (dinamico) -->
+                    <a href="lettura.html" id="shelf-current-book"
                         style="text-align:center; text-decoration:none; color:inherit; position:relative;">
                         <div style="position:relative; display:inline-block;">
                             <div class="book-3d-wrap" style="margin:0;">
                                 <div class="book-3d">
-                                    <img src="https://www.sperling.it/content/uploads/2025/10/978882008373HIG.JPG"
-                                        alt="Get to You" style="object-fit:cover;">
+                                    <img id="shelf-current-cover"
+                                        src="https://www.sperling.it/content/uploads/2025/10/978882008373HIG.JPG"
+                                        alt="Libro del mese" style="object-fit:cover;">
                                     <div class="book-pages"></div>
                                     <div class="book-spine"></div>
                                 </div>
@@ -275,7 +276,7 @@
                         </div>
                         <p
                             style="font-size:0.78rem; font-weight:600; color:var(--lilac-deep); margin-top:0.75rem; max-width:130px;">
-                            Get to You<br><span style="color:var(--plum-light);">in lettura ora</span></p>
+                            <span id="shelf-current-title">Get to You</span><br><span style="color:var(--plum-light);">in lettura ora</span></p>
                     </a>
                 </div>
                 <div style="text-align:center; margin-top:2rem;">

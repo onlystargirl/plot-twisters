@@ -74,6 +74,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (isAdmin) {
         loadNewsMediaAdmin();
         loadNewsNoticesAdmin();
+        loadCurrentBookAdmin();
     }
     
     // Inizializza stelle
@@ -693,6 +694,22 @@ window.deletePdf = function(id) {
 //  ADMIN SECTIONS
 // ═══════════════════════════════════════════════════════════════
 
+window.loadCurrentBookAdmin = function() {
+    const raw = localStorage.getItem('pt-current-book');
+    if (!raw) return;
+    try {
+        const data = JSON.parse(raw);
+        const titleEl = document.getElementById('admin-book-title');
+        const authorEl = document.getElementById('admin-book-author');
+        const coverEl = document.getElementById('admin-book-cover');
+        const progressEl = document.getElementById('admin-book-progress');
+        if (titleEl && data.title) titleEl.value = data.title;
+        if (authorEl && data.author) authorEl.value = data.author;
+        if (coverEl && data.cover) coverEl.value = data.cover;
+        if (progressEl && data.progress !== undefined) progressEl.value = data.progress;
+    } catch(e) {}
+};
+
 window.updateCurrentBook = function() {
     const title = document.getElementById('admin-book-title').value.trim();
     const author = document.getElementById('admin-book-author').value.trim();
@@ -700,8 +717,9 @@ window.updateCurrentBook = function() {
     const progress = parseInt(document.getElementById('admin-book-progress').value, 10) || 0;
     if (!title) { alert('Inserisci almeno il titolo!'); return; }
     localStorage.setItem('pt-current-book', JSON.stringify({ title, author, cover, progress }));
-    alert('Libro aggiornato! ✦ Ricarica la home per vedere le modifiche.');
+    alert(`Libro aggiornato: "${title}" ✦\nRicarica la home per vedere le modifiche.`);
 };
+
 
 window.downloadNewsletter = function() {
     const emails = JSON.parse(localStorage.getItem('newsletter_emails') || '[]');
