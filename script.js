@@ -3,24 +3,6 @@
 // ═══════════════════════════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Versione dati: se cambia, svuota i dati obsoleti
-    const DATA_VERSION = '2.1';
-    if (localStorage.getItem('pt-data-version') !== DATA_VERSION) {
-        localStorage.removeItem('pt-meetings');
-        localStorage.removeItem('pt-reviews');
-        localStorage.setItem('pt-data-version', DATA_VERSION);
-    }
-
-    // Inizializza recensioni di default se non presenti in localStorage
-    if (!localStorage.getItem('pt-reviews')) {
-        populateDefaultReviews();
-    }
-
-    // Inizializza archivio libri di default se non presenti in localStorage
-    if (!localStorage.getItem('pt-books')) {
-        populateDefaultBooks();
-    }
-
     initTheme();
     initParticles();
     initNavbar();
@@ -33,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('event-title')) loadSingleEvent();
 
     // Inizializzazioni per la Homepage
-    if (document.getElementById('lettura-mese')) loadDynamicCurrentBook();
+    if (document.getElementById('lettura-mese') || document.querySelector('.current-book-title')) loadDynamicCurrentBook();
     if (document.getElementById('upcoming-meetings') || document.getElementById('novita-upcoming-events')) loadUpcomingMeetings();
     if (document.getElementById('bookcrush-highlight')) loadBookCrushHighlight();
     if (document.getElementById('home-leaderboard')) loadLeaderboardHome();
@@ -1117,3 +1099,15 @@ function loadNewsToPage() {
         }).join('');
     }
 }
+
+// ─── ESPOSIZIONE GLOBALE PER REALTIME FIREBASE SYNC ───
+window.loadDynamicCurrentBook = loadDynamicCurrentBook;
+window.loadUpcomingMeetings = loadUpcomingMeetings;
+window.loadBookCrushHighlight = loadBookCrushHighlight;
+window.loadLeaderboardHome = loadLeaderboardHome;
+window.loadBooksArchive = loadBooksArchive;
+window.loadNewsToPage = loadNewsToPage;
+window.loadDynamicReviews = loadDynamicReviews;
+window.loadSingleReview = loadSingleReview;
+window.loadSingleEvent = loadSingleEvent;
+window.initCalendar = initCalendar;

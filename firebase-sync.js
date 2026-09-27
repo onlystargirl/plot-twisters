@@ -1,84 +1,152 @@
 // ═══════════════════════════════════════════════════════════════
-//  PLOT TWISTERS — Firebase Sync
+//  PLOT TWISTERS — Realtime Firebase Sync
 // ═══════════════════════════════════════════════════════════════
 
 (function() {
-    // Override localStorage.setItem to save to Firestore
-    const originalSetItem = localStorage.setItem;
+    // Shared keys that belong to club data in Firestore
+    // Note: private keys (pt-auth, pt-user-name, pt-user-admin, pt-theme, pt-data-version) are NEVER synced.
+    const PRIVATE_KEYS = ['pt-auth', 'pt-user-name', 'pt-user-admin', 'pt-theme', 'pt-data-version'];
     
+    function isSharedKey(key) {
+        if (!key) return false;
+        if (PRIVATE_KEYS.includes(key)) return false;
+        return key.startsWith('pt-') || key === 'newsletter_emails';
+    }
+
+    const originalSetItem = localStorage.setItem.bind(localStorage);
+    const originalRemoveItem = localStorage.removeItem.bind(localStorage);
+
+    // Flag to prevent feedback loops when Firestore updates localStorage
+    let isApplyingRemoteChange = false;
+
+    // Hook localStorage.setItem
     localStorage.setItem = function(key, value) {
-        originalSetItem.apply(this, arguments);
+        originalSetItem(key, value);
         
-        // Non sincronizziamo cose locali come il tema o dati non pt-
-        if (key.startsWith('pt-') && key !== 'pt-theme' && key !== 'pt-auth') {
-            if (window.db) {
-                window.db.collection('club_data').doc(key).set({ data: value })
-                    .catch(err => console.error("Firebase sync error:", err));
-            }
+        if (!isApplyingRemoteChange && isSharedKey(key) && window.db) {
+            const dataToSave = typeof value === 'string' ? value : JSON.stringify(value);
+            window.db.collection('club_data').doc(key).set({ 
+                data: dataToSave
+            }).catch(err => {
+                console.error("Firestore sync write error for key " + key + ":", err);
+            });
         }
     };
 
-    // Load da Firestore al caricamento della pagina
-    window.addEventListener('DOMContentLoaded', async () => {
+    // Hook localStorage.removeItem
+    localStorage.removeItem = function(key) {
+        originalRemoveItem(key);
+        
+        if (!isApplyingRemoteChange && isSharedKey(key) && window.db) {
+            window.db.collection('club_data').doc(key).delete().catch(err => {
+                console.error("Firestore sync delete error for key " + key + ":", err);
+            });
+        }
+    };
+
+    // Master function to re-render any active components on whatever page is open
+    window.refreshAllPageContent = function() {
+        try {
+            // Dashboard functions
+            if (typeof window.loadDiary === 'function') window.loadDiary();
+            if (typeof window.loadReviews === 'function') window.loadReviews();
+            if (typeof window.loadWishlist === 'function') window.loadWishlist();
+            if (typeof window.loadMeetings === 'function') window.loadMeetings();
+            if (typeof window.loadBookCrush === 'function') window.loadBookCrush();
+            if (typeof window.loadLeaderboard === 'function') window.loadLeaderboard();
+            if (typeof window.loadPdfs === 'function') window.loadPdfs();
+            if (typeof window.loadCurrentBookAdmin === 'function') window.loadCurrentBookAdmin();
+
+            // Script.js functions (Public pages)
+            if (typeof window.loadDynamicCurrentBook === 'function' && (document.getElementById('lettura-mese') || document.querySelector('.current-book-title') || document.querySelector('.bento-book-cover'))) {
+                window.loadDynamicCurrentBook();
+            }
+            if (typeof window.loadUpcomingMeetings === 'function' && (document.getElementById('upcoming-meetings') || document.getElementById('novita-upcoming-events'))) {
+                window.loadUpcomingMeetings();
+            }
+            if (typeof window.loadBookCrushHighlight === 'function' && document.getElementById('bookcrush-highlight')) {
+                window.loadBookCrushHighlight();
+            }
+            if (typeof window.loadLeaderboardHome === 'function' && document.getElementById('home-leaderboard')) {
+                window.loadLeaderboardHome();
+            }
+            if (typeof window.loadBooksArchive === 'function' && document.getElementById('dynamic-books-archive')) {
+                window.loadBooksArchive();
+            }
+            if (typeof window.loadNewsToPage === 'function' && (document.getElementById('news-yt-container') || document.getElementById('news-notices-container'))) {
+                window.loadNewsToPage();
+            }
+            if (typeof window.loadDynamicReviews === 'function' && document.getElementById('dynamic-reviews-container')) {
+                window.loadDynamicReviews();
+            }
+            if (typeof window.loadSingleReview === 'function' && document.getElementById('review-book-title')) {
+                window.loadSingleReview();
+            }
+            if (typeof window.loadSingleEvent === 'function' && document.getElementById('event-title')) {
+                window.loadSingleEvent();
+            }
+            if (typeof window.initCalendar === 'function' && document.getElementById('calendar-grid')) {
+                window.initCalendar();
+            }
+            
+            // Estrazione
+            if (typeof window.loadEstrazione === 'function') {
+                window.loadEstrazione();
+            }
+        } catch (err) {
+            console.warn("Errore durante il refresh della pagina:", err);
+        }
+    };
+
+    // Realtime synchronization from Firestore to localStorage & DOM
+    function initRealtimeSync() {
         if (!window.db) {
-            console.warn("Nessun database Firebase trovato. Sincronizzazione fallita.");
+            console.warn("Firebase non inizializzato. Impossibile sincronizzare.");
             return;
         }
-        
-        try {
-            const snapshot = await window.db.collection('club_data').get();
-            let changed = false;
-            
-            snapshot.forEach(doc => {
-                const current = localStorage.getItem(doc.id);
-                if (current !== doc.data().data) {
-                    originalSetItem.call(localStorage, doc.id, doc.data().data);
-                    changed = true;
-                }
-            });
 
-            // Migrazione: carica i dati locali esistenti su Firebase se Firebase è vuoto per quelle chiavi
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key && key.startsWith('pt-') && key !== 'pt-theme' && key !== 'pt-auth') {
-                    let found = false;
-                    snapshot.forEach(doc => { if(doc.id === key) found = true; });
-                    if (!found) {
-                        console.log("✦ Migrazione iniziale su Firebase per:", key);
-                        window.db.collection('club_data').doc(key).set({ data: localStorage.getItem(key) })
-                            .catch(err => console.error("Firebase upload error:", err));
+        window.db.collection('club_data').onSnapshot((snapshot) => {
+            isApplyingRemoteChange = true;
+            try {
+                let hasChanges = false;
+                snapshot.docChanges().forEach((change) => {
+                    const docId = change.doc.id;
+                    if (!isSharedKey(docId)) return;
+
+                    if (change.type === 'removed') {
+                        originalRemoveItem(docId);
+                        hasChanges = true;
+                    } else {
+                        const cloudData = change.doc.data();
+                        const val = cloudData ? cloudData.data : null;
+                        if (val !== null && val !== undefined) {
+                            const strVal = typeof val === 'string' ? val : JSON.stringify(val);
+                            const currVal = localStorage.getItem(docId);
+                            if (currVal !== strVal) {
+                                originalSetItem(docId, strVal);
+                                hasChanges = true;
+                            }
+                        }
                     }
+                });
+
+                if (hasChanges) {
+                    console.log("✦ Dati aggiornati dal cloud in tempo reale!");
+                    window.refreshAllPageContent();
                 }
+            } catch (err) {
+                console.error("Errore durante l'applicazione snapshot da Firestore:", err);
+            } finally {
+                isApplyingRemoteChange = false;
             }
-            
-            // Se i dati sono stati aggiornati da Firebase, ricarica le funzioni di render per mostrare i dati nuovi
-            if (changed) {
-                // Funzioni di dashboard.js
-                if (typeof loadDiary === 'function') loadDiary();
-                if (typeof loadReviews === 'function') loadReviews();
-                if (typeof loadWishlist === 'function') loadWishlist();
-                if (typeof loadMeetings === 'function') loadMeetings();
-                if (typeof loadBookCrush === 'function') loadBookCrush();
-                if (typeof loadLeaderboard === 'function') loadLeaderboard();
-                if (typeof loadPdfs === 'function') loadPdfs();
-                if (typeof loadCurrentBookAdmin === 'function') loadCurrentBookAdmin();
-                
-                // Funzioni di script.js
-                if (typeof initCalendar === 'function' && document.getElementById('calendar-grid')) initCalendar();
-                if (typeof loadDynamicReviews === 'function' && document.getElementById('dynamic-reviews-container')) loadDynamicReviews();
-                if (typeof loadSingleEvent === 'function' && document.getElementById('event-title')) loadSingleEvent();
-                if (typeof loadUpcomingMeetings === 'function') loadUpcomingMeetings();
-                if (typeof loadBookCrushHighlight === 'function') loadBookCrushHighlight();
-                if (typeof loadLeaderboardHome === 'function') loadLeaderboardHome();
-                if (typeof loadBooksArchive === 'function') loadBooksArchive();
-                if (typeof loadDynamicCurrentBook === 'function') loadDynamicCurrentBook();
-                if (typeof loadNewsToPage === 'function') loadNewsToPage();
-            }
-            
-            console.log("✦ Sincronizzazione Firebase completata!");
-            
-        } catch(e) {
-            console.error("Errore durante il recupero dei dati da Firebase:", e);
-        }
-    });
+        }, (error) => {
+            console.error("Errore realtime Firestore:", error);
+        });
+    }
+
+    if (window.db) {
+        initRealtimeSync();
+    } else {
+        window.addEventListener('load', initRealtimeSync);
+    }
 })();

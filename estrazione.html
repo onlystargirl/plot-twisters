@@ -121,16 +121,15 @@
     <!-- Script LOCALI -->
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        let allWishlistBooks = [];
+        
+        window.loadEstrazione = function() {
             const grid = document.getElementById('all-books-grid');
             const countEl = document.getElementById('total-books-count');
             const drawBtn = document.getElementById('draw-btn');
-            const resultContainer = document.getElementById('draw-result-container');
-            const drawnTitle = document.getElementById('drawn-title');
-            const drawnAuthor = document.getElementById('drawn-author');
-            const drawnUser = document.getElementById('drawn-user');
+            if (!grid || !countEl || !drawBtn) return;
             
-            let allWishlistBooks = [];
+            allWishlistBooks = [];
             
             // Gather all wishlists from localStorage
             for (let i = 0; i < localStorage.length; i++) {
@@ -152,7 +151,7 @@
             }
             
             // Display count
-            if (countEl) countEl.textContent = allWishlistBooks.length;
+            countEl.textContent = allWishlistBooks.length;
             
             // Display books
             if (allWishlistBooks.length === 0) {
@@ -161,6 +160,9 @@
                 drawBtn.style.opacity = '0.5';
                 drawBtn.style.cursor = 'not-allowed';
             } else {
+                drawBtn.disabled = false;
+                drawBtn.style.opacity = '1';
+                drawBtn.style.cursor = 'pointer';
                 grid.innerHTML = allWishlistBooks.map(b => `
                     <div class="bento-box" style="padding: 1.5rem; background: var(--ivory-2); border: 1px solid var(--border);">
                         <div style="font-weight: 700; font-size: 1.1rem; color: var(--plum); margin-bottom: 0.5rem;">${b.title}</div>
@@ -171,24 +173,35 @@
                     </div>
                 `).join('');
             }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.loadEstrazione();
+            
+            const drawBtn = document.getElementById('draw-btn');
+            const resultContainer = document.getElementById('draw-result-container');
+            const drawnTitle = document.getElementById('drawn-title');
+            const drawnAuthor = document.getElementById('drawn-author');
+            const drawnUser = document.getElementById('drawn-user');
+            
+            if (!drawBtn) return;
             
             // Draw functionality
             drawBtn.addEventListener('click', () => {
-                if (allWishlistBooks.length === 0) return;
+                if (!allWishlistBooks || allWishlistBooks.length === 0) return;
                 
-                // Fancy animation (simulate drawing)
                 drawBtn.innerHTML = '🎲 Estrazione in corso...';
                 drawBtn.disabled = true;
-                resultContainer.classList.add('hidden');
+                if (resultContainer) resultContainer.classList.add('hidden');
                 
                 let counter = 0;
                 const interval = setInterval(() => {
                     const randomIdx = Math.floor(Math.random() * allWishlistBooks.length);
                     const b = allWishlistBooks[randomIdx];
-                    drawnTitle.textContent = b.title;
-                    drawnAuthor.textContent = 'di ' + b.author;
-                    drawnUser.textContent = 'Desiderato da: ' + b.user;
-                    resultContainer.classList.remove('hidden');
+                    if (drawnTitle) drawnTitle.textContent = b.title;
+                    if (drawnAuthor) drawnAuthor.textContent = 'di ' + b.author;
+                    if (drawnUser) drawnUser.textContent = 'Desiderato da: ' + b.user;
+                    if (resultContainer) resultContainer.classList.remove('hidden');
                     
                     counter++;
                     if (counter > 15) {
@@ -196,10 +209,11 @@
                         drawBtn.innerHTML = '🎲 Estrai un nuovo Libro!';
                         drawBtn.disabled = false;
                         
-                        // Final result styling
-                        drawnTitle.style.color = 'var(--plum)';
-                        drawnTitle.style.transform = 'scale(1.1)';
-                        setTimeout(() => { drawnTitle.style.transform = 'scale(1)'; drawnTitle.style.transition = 'transform 0.3s ease'; }, 300);
+                        if (drawnTitle) {
+                            drawnTitle.style.color = 'var(--plum)';
+                            drawnTitle.style.transform = 'scale(1.1)';
+                            setTimeout(() => { drawnTitle.style.transform = 'scale(1)'; drawnTitle.style.transition = 'transform 0.3s ease'; }, 300);
+                        }
                     }
                 }, 100);
             });

@@ -923,3 +923,15 @@ window.deleteNewsNotice = function(id) {
 function escHtml(str) {
     return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
+
+// ─── ESPOSIZIONE GLOBALE PER REALTIME FIREBASE SYNC ───
+window.loadDiary = loadDiary;
+window.loadReviews = loadReviews;
+window.loadWishlist = loadWishlist;
+window.loadMeetings = loadMeetings;
+window.loadBookCrush = loadBookCrush;
+window.loadLeaderboard = loadLeaderboard;
+window.loadPdfs = loadPdfs;
+window.loadNewsMediaAdmin = loadNewsMediaAdmin;
+window.loadNewsNoticesAdmin = loadNewsNoticesAdmin;
+window.loadCurrentBookAdmin = loadCurrentBookAdmin;
